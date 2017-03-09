@@ -10,7 +10,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Hardware;
-using Java.IO;
+using WebSocketSharp;
+using System.Json;
+using System.IO;
 
 namespace CameraApp4
 {
@@ -42,6 +44,9 @@ namespace CameraApp4
 
         private Button take;
         private ImageView imageview;
+
+        private WebSocket ws = null;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -55,6 +60,57 @@ namespace CameraApp4
             imageview = FindViewById<ImageView>(Resource.Id.imageView1);
             btn.Click += Start;
             take.Click += Take_Click;
+
+            ws = new WebSocket("ws://192.168.0.4:4649/Echo");
+            ws.OnOpen += Ws_OnOpen;
+            ws.OnClose += Ws_OnClose;
+            ws.OnError += Ws_OnError;
+            ws.OnMessage += Ws_OnMessage;
+            ws.Connect();
+        }
+
+        void print(string msg)
+        {
+        }
+
+        private void Ws_OnMessage(object sender, MessageEventArgs e)
+        {
+            print("message");
+            if (e.IsText)
+            {
+                print(e.Data);
+                StringReader sr = new StringReader(e.Data);
+                JsonValue jv = JsonObject.Load(sr);
+                var cmd = jv["action"];
+                if (cmd == "capture")
+                {
+                    this.RunOnUiThread(new Action(() =>
+                   {
+                       camera.TakePicture(this, this, this);
+                   }));
+                }
+            }
+        }
+
+        private void Ws_OnError(object sender, ErrorEventArgs e)
+        {
+            print("error");
+        }
+
+        private void Ws_OnClose(object sender, CloseEventArgs e)
+        {
+            print("close");
+        }
+
+        private void Ws_OnOpen(object sender, EventArgs e)
+        {
+            print("open");
+            Toast.MakeText(this, "webscoket connect", ToastLength.Short).Show();
+        }
+
+        private void button2_click(object sender, EventArgs e)
+        {
+            ws.Send("ni hao");
         }
 
         private void Take_Click(object sender, EventArgs e)
@@ -95,21 +151,33 @@ namespace CameraApp4
             if (data != null)
             {
                 Toast.MakeText(this, "来了", ToastLength.Short).Show();
+                //var _dir = new File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures), "CameraApp4");
+                //if (!_dir.Exists())
+                //{
+                //    _dir.Mkdirs();
+                //}
 
-                var _dir = new File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures), "CameraApp4");
-                if (!_dir.Exists())
-                {
-                    _dir.Mkdirs();
-                }
-
-                var _file = new File(_dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
-                //_file.CreateNewFile();
-                Java.IO.FileOutputStream fs = new FileOutputStream(_file);
-                fs.Write(data);
-                fs.Close();
+                //var _file = new File(_dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
+                //Java.IO.FileOutputStream fs = new FileOutputStream(_file);
+                //fs.Write(data);
+                //fs.Close();
 
                 var bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(data, 0, data.Length);
                 imageview.SetImageBitmap(bitmap);
+                bitmap.Dispose();
+
+                camera.StartPreview();
+                try
+                {
+                    var str = Convert.ToBase64String(data);
+                    ws.Send(str);
+                }
+                catch (Exception)
+                {
+                    Toast.MakeText(this, "出错了", ToastLength.Short).Show();
+                }
+                //ws.Send("消息太长???");
+                //ws.Send(data);
             }
         }
     }

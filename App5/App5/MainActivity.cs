@@ -13,11 +13,10 @@ using Android.Util;
 
 namespace App5
 {
-    [Activity(Label = "WeatherREST", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "WeatherREST", MainLauncher = false, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);

@@ -60,6 +60,12 @@ namespace App5
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050016
+			public const int button1 = 2131034134;
+			
+			// aapt resource value: 0x7f050017
+			public const int button2 = 2131034135;
+			
 			// aapt resource value: 0x7f050013
 			public const int condLabel = 2131034131;
 			
@@ -144,6 +150,9 @@ namespace App5
 			
 			// aapt resource value: 0x7f030001
 			public const int SubMain = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int wsclient = 2130903042;
 			
 			static Layout()
 			{
