@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/MyButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Hello" />
+    <Button
+        android:id="@+id/MyButtonInit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="使用xamarin初始化" />
+    <Button
+        android:id="@+id/MyButton1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="使用xamarin写" />
+    <Button
+        android:id="@+id/MyButton2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="使用xamarin读" />
+    <Button
+        android:id="@+id/MyButton4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="屏幕信息" />
+    <Button
+        android:id="@+id/MyButton5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Dialog" />
+    <ImageView
+        android:src="@drawable/face_ysj"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView1" />
+</LinearLayout>

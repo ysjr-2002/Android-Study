@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tableLayout1"
+    android:stretchColumns="1"
+    android:padding="24dp">
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_marginTop="0dp">
+        <TextView
+            android:text="服务器地址:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvServer"
+            android:hint="请输入服务器地址"
+            android:layout_margin="6dp" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_marginTop="24dp">
+        <TextView
+            android:text="弹窗时长:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDelay"
+            android:hint="请输入弹窗时长"
+            android:inputType="number"
+            android:layout_margin="6dp" />
+    </TableRow>
+    <Button
+        android:text="保存"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btSave"
+        android:layout_marginTop="24dp" />
+</TableLayout>

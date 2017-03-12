@@ -13,11 +13,13 @@ using Android.Hardware;
 using WebSocketSharp;
 using System.Json;
 using System.IO;
+using Newtonsoft.Json;
+using System.Threading;
 
 namespace CameraApp4
 {
-    [Activity(Label = "MainActivity", MainLauncher = true)]
-    public class MainActivity : Activity, ISurfaceHolderCallback, Camera.IShutterCallback, Camera.IPictureCallback
+    [Activity(Label = "MainActivity", MainLauncher = false)]
+    public class MainActivity : Activity, ISurfaceHolderCallback, Camera.IShutterCallback, Camera.IPictureCallback, Camera.IAutoFocusCallback
     {
         public void SurfaceChanged(ISurfaceHolder holder, [GeneratedEnum] Android.Graphics.Format format, int width, int height)
         {
@@ -25,7 +27,8 @@ namespace CameraApp4
 
         public void SurfaceCreated(ISurfaceHolder holder)
         {
-            //camera.SetPreviewDisplay(holder);
+            camera.SetPreviewDisplay(holder);
+            camera.StartPreview();
         }
 
         public void SurfaceDestroyed(ISurfaceHolder holder)
@@ -43,103 +46,83 @@ namespace CameraApp4
         private Android.Hardware.Camera camera;
 
         private Button take;
-        private ImageView imageview;
-
-        private WebSocket ws = null;
-
+        private Button open;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             // Create your application here
-
+            RequestWindowFeature(WindowFeatures.NoTitle);
             this.SetContentView(Resource.Layout.Main);
             view = FindViewById<SurfaceView>(Resource.Id.surfaceView1);
-            var btn = FindViewById<Button>(Resource.Id.MyButton);
+            open = FindViewById<Button>(Resource.Id.open);
             take = FindViewById<Button>(Resource.Id.take);
-            imageview = FindViewById<ImageView>(Resource.Id.imageView1);
-            btn.Click += Start;
             take.Click += Take_Click;
+            open.Click += Open_Click;
 
-            ws = new WebSocket("ws://192.168.0.4:4649/Echo");
-            ws.OnOpen += Ws_OnOpen;
-            ws.OnClose += Ws_OnClose;
-            ws.OnError += Ws_OnError;
-            ws.OnMessage += Ws_OnMessage;
-            ws.Connect();
-        }
-
-        void print(string msg)
-        {
-        }
-
-        private void Ws_OnMessage(object sender, MessageEventArgs e)
-        {
-            print("message");
-            if (e.IsText)
+            start();
+            System.Threading.Tasks.Task t = new System.Threading.Tasks.Task(() =>
             {
-                print(e.Data);
-                StringReader sr = new StringReader(e.Data);
-                JsonValue jv = JsonObject.Load(sr);
-                var cmd = jv["action"];
-                if (cmd == "capture")
+                Thread.Sleep(2000);
+                this.RunOnUiThread(new Action(() =>
                 {
-                    this.RunOnUiThread(new Action(() =>
-                   {
-                       camera.TakePicture(this, this, this);
-                   }));
-                }
-            }
+                    camera.TakePicture(this, this, this);
+                }));
+            });
+            t.Start();
         }
 
-        private void Ws_OnError(object sender, ErrorEventArgs e)
+        protected override void OnDestroy()
         {
-            print("error");
+            camera?.StopPreview();
+            camera?.Release();
+            camera = null;
+            base.OnDestroy();
         }
 
-        private void Ws_OnClose(object sender, CloseEventArgs e)
+        private void Open_Click(object sender, EventArgs e)
         {
-            print("close");
-        }
-
-        private void Ws_OnOpen(object sender, EventArgs e)
-        {
-            print("open");
-            Toast.MakeText(this, "webscoket connect", ToastLength.Short).Show();
-        }
-
-        private void button2_click(object sender, EventArgs e)
-        {
-            ws.Send("ni hao");
+            start();
         }
 
         private void Take_Click(object sender, EventArgs e)
         {
+            //camera.AutoFocus(this);
             camera.TakePicture(this, this, this);
         }
 
-        private void Camera_FaceDetection(object sender, Camera.FaceDetectionEventArgs e)
+        void Camera.IAutoFocusCallback.OnAutoFocus(bool success, Camera camera)
         {
-            Toast.MakeText(this, "检测出人脸", ToastLength.Short).Show();
+            camera.TakePicture(this, this, this);
         }
 
-        private void Start(object sender, EventArgs e)
+        private void start()
         {
             holder = view.Holder;
             holder.AddCallback(this);
 
             camera = Android.Hardware.Camera.Open(1);
-
             Camera.Parameters p = camera.GetParameters();
             p.SetPreviewSize(320, 240);
             //p.SetPictureSize(320, 240);
 
             camera.SetDisplayOrientation(90);
             camera.SetParameters(p);
-            camera.SetPreviewDisplay(holder);
+            //camera.SetPreviewDisplay(holder);
+            MySocket.Current.OnPass += Current_OnPass;
+        }
 
-            camera.StartPreview();
-            camera.FaceDetection += Camera_FaceDetection;
+        private void Current_OnPass(string obj)
+        {
+            this.RunOnUiThread(() =>
+            {
+                //obj = "杨绍杰";
+                var msg = JsonConvert.DeserializeObject<Message>(obj);
+                Share.Message = msg;
+                Intent intent = new Intent(this, typeof(DisplayActivity));
+                //intent.PutExtra("msg", obj);
+                StartActivity(intent);
+                this.Finish();
+            });
         }
 
         public void OnShutter()
@@ -150,7 +133,7 @@ namespace CameraApp4
         {
             if (data != null)
             {
-                Toast.MakeText(this, "来了", ToastLength.Short).Show();
+                //Toast.MakeText(this, "来了", ToastLength.Short).Show();
                 //var _dir = new File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures), "CameraApp4");
                 //if (!_dir.Exists())
                 //{
@@ -162,15 +145,21 @@ namespace CameraApp4
                 //fs.Write(data);
                 //fs.Close();
 
-                var bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(data, 0, data.Length);
-                imageview.SetImageBitmap(bitmap);
-                bitmap.Dispose();
+                //var bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(data, 0, data.Length);
+                //imageview.SetImageBitmap(bitmap);
+                //bitmap.Dispose();
 
                 camera.StartPreview();
                 try
                 {
-                    var str = Convert.ToBase64String(data);
-                    ws.Send(str);
+                    var faceimage = Convert.ToBase64String(data);
+                    Message msg = new Message
+                    {
+                        action = "androidface",
+                        face = faceimage
+                    };
+                    var json = JsonConvert.SerializeObject(msg);
+                    MySocket.Current.Send(json);
                 }
                 catch (Exception)
                 {
@@ -180,5 +169,18 @@ namespace CameraApp4
                 //ws.Send(data);
             }
         }
+
+
+    }
+
+    class Message
+    {
+        public string action { get; set; }
+
+        public string face { get; set; }
+
+        public string name { get; set; }
+
+        public string type { get; set; }
     }
 }
