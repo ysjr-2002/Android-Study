@@ -90,13 +90,15 @@ namespace CameraApp4
         private void Ws_OnError(object sender, ErrorEventArgs e)
         {
             //Toast.MakeText(Application.Context, "webscoket error", ToastLength.Short).Show();
-            Dialog("OnError");
+            //Dialog("OnError");
+            Config.Log("error");
         }
 
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
             //Toast.MakeText(Application.Context, "webscoket close", ToastLength.Short).Show();
-            Dialog("OnClose");
+            //Dialog("OnClose");
+            Config.Log("close");
         }
 
         private void Ws_OnOpen(object sender, EventArgs e)

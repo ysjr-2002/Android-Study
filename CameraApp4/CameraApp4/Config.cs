@@ -17,11 +17,21 @@ namespace CameraApp4
         private const char spliter = '$';
         private const string faceroot = "obria";
         private const string config = "config.txt";
+        private const string log = "log.tx";
         public static Profile Profile { get; set; }
 
         static Config()
         {
             Profile = new Profile();
+        }
+
+        public static void Log(string log)
+        {
+            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var dir = System.IO.Path.Combine(sdCardPath, faceroot);
+            var filePath = System.IO.Path.Combine(dir, log);
+            log = DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss") + " " + log + System.Environment.NewLine;
+            System.IO.File.AppendAllText(filePath, log);
         }
 
         public static void ReadProfile()
