@@ -78,11 +78,23 @@ namespace App1
 			// aapt resource value: 0x7f050005
 			public const int MyButton5 = 2131034117;
 			
+			// aapt resource value: 0x7f050006
+			public const int MyButton6 = 2131034118;
+			
+			// aapt resource value: 0x7f050007
+			public const int MyButton7 = 2131034119;
+			
 			// aapt resource value: 0x7f050001
 			public const int MyButtonInit = 2131034113;
 			
-			// aapt resource value: 0x7f050006
-			public const int imageView1 = 2131034118;
+			// aapt resource value: 0x7f050009
+			public const int button1 = 2131034121;
+			
+			// aapt resource value: 0x7f05000a
+			public const int button2 = 2131034122;
+			
+			// aapt resource value: 0x7f050008
+			public const int imageView1 = 2131034120;
 			
 			static Id()
 			{
@@ -99,6 +111,9 @@ namespace App1
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int sub = 2130903041;
 			
 			static Layout()
 			{

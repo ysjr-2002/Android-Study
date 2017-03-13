@@ -6,11 +6,12 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Util;
+using Android.Locations;
 
 namespace App1
 {
     [Activity(Label = "App1", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : Activity, ILocationListener
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -30,9 +31,11 @@ namespace App1
             Button button3 = FindViewById<Button>(Resource.Id.MyButtonInit);
             Button button4 = FindViewById<Button>(Resource.Id.MyButton4);
             Button button5 = FindViewById<Button>(Resource.Id.MyButton5);
+            Button button6 = FindViewById<Button>(Resource.Id.MyButton6);
+            Button button7 = FindViewById<Button>(Resource.Id.MyButton7);
             button.Click += delegate
             {
-                Writefile("JavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJava");
+                Writefile("Java Test");
             };
 
             button1.Click += delegate
@@ -81,6 +84,55 @@ namespace App1
                 dialog.Show();
                 //builder.Show();
             };
+
+            button6.Click += delegate
+            {
+                StartActivity(typeof(SubActivity));
+                this.Finish();
+            };
+
+            button7.Click += delegate
+            {
+                StartActivity(typeof(SubActivity));
+            };
+
+            Console.WriteLine("onCreate " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            Console.WriteLine("OnStart " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Console.WriteLine("OnResume " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            Console.WriteLine("OnRestart " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            Console.WriteLine("OnPause " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            Console.WriteLine("OnStop " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Console.WriteLine("OnDestroy " + typeof(MainActivity).FullName);
         }
 
         private void readfile1()
@@ -145,6 +197,23 @@ namespace App1
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
+        }
+
+        void ILocationListener.OnLocationChanged(Location location)
+        {
+            Toast.MakeText(this, location.Latitude.ToString() + " " + location.Longitude.ToString(), ToastLength.Short).Show();
+        }
+
+        void ILocationListener.OnProviderDisabled(string provider)
+        {
+        }
+
+        void ILocationListener.OnProviderEnabled(string provider)
+        {
+        }
+
+        void ILocationListener.OnStatusChanged(string provider, Availability status, Bundle extras)
+        {
         }
     }
 }

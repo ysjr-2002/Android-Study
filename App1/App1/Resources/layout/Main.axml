@@ -33,6 +33,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Dialog" />
+    <Button
+        android:id="@+id/MyButton6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="LifeTime-Finish" />
+    <Button
+        android:id="@+id/MyButton7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="LifeTime-No-Finish" />
     <ImageView
         android:src="@drawable/face_ysj"
         android:layout_width="match_parent"
