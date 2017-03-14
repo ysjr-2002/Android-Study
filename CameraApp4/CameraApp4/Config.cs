@@ -25,13 +25,13 @@ namespace CameraApp4
             Profile = new Profile();
         }
 
-        public static void Log(string log)
+        public static void Log(string content)
         {
             var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
             var dir = System.IO.Path.Combine(sdCardPath, faceroot);
             var filePath = System.IO.Path.Combine(dir, log);
-            log = DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss") + " " + log + System.Environment.NewLine;
-            System.IO.File.AppendAllText(filePath, log);
+            content = DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss") + " " + content + System.Environment.NewLine;
+            System.IO.File.AppendAllText(filePath, content);
         }
 
         public static void ReadProfile()
