@@ -7,24 +7,22 @@
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/faceImage"
+        android:id="@+id/iv_face"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
         android:layout_gravity="center_horizontal" />
     <TextView
-        android:text="欢迎你"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/welcomeTextView2"
+        android:id="@+id/tv_weclome"
         android:textSize="24sp"
         android:gravity="center_horizontal"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="12dp" />
     <TextView
-        android:text="姓名"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nameTextView"
+        android:id="@+id/tv_name"
         android:textSize="48sp"
         android:gravity="center_horizontal" />
 </LinearLayout>

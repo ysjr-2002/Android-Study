@@ -67,10 +67,7 @@ namespace CameraApp4
 			public const int btSave = 2131099654;
 			
 			// aapt resource value: 0x7f060011
-			public const int faceImage = 2131099665;
-			
-			// aapt resource value: 0x7f060013
-			public const int nameTextView = 2131099667;
+			public const int iv_face = 2131099665;
 			
 			// aapt resource value: 0x7f06000c
 			public const int open = 2131099660;
@@ -120,11 +117,14 @@ namespace CameraApp4
 			// aapt resource value: 0x7f060003
 			public const int tvServer = 2131099651;
 			
-			// aapt resource value: 0x7f060007
-			public const int view1 = 2131099655;
+			// aapt resource value: 0x7f060013
+			public const int tv_name = 2131099667;
 			
 			// aapt resource value: 0x7f060012
-			public const int welcomeTextView2 = 2131099666;
+			public const int tv_weclome = 2131099666;
+			
+			// aapt resource value: 0x7f060007
+			public const int view1 = 2131099655;
 			
 			static Id()
 			{

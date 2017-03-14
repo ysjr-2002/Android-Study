@@ -80,25 +80,33 @@ namespace CameraApp4
         {
             this.RunOnUiThread(() =>
             {
-                var msg = JsonConvert.DeserializeObject<Message>(obj);
+                var message = JsonConvert.DeserializeObject<Message>(obj);
                 var view = LinearLayout.Inflate(this, Resource.Layout.visitor, null);
-                var faceImageView = view.FindViewById<ImageView>(Resource.Id.faceImage);
-                var welcomteTextView = view.FindViewById<TextView>(Resource.Id.welcomeTextView2);
-                var nameTextView = view.FindViewById<TextView>(Resource.Id.nameTextView);
+                var ivFace = view.FindViewById<ImageView>(Resource.Id.iv_face);
+                var tvWeclome = view.FindViewById<TextView>(Resource.Id.tv_weclome);
+                var tvName = view.FindViewById<TextView>(Resource.Id.tv_name);
 
-                var data = Convert.FromBase64String(msg.face);
+                var data = Convert.FromBase64String(message.face);
                 var faceImage = Android.Graphics.BitmapFactory.DecodeByteArray(data, 0, data.Length);
 
-                nameTextView.Text = msg.name;
-                welcomteTextView.Text = "»¶Ó­¹âÁÙ";
-                faceImageView.SetImageBitmap(faceImage);
+                tvName.Text = message.name;
+                if (message.type == "ok")
+                    tvWeclome.Text = "»¶Ó­¹âÁÙ";
+                else
+                {
+                    view.SetBackgroundColor(Android.Graphics.Color.Red);
+                    tvWeclome.Text = "±È¶ÔÊ§°Ü£¬ÇëÖØÐÂË¢¿¨";
+                }
+
+                ivFace.SetImageBitmap(faceImage);
+                faceImage.Dispose();
 
                 var builder = new AlertDialog.Builder(this);
                 builder.SetView(view);
                 var dialog = builder.Create();
                 dialog.Window.SetGravity(GravityFlags.Top);
                 dialog.Show();
-                dialog.Window.SetLayout(350, 400);
+                //dialog.Window.SetLayout(350, 600);
 
                 Task.Factory.StartNew(() =>
                 {

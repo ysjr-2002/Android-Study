@@ -59,7 +59,7 @@ namespace CameraApp4
 
             var filePath = System.IO.Path.Combine(dir, config);
             var content = string.Concat(Profile.ServerIp, spliter, Profile.Delay);
-            System.IO.File.AppendAllText(filePath, content);
+            System.IO.File.WriteAllText(filePath, content);
         }
     }
 
