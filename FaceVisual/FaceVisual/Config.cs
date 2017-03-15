@@ -76,7 +76,7 @@ namespace FaceVisual
     {
         public Profile()
         {
-            Delay = 3000;
+            Delay = 2000;
             Welcome1 = "»¶Ó­¹âÁÙ";
             Welcome2 = "»¶Ó­Äú";
         }

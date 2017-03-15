@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace FaceVisual
 {
     [Activity(Label = "@string/ApplicationName", MainLauncher = true, Icon = "@drawable/exit")]
-    public class FaceMainActivity : Activity
+    public class FaceMainActivity : RootActivity
     {
         private System.Timers.Timer timer = null;
         private TextView tvTime = null;
@@ -30,8 +30,9 @@ namespace FaceVisual
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            this.RequestWindowFeature(WindowFeatures.NoTitle);
-            //Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+            //this.RequestWindowFeature(WindowFeatures.NoTitle);
+            //this.Window.SetStatusBarColor(Color.Argb(255, 0x33, 0xcc, 0xff));
+            //this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             this.OverridePendingTransition(Resource.Animation.anim_slide_in_left, Resource.Animation.anim_slide_out_left);
             Config.ReadProfile();
             if (string.IsNullOrEmpty(Config.Profile.ServerIp))
@@ -40,7 +41,6 @@ namespace FaceVisual
                 this.Finish();
                 return;
             }
-
             SetContentView(Resource.Layout.FaceMain);
             tvWelcome = FindViewById<TextView>(Resource.Id.tvWelcome);
             tvTime = FindViewById<TextView>(Resource.Id.tvTime);
@@ -55,13 +55,7 @@ namespace FaceVisual
         protected override void OnStart()
         {
             base.OnStart();
-            Start();
-        }
-
-        protected override void OnRestart()
-        {
-            base.OnRestart();
-            Start();
+            //Start();
         }
 
         private async void Start()

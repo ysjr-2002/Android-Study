@@ -9,10 +9,9 @@ using Android.Telephony;
 
 namespace Android_Demo
 {
-    [Activity(Label = "Android_Demo", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    [Activity(Label = "Android_Demo", MainLauncher = false, Icon = "@drawable/icon")]
+    public class SMSActivity : Activity
     {
-        int count = 1;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);

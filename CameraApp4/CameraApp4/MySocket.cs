@@ -12,6 +12,9 @@ using Android.Widget;
 using WebSocketSharp;
 using System.IO;
 using System.Json;
+using System.Threading;
+using System.Threading.Tasks;
+using Android.Util;
 
 namespace CameraApp4
 {
@@ -89,20 +92,29 @@ namespace CameraApp4
 
         private void Ws_OnError(object sender, ErrorEventArgs e)
         {
-            //Toast.MakeText(Application.Context, "webscoket error", ToastLength.Short).Show();
-            //Dialog("OnError");
+            ws.OnClose -= Ws_OnClose;
+            ws.OnError -= Ws_OnError;
+            bReconnect = true;
+            Reconnect();
             Config.Log("error");
         }
 
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
-            //Toast.MakeText(Application.Context, "webscoket close", ToastLength.Short).Show();
-            //Dialog("OnClose");
+            ws.OnClose -= Ws_OnClose;
+            ws.OnError -= Ws_OnError;
+            bReconnect = true;
+            Reconnect();
             Config.Log("close");
         }
 
         private void Ws_OnOpen(object sender, EventArgs e)
         {
+            Console.WriteLine("连接成功");
+            bReconnect = false;
+            bRun = false;
+            ws.OnClose += Ws_OnClose;
+            ws.OnError += Ws_OnError;
             Toast.MakeText(Application.Context, "server connect", ToastLength.Short).Show();
         }
 
@@ -111,16 +123,24 @@ namespace CameraApp4
             ws.SendAsync(msg, null);
         }
 
-        private void Dialog(string msg)
+        private bool bRun = false;
+        private bool bReconnect = false;
+        private const int connect_interval = 5000;
+        private void Reconnect()
         {
-            var builder = new AlertDialog.Builder(Application.Context);
-            builder.SetTitle("警告");
-            builder.SetMessage(msg);
-            builder.SetPositiveButton("确定", (a, b) =>
+            if (bRun)
+                return;
+
+            Task.Factory.StartNew(() =>
             {
+                bRun = true;
+                while (bReconnect)
+                {
+                    ws.Connect();
+                    Log.Info("连接一次", this.GetType().FullName);
+                    Thread.Sleep(connect_interval);
+                }
             });
-            var dialog = builder.Create();
-            dialog.Show();
         }
     }
 }
