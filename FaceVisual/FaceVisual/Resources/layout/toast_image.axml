@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="96dp"
+    android:layout_height="50dp"
+    android:background="@color/red">
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/personFace" />
+    <TextView
+        android:text="欢迎光临"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="32sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/textView1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="48sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/personName" />
+</LinearLayout>
