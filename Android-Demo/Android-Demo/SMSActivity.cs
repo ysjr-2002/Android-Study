@@ -42,7 +42,6 @@ namespace Android_Demo
             };
         }
 
-
         private void sendSMS(string msg)
         {
             //PendingIntent pi = PendingIntent.GetActivity(this, 1, new Intent(Intent.ActionCall), PendingIntentFlags.)
