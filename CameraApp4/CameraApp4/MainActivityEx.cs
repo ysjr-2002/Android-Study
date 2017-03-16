@@ -94,7 +94,7 @@ namespace CameraApp4
                     tvWeclome.Text = "»¶Ó­¹âÁÙ";
                 else
                 {
-                    view.SetBackgroundColor(Android.Graphics.Color.Red);
+                    //view.SetBackgroundColor(Android.Graphics.Color.Red);
                     tvWeclome.Text = "±È¶ÔÊ§°Ü£¬ÇëÖØÐÂË¢¿¨";
                 }
 
@@ -106,7 +106,13 @@ namespace CameraApp4
                 var dialog = builder.Create();
                 dialog.Window.SetGravity(GravityFlags.Top);
                 dialog.Show();
-                //dialog.Window.SetLayout(350, 600);
+
+                //var l = new WindowManagerLayoutParams();
+                //l.Y = 0;
+                //l.Width = 350;
+                //l.Height = 550;
+                //dialog.Window.Attributes = l;
+                //dialog.Window.SetLayout(350, 450);
 
                 Task.Factory.StartNew(() =>
                 {

@@ -31,6 +31,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/buttonr" />
+        <Button
+            android:text="alter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonalter" />
     </LinearLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -39,7 +44,7 @@
             android:src="@drawable/son"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:alpha="0.2"
+            android:alpha="1"
             android:id="@+id/imageView1"
             android:layout_centerInParent="true" />
     </RelativeLayout>

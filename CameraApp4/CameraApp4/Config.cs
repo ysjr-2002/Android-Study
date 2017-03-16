@@ -17,7 +17,7 @@ namespace CameraApp4
         private const char spliter = '$';
         private const string faceroot = "obria";
         private const string config = "config.txt";
-        private const string log = "log.tx";
+        private const string log = "log.txt";
         public static Profile Profile { get; set; }
 
         static Config()
