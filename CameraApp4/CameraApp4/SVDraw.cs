@@ -22,12 +22,12 @@ namespace CameraApp4
         private int height;
         private int middle;
         private Canvas canvas = null;
-        private int rectWidthhalf = 200;
-        private int rectHeight = 400;
+        private int rectWidthhalf = 240;
+        private int rectHeight = 460;
         private const int top = 300;
-        private const int len = 80;
+        private const int len = 50;
         private const int textRectHeight = 80;
-        private const string tip = "请将头像放置到区域内";
+        private const string tip = "请将面部置于区域内";
 
         private static Color txtColor = Color.Goldenrod;
         private static Color rectColor = Color.Goldenrod;
@@ -67,16 +67,17 @@ namespace CameraApp4
         {
             if (canvas != null)
             {
-                canvas.DrawColor(Color.Transparent);
+                //canvas.DrawColor(Color.Transparent);
+                canvas.DrawColor(Color.Argb(160, 166, 166, 166));
 
                 Rect targetRect = new Rect(0, top - textRectHeight, width, textRectHeight);
                 Paint paint = new Paint(PaintFlags.AntiAlias);
-                paint.StrokeWidth = 3;
-                paint.TextSize = 48;
+                paint.StrokeWidth = 2;
+                paint.TextSize = 36;
                 //canvas.DrawRect(targetRect, paint);
                 paint.Color = txtColor;
                 FontMetricsInt fontMetrics = paint.GetFontMetricsInt();
-                int baseline = (targetRect.Bottom + targetRect.Top - fontMetrics.Bottom - fontMetrics.Top) / 2 + 20;
+                int baseline = (targetRect.Bottom + targetRect.Top - fontMetrics.Bottom - fontMetrics.Top) / 2 + 80;
                 paint.TextAlign = Align.Center;
                 canvas.DrawText(tip, targetRect.CenterX(), baseline, paint);
 
@@ -106,6 +107,12 @@ namespace CameraApp4
                 int rightbottom_y = top + rectHeight;
                 canvas.DrawLine(rightbottom_x, rightbottom_y, rightbottom_x - len, rightbottom_y, linePaint);
                 canvas.DrawLine(rightbottom_x, rightbottom_y, rightbottom_x, rightbottom_y - len, linePaint);
+
+                //清屏
+                Paint clearPaint = new Paint();
+                clearPaint.AntiAlias = true;
+                clearPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
+                canvas.DrawRect(new Rect { Left = lefttop_x, Top = top, Right = rightbottom_x, Bottom = rightbottom_y }, clearPaint);
 
                 sh.UnlockCanvasAndPost(canvas);
             }

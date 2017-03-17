@@ -92,29 +92,18 @@ namespace CameraApp4
 
         private void Ws_OnError(object sender, ErrorEventArgs e)
         {
-            ws.OnClose -= Ws_OnClose;
-            ws.OnError -= Ws_OnError;
-            bReconnect = true;
+            Toast.MakeText(Application.Context, "server error", ToastLength.Short).Show();
             Reconnect();
-            Config.Log("error");
         }
 
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
-            ws.OnClose -= Ws_OnClose;
-            ws.OnError -= Ws_OnError;
-            bReconnect = true;
+            Toast.MakeText(Application.Context, "server close", ToastLength.Short).Show();
             Reconnect();
-            Config.Log("close");
         }
 
         private void Ws_OnOpen(object sender, EventArgs e)
         {
-            Console.WriteLine("连接成功");
-            bReconnect = false;
-            bRun = false;
-            ws.OnClose += Ws_OnClose;
-            ws.OnError += Ws_OnError;
             Toast.MakeText(Application.Context, "server connect", ToastLength.Short).Show();
         }
 
@@ -128,19 +117,20 @@ namespace CameraApp4
         private const int connect_interval = 5000;
         private void Reconnect()
         {
-            if (bRun)
-                return;
+            ws.Connect();
+            //if (bRun)
+            //    return;
 
-            Task.Factory.StartNew(() =>
-            {
-                bRun = true;
-                while (bReconnect)
-                {
-                    ws.Connect();
-                    Log.Info("连接一次", this.GetType().FullName);
-                    Thread.Sleep(connect_interval);
-                }
-            });
+            //Task.Factory.StartNew(() =>
+            //{
+            //    bRun = true;
+            //    while (bReconnect)
+            //    {
+            //        ws.Connect();
+            //        Log.Info("连接一次", this.GetType().FullName);
+            //        Thread.Sleep(connect_interval);
+            //    }
+            //});
         }
     }
 }

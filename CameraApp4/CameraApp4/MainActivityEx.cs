@@ -82,6 +82,7 @@ namespace CameraApp4
             {
                 var message = JsonConvert.DeserializeObject<Message>(obj);
                 var view = LinearLayout.Inflate(this, Resource.Layout.visitor, null);
+
                 var ivFace = view.FindViewById<ImageView>(Resource.Id.iv_face);
                 var tvWeclome = view.FindViewById<TextView>(Resource.Id.tv_weclome);
                 var tvName = view.FindViewById<TextView>(Resource.Id.tv_name);
@@ -94,7 +95,6 @@ namespace CameraApp4
                     tvWeclome.Text = "»¶Ó­¹âÁÙ";
                 else
                 {
-                    //view.SetBackgroundColor(Android.Graphics.Color.Red);
                     tvWeclome.Text = "±È¶ÔÊ§°Ü£¬ÇëÖØÐÂË¢¿¨";
                 }
 
@@ -104,15 +104,10 @@ namespace CameraApp4
                 var builder = new AlertDialog.Builder(this);
                 builder.SetView(view);
                 var dialog = builder.Create();
+
                 dialog.Window.SetGravity(GravityFlags.Top);
                 dialog.Show();
-
-                //var l = new WindowManagerLayoutParams();
-                //l.Y = 0;
-                //l.Width = 350;
-                //l.Height = 550;
-                //dialog.Window.Attributes = l;
-                //dialog.Window.SetLayout(350, 450);
+                dialog.Window.SetLayout(350, 480);
 
                 Task.Factory.StartNew(() =>
                 {

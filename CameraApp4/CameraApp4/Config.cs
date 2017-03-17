@@ -31,7 +31,7 @@ namespace CameraApp4
             var dir = System.IO.Path.Combine(sdCardPath, faceroot);
             var filePath = System.IO.Path.Combine(dir, log);
             content = DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss") + " " + content + System.Environment.NewLine;
-            System.IO.File.AppendAllText(filePath, content);
+            System.IO.File.AppendAllText(filePath, content,Encoding.UTF8);
         }
 
         public static void ReadProfile()
@@ -42,7 +42,7 @@ namespace CameraApp4
 
             if (System.IO.File.Exists(filePath))
             {
-                var content = System.IO.File.ReadAllText(filePath);
+                var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
                 var array = content.Split(spliter);
                 Profile.ServerIp = array[0];
                 Profile.Delay = Convert.ToInt32(array[1]);
@@ -59,7 +59,7 @@ namespace CameraApp4
 
             var filePath = System.IO.Path.Combine(dir, config);
             var content = string.Concat(Profile.ServerIp, spliter, Profile.Delay);
-            System.IO.File.WriteAllText(filePath, content);
+            System.IO.File.WriteAllText(filePath, content, Encoding.UTF8);
         }
     }
 

@@ -18,7 +18,7 @@ using Android.Util;
 
 namespace Android_Demo
 {
-    [Activity(Label = "AnimActivity", MainLauncher = true)]
+    [Activity(Label = "AnimActivity", MainLauncher = false)]
     public class BarActivity : Activity, IAnimationListener
     {
         public void OnAnimationEnd(Animation animation)
@@ -67,10 +67,9 @@ namespace Android_Demo
             buttond.Click += delegate
             {
                 var lp = vistor.LayoutParameters; //= new ViewGroup.LayoutParams(200, 500);
-                lp.Width = 200;
+                lp.Width = 300;
                 lp.Height = 500;
                 vistor.LayoutParameters = lp;
-                //LinearLayout.Inflate(this, Resource.Id.alter, null);
                 var ivFace = this.FindViewById<ImageView>(Resource.Id.faceImage);
                 var tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
                 var tvName = this.FindViewById<TextView>(Resource.Id.tvName);
@@ -78,15 +77,25 @@ namespace Android_Demo
                 tvName.Text = "—Ó…‹Ω‹";
                 tv.Text = "ª∂”≠π‚¡Ÿ";
                 ivFace.SetBackgroundResource(Resource.Drawable.son);
-
                 var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                sa.AnimationEnd += Sa_AnimationEnd;
                 vistor.StartAnimation(sa);
-                //var x = this.FindViewById<RelativeLayout>(Resource.Id.rl);
-                //var newp = x.LayoutParameters;
-                //newp.Width = 200;
-                //newp.Height = 200;
-                //x.LayoutParameters = newp;
             };
+        }
+
+        private void Sa_AnimationEnd(object sender, AnimationEndEventArgs e)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                Thread.Sleep(2000);
+                this.RunOnUiThread(new Action(()=>
+                {
+                    var lp = vistor.LayoutParameters; 
+                    lp.Width = 0;
+                    lp.Height = 0;
+                    vistor.LayoutParameters = lp;
+                }));
+            });
         }
     }
 }

@@ -4,6 +4,7 @@ using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Views.Animations;
 using Android.Widget;
 using FaceVisual.Code;
 using System;
@@ -13,6 +14,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Android.Animation.Animator;
 
 namespace FaceVisual
 {
@@ -27,6 +29,10 @@ namespace FaceVisual
 
         private const int stayInerval = 2000;
 
+        private View vistor = null;
+        private TextView tv;
+        private TextView tvName;
+        private ImageView ivFace;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -41,18 +47,53 @@ namespace FaceVisual
             SetContentView(Resource.Layout.FaceMain);
             tvWelcome = FindViewById<TextView>(Resource.Id.tvWelcome);
             tvTime = FindViewById<TextView>(Resource.Id.tvTime);
+            vistor = this.FindViewById<LinearLayout>(Resource.Id.alter);
+
+            ivFace = this.FindViewById<ImageView>(Resource.Id.faceImage);
+            tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
+            tvName = this.FindViewById<TextView>(Resource.Id.tvName);
+
             var settingTextView = FindViewById<TextView>(Resource.Id.settingTextView);
             settingTextView.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(SettingActivity));
                 StartActivity(intent);
+
+                //var lp = vistor.LayoutParameters;
+                //lp.Width = 360;
+                //lp.Height = 500;
+                //vistor.LayoutParameters = lp;
+                //tvName.Text = "ÑîÉÜ½Ü";
+                //tv.Text = "»¶Ó­¹âÁÙ";
+                //ivFace.SetImageResource(Resource.Drawable.face_ysj);
+                //var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                //sa.AnimationEnd += Sa_AnimationEnd;
+                //vistor.StartAnimation(sa);
             };
+        }
+
+        private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
+        {
+            //Task.Factory.StartNew(() =>
+            //{
+            Thread.Sleep(1500);
+            forbidden = false;
+            //this.RunOnUiThread(new Action(() =>
+            //{
+            //    var lp = vistor.LayoutParameters;
+            //    lp.Width = 0;
+            //    lp.Height = 0;
+            //    vistor.LayoutParameters = lp;
+            //}));
+            var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.translate);
+                vistor.StartAnimation(sa);
+            //});
         }
 
         protected override void OnStart()
         {
             base.OnStart();
-            //Start();
+            Start();
         }
 
         private async void Start()
@@ -72,25 +113,6 @@ namespace FaceVisual
             socketSub.SetCallback(OnRecognizePersonSub);
             var sub = socketSub.Connect(cfg.ServerIp, cfg.CameraSub);
             await sub;
-        }
-
-        private void setPopupMenu()
-        {
-            //var btnSetting = FindViewById<Button>(Resource.Id.settingTextView);
-            //btnSetting.LongClick += delegate
-            //{
-            //    PopupMenu menu = new PopupMenu(this, btnSetting);
-            //    menu.Inflate(Resource.Menu.popup_menu);
-            //    menu.MenuItemClick += (sender, e) =>
-            //    {
-            //        var txt = e.Item.TitleFormatted.ToString();
-            //        Toast.MakeText(this, txt, ToastLength.Short).Show();
-            //    };
-            //    menu.DismissEvent += delegate
-            //    {
-            //    };
-            //    menu.Show();
-            //};
         }
 
         private void OnRecognizePersonMain(FaceRecognized entity)
@@ -114,17 +136,28 @@ namespace FaceVisual
             forbidden = true;
             RunOnUiThread(() =>
             {
-                var view = LinearLayout.Inflate(this, Resource.Layout.no, null);
-                var builder = new AlertDialog.Builder(this);
-                builder.SetView(view);
-                var dialog = builder.Create();
-                dialog.Show();
-                Task.Factory.StartNew(() =>
-                {
-                    Thread.Sleep(Config.Profile.Delay);
-                    dialog.Dismiss();
-                    forbidden = false;
-                });
+                //var view = LinearLayout.Inflate(this, Resource.Layout.no, null);
+                //var builder = new AlertDialog.Builder(this);
+                //builder.SetView(view);
+                //var dialog = builder.Create();
+                //dialog.Show();
+                //Task.Factory.StartNew(() =>
+                //{
+                //    Thread.Sleep(Config.Profile.Delay);
+                //    dialog.Dismiss();
+                //    forbidden = false;
+                //});
+
+                var lp = vistor.LayoutParameters;
+                lp.Width = 360;
+                lp.Height = 500;
+                vistor.LayoutParameters = lp;
+                tv.Text = "";
+                tvName.Text = "ÇëÉÔµÈ...";
+                ivFace.SetImageResource(Resource.Drawable.no);
+                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                sa.AnimationEnd += Sa_AnimationEnd;
+                vistor.StartAnimation(sa);
             });
         }
 
@@ -132,27 +165,38 @@ namespace FaceVisual
         {
             RunOnUiThread(() =>
             {
-                var view = LinearLayout.Inflate(this, Resource.Layout.visitor, null);
-                var ivFace = view.FindViewById<ImageView>(Resource.Id.faceImage);
-                var tv = view.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
-                var tvName = view.FindViewById<TextView>(Resource.Id.tvName);
+                #region ¾É·½Ê½
+                //var view = LinearLayout.Inflate(this, Resource.Layout.visitor, null);
+                //var ivFace = view.FindViewById<ImageView>(Resource.Id.faceImage);
+                //var tv = view.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
+                //var tvName = view.FindViewById<TextView>(Resource.Id.tvName);
+                //tvName.Text = name;
+                //tv.Text = Config.Profile.Welcome2;
+                //ivFace.SetImageBitmap(faceImage);
+                //faceImage.Dispose();
+                //var builder = new AlertDialog.Builder(this);
+                //builder.SetView(view);
+                //var dialog = builder.Create();
+                //dialog.Show();
+                //Task.Factory.StartNew(() =>
+                //{
+                //    Thread.Sleep(stayInerval);
+                //    faceImage?.Dispose();
+                //    dialog.Dismiss();
+                //}); 
+                #endregion
 
+                var lp = vistor.LayoutParameters;
+                lp.Width = 360;
+                lp.Height = 500;
+                vistor.LayoutParameters = lp;
                 tvName.Text = name;
                 tv.Text = Config.Profile.Welcome2;
                 ivFace.SetImageBitmap(faceImage);
                 faceImage.Dispose();
-
-                var builder = new AlertDialog.Builder(this);
-                builder.SetView(view);
-                var dialog = builder.Create();
-                dialog.Show();
-
-                Task.Factory.StartNew(() =>
-                {
-                    Thread.Sleep(stayInerval);
-                    faceImage?.Dispose();
-                    dialog.Dismiss();
-                });
+                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                sa.AnimationEnd += Sa_AnimationEnd;
+                vistor.StartAnimation(sa);
             });
         }
 

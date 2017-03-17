@@ -19,7 +19,6 @@ namespace FaceVisual
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             this.OverridePendingTransition(Resource.Animation.anim_slide_in_left, Resource.Animation.anim_slide_out_left);
             // Create your application here
             this.SetContentView(Resource.Layout.Settings);

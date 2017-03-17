@@ -91,17 +91,17 @@ namespace Android_Demo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06000c
-			public const int MyButton = 2131099660;
+			// aapt resource value: 0x7f06000f
+			public const int MyButton = 2131099663;
 			
 			// aapt resource value: 0x7f060008
 			public const int alter = 2131099656;
 			
-			// aapt resource value: 0x7f06000d
-			public const int btnSendSMS1 = 2131099661;
+			// aapt resource value: 0x7f060010
+			public const int btnSendSMS1 = 2131099664;
 			
-			// aapt resource value: 0x7f06000e
-			public const int btnSendSMS2 = 2131099662;
+			// aapt resource value: 0x7f060011
+			public const int btnSendSMS2 = 2131099665;
 			
 			// aapt resource value: 0x7f060002
 			public const int buttona = 2131099650;
@@ -120,6 +120,15 @@ namespace Android_Demo
 			
 			// aapt resource value: 0x7f060009
 			public const int faceImage = 2131099657;
+			
+			// aapt resource value: 0x7f06000c
+			public const int iv1 = 2131099660;
+			
+			// aapt resource value: 0x7f06000d
+			public const int iv2 = 2131099661;
+			
+			// aapt resource value: 0x7f06000e
+			public const int iv3 = 2131099662;
 			
 			// aapt resource value: 0x7f060001
 			public const int linearLayout1 = 2131099649;
@@ -153,10 +162,13 @@ namespace Android_Demo
 			public const int bar = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int image = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int visitor = 2130903042;
+			public const int Main = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int visitor = 2130903043;
 			
 			static Layout()
 			{

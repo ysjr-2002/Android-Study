@@ -31,7 +31,7 @@ namespace FaceVisual
             var dir = System.IO.Path.Combine(sdCardPath, faceroot);
             var filePath = System.IO.Path.Combine(dir, log);
             content = DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss") + "->" + content + System.Environment.NewLine;
-            System.IO.File.AppendAllText(filePath, content);
+            System.IO.File.AppendAllText(filePath, content, Encoding.UTF8);
         }
 
         public static void ReadProfile()
@@ -41,7 +41,7 @@ namespace FaceVisual
             var filePath = System.IO.Path.Combine(dir, config);
             if (System.IO.File.Exists(filePath))
             {
-                var content = System.IO.File.ReadAllText(filePath);
+                var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
                 var array = content.Split(spliter);
                 Profile.ServerIp = array[0];
                 Profile.CameraMain = array[1];
@@ -68,7 +68,7 @@ namespace FaceVisual
                   Profile.Welcome2, spliter,
                 Profile.Delay);
 
-            System.IO.File.WriteAllText(filePath, content);
+            System.IO.File.WriteAllText(filePath, content, Encoding.UTF8);
         }
     }
 
