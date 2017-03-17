@@ -129,10 +129,14 @@
     <Content Include="Resources\drawable\drawable-xhdpi\ic_settings_black_48dp.png" />
     <Content Include="Resources\drawable\drawable-xxhdpi\ic_settings_black_48dp.png" />
     <Content Include="Resources\drawable\drawable-xxxhdpi\ic_settings_black_48dp.png" />
-    <AndroidResource Include="Resources\anim\anim_slide_in_left.xml" />
+    <AndroidResource Include="Resources\anim\anim_slide_in_left.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\anim\anim_slide_in_right.xml" />
     <AndroidResource Include="Resources\anim\anim_slide_out_left.xml" />
-    <AndroidResource Include="Resources\anim\anim_slide_out_right.xml" />
+    <AndroidResource Include="Resources\anim\anim_slide_out_right.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\no.jpg" />
   </ItemGroup>
   <ItemGroup />

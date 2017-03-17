@@ -30,10 +30,7 @@ namespace FaceVisual
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            //this.RequestWindowFeature(WindowFeatures.NoTitle);
-            //this.Window.SetStatusBarColor(Color.Argb(255, 0x33, 0xcc, 0xff));
-            //this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
-            this.OverridePendingTransition(Resource.Animation.anim_slide_in_left, Resource.Animation.anim_slide_out_left);
+
             Config.ReadProfile();
             if (string.IsNullOrEmpty(Config.Profile.ServerIp))
             {

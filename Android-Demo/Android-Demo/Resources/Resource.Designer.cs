@@ -73,7 +73,10 @@ namespace Android_Demo
 			public const int Icon = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int son = 2130837505;
+			public const int shape = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int son = 2130837506;
 			
 			static Drawable()
 			{
@@ -88,14 +91,17 @@ namespace Android_Demo
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f06000c
+			public const int MyButton = 2131099660;
+			
 			// aapt resource value: 0x7f060008
-			public const int MyButton = 2131099656;
+			public const int alter = 2131099656;
 			
-			// aapt resource value: 0x7f060009
-			public const int btnSendSMS1 = 2131099657;
+			// aapt resource value: 0x7f06000d
+			public const int btnSendSMS1 = 2131099661;
 			
-			// aapt resource value: 0x7f06000a
-			public const int btnSendSMS2 = 2131099658;
+			// aapt resource value: 0x7f06000e
+			public const int btnSendSMS2 = 2131099662;
 			
 			// aapt resource value: 0x7f060002
 			public const int buttona = 2131099650;
@@ -112,11 +118,8 @@ namespace Android_Demo
 			// aapt resource value: 0x7f060004
 			public const int buttont = 2131099652;
 			
-			// aapt resource value: 0x7f06000b
-			public const int faceImage = 2131099659;
-			
-			// aapt resource value: 0x7f060007
-			public const int imageView1 = 2131099655;
+			// aapt resource value: 0x7f060009
+			public const int faceImage = 2131099657;
 			
 			// aapt resource value: 0x7f060001
 			public const int linearLayout1 = 2131099649;
@@ -124,11 +127,14 @@ namespace Android_Demo
 			// aapt resource value: 0x7f060000
 			public const int linearLayout2 = 2131099648;
 			
-			// aapt resource value: 0x7f06000d
-			public const int tvName = 2131099661;
+			// aapt resource value: 0x7f060007
+			public const int rl = 2131099655;
 			
-			// aapt resource value: 0x7f06000c
-			public const int tvWecomeEmp = 2131099660;
+			// aapt resource value: 0x7f06000b
+			public const int tvName = 2131099659;
+			
+			// aapt resource value: 0x7f06000a
+			public const int tvWecomeEmp = 2131099658;
 			
 			static Id()
 			{

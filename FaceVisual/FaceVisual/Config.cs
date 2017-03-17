@@ -17,7 +17,7 @@ namespace FaceVisual
         private const char spliter = '$';
         private const string faceroot = "facevisual";
         private const string config = "config.txt";
-        private const string log = "log.tx";
+        private const string log = "log.txt";
         public static Profile Profile { get; set; }
 
         static Config()
