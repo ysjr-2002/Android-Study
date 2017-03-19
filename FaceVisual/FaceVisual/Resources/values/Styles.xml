@@ -30,4 +30,10 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textSize">18sp</item>
   </style>
+
+  <style name="AppTheme" parent="android:Theme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/white</item>
+    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+  </style>
 </resources>

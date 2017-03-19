@@ -82,6 +82,7 @@
     <Compile Include="ImageViewPlus.cs" />
     <Compile Include="RootActivity.cs" />
     <Compile Include="SettingActivity.cs" />
+    <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -103,9 +104,6 @@
     <AndroidResource Include="Resources\menu\popup_menu.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\no.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -117,14 +115,12 @@
     <Content Include="dll\Newtonsoft.Json.dll" />
     <Content Include="dll\websocket-sharp.dll" />
     <AndroidResource Include="Resources\values\Colors.xml" />
-    <AndroidResource Include="Resources\drawable\exit.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_settings_black_48dp.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_settings_black_48dp.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_settings_black_48dp.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_settings_black_48dp.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_settings_black_48dp.png" />
-    <AndroidResource Include="Resources\anim\scale.xml" />
+    <AndroidResource Include="Resources\anim\scale.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\anim\anim_slide_in_left.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -133,12 +129,17 @@
     <AndroidResource Include="Resources\anim\anim_slide_out_right.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\no.jpg" />
     <AndroidResource Include="Resources\drawable\shape.xml" />
-    <AndroidResource Include="Resources\drawable\face_ysj.jpg" />
-    <AndroidResource Include="Resources\anim\unscale.xml" />
+    <AndroidResource Include="Resources\anim\unscale.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\anim\translate.xml" />
-    <Content Include="Resources\drawable\son.png" />
+    <AndroidResource Include="Resources\drawable\bg.png" />
+    <AndroidResource Include="Resources\drawable\popupbg.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\no.png" />
+    <AndroidResource Include="Resources\drawable\ysj.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

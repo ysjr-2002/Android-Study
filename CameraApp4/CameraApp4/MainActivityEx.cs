@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace CameraApp4
 {
-    [Activity(Label = "ÈËÁ³¸´ºË", MainLauncher = true)]
+    [Activity(Label = "@string/ApplicationName", MainLauncher = false, Icon = "@drawable/Icon")]
     public class MainActivityEx : Activity, ISurfaceHolderCallback, Camera.IShutterCallback, Camera.IPictureCallback, Camera.IPreviewCallback
     {
         private SurfaceView view;
@@ -49,6 +49,11 @@ namespace CameraApp4
         protected override void OnStart()
         {
             base.OnStart();
+            connect();
+        }
+
+        private void connect()
+        {
             MySocket.Current.Init(Config.Profile.ServerIp);
             MySocket.Current.OnCaputure += Current_OnCaputure;
             MySocket.Current.OnPass += Current_OnPass;
@@ -107,7 +112,7 @@ namespace CameraApp4
 
                 dialog.Window.SetGravity(GravityFlags.Top);
                 dialog.Show();
-                dialog.Window.SetLayout(350, 480);
+                dialog.Window.SetLayout(360, 500);
 
                 Task.Factory.StartNew(() =>
                 {

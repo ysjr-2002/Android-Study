@@ -76,7 +76,9 @@ namespace FaceVisual
     {
         public Profile()
         {
-            Delay = 2000;
+            CameraMain = "192.168.1.2";
+            CameraSub = "192.168.1.3";
+            Delay = 1000;
             Welcome1 = "»¶Ó­¹âÁÙ";
             Welcome2 = "»¶Ó­Äú";
         }

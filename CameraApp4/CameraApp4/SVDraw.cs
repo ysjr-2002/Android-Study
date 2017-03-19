@@ -27,7 +27,7 @@ namespace CameraApp4
         private const int top = 300;
         private const int len = 50;
         private const int textRectHeight = 80;
-        private const string tip = "请将面部置于区域内";
+        private const string tip = "请将面部置于区域内-刷卡";
 
         private static Color txtColor = Color.Goldenrod;
         private static Color rectColor = Color.Goldenrod;

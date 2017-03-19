@@ -49,7 +49,7 @@ namespace FaceVisual
                 }
                 mPaintBitmap.SetShader(mShader);
                 float radius = viewMinSize / 2.0f;
-                canvas.DrawCircle(radius, radius, radius, mPaintBitmap);
+                canvas.DrawCircle(viewWidth/2, viewHeight/2, radius, mPaintBitmap);
             }
             else
             {

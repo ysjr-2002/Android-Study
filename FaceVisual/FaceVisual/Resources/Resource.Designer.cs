@@ -78,8 +78,14 @@ namespace FaceVisual
 		public partial class Color
 		{
 			
+			// aapt resource value: 0x7f050002
+			public const int face = 2131034114;
+			
 			// aapt resource value: 0x7f050000
 			public const int red = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int white = 2131034113;
 			
 			static Color()
 			{
@@ -95,19 +101,25 @@ namespace FaceVisual
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int exit = 2130837504;
+			public const int bg = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int face_ysj = 2130837505;
+			public const int ic_settings_black_48dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int ic_settings_black_48dp = 2130837506;
+			public const int Icon = 2130837506;
 			
 			// aapt resource value: 0x7f020003
 			public const int no = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int shape = 2130837508;
+			public const int popupbg = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int shape = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int ysj = 2130837510;
 			
 			static Drawable()
 			{
@@ -131,29 +143,26 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090015
 			public const int btnSave = 2131296277;
 			
-			// aapt resource value: 0x7f09000f
-			public const int etCameraMain = 2131296271;
+			// aapt resource value: 0x7f09000e
+			public const int etCameraMain = 2131296270;
 			
-			// aapt resource value: 0x7f090011
-			public const int etCamerasub = 2131296273;
+			// aapt resource value: 0x7f090010
+			public const int etCamerasub = 2131296272;
 			
 			// aapt resource value: 0x7f090009
 			public const int faceImage = 2131296265;
 			
-			// aapt resource value: 0x7f09000d
-			public const int include = 2131296269;
+			// aapt resource value: 0x7f09000c
+			public const int include = 2131296268;
 			
 			// aapt resource value: 0x7f090018
 			public const int item1 = 2131296280;
 			
-			// aapt resource value: 0x7f09000e
-			public const int koalaEditText = 2131296270;
+			// aapt resource value: 0x7f09000d
+			public const int koalaEditText = 2131296269;
 			
 			// aapt resource value: 0x7f090002
 			public const int linearLayout1 = 2131296258;
-			
-			// aapt resource value: 0x7f09000c
-			public const int noImage = 2131296268;
 			
 			// aapt resource value: 0x7f090016
 			public const int personFace = 2131296278;
@@ -170,14 +179,17 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090001
 			public const int textView1 = 2131296257;
 			
-			// aapt resource value: 0x7f090013
-			public const int textView2 = 2131296275;
+			// aapt resource value: 0x7f090012
+			public const int textView2 = 2131296274;
 			
 			// aapt resource value: 0x7f090006
 			public const int textView3 = 2131296262;
 			
-			// aapt resource value: 0x7f090010
-			public const int textViewx = 2131296272;
+			// aapt resource value: 0x7f09000f
+			public const int textViewx = 2131296271;
+			
+			// aapt resource value: 0x7f090014
+			public const int tvDelay = 2131296276;
 			
 			// aapt resource value: 0x7f09000b
 			public const int tvName = 2131296267;
@@ -191,11 +203,11 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090004
 			public const int tvWelcome = 2131296260;
 			
-			// aapt resource value: 0x7f090012
-			public const int welcomeEditText1 = 2131296274;
+			// aapt resource value: 0x7f090011
+			public const int welcomeEditText1 = 2131296273;
 			
-			// aapt resource value: 0x7f090014
-			public const int welcomeEditText2 = 2131296276;
+			// aapt resource value: 0x7f090013
+			public const int welcomeEditText2 = 2131296275;
 			
 			static Id()
 			{
@@ -217,16 +229,13 @@ namespace FaceVisual
 			public const int FaceMain = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int no = 2130903042;
+			public const int Settings = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Settings = 2130903043;
+			public const int toast_image = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int toast_image = 2130903044;
-			
-			// aapt resource value: 0x7f030005
-			public const int visitor = 2130903045;
+			public const int visitor = 2130903044;
 			
 			static Layout()
 			{

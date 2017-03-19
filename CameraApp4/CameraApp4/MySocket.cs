@@ -64,12 +64,16 @@ namespace CameraApp4
 
         public void Init(string serverIp)
         {
+            //return Task.Factory.StartNew(() =>
+            //{
             ws = new WebSocket(string.Format("ws://{0}:4649/Echo", serverIp));
             ws.OnOpen += Ws_OnOpen;
             ws.OnClose += Ws_OnClose;
             ws.OnError += Ws_OnError;
             ws.OnMessage += Ws_OnMessage;
             ws.Connect();
+            ws.EmitOnPing = true;
+            //});
         }
 
         private void Ws_OnMessage(object sender, MessageEventArgs e)
@@ -118,19 +122,6 @@ namespace CameraApp4
         private void Reconnect()
         {
             ws.Connect();
-            //if (bRun)
-            //    return;
-
-            //Task.Factory.StartNew(() =>
-            //{
-            //    bRun = true;
-            //    while (bReconnect)
-            //    {
-            //        ws.Connect();
-            //        Log.Info("连接一次", this.GetType().FullName);
-            //        Thread.Sleep(connect_interval);
-            //    }
-            //});
         }
     }
 }

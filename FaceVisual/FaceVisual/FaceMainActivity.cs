@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
@@ -18,7 +19,7 @@ using static Android.Animation.Animator;
 
 namespace FaceVisual
 {
-    [Activity(Label = "@string/ApplicationName", MainLauncher = true, Icon = "@drawable/exit")]
+    [Activity(Label = "@string/ApplicationName", MainLauncher = false, Icon = "@drawable/Icon")]
     public class FaceMainActivity : RootActivity
     {
         private System.Timers.Timer timer = null;
@@ -33,6 +34,10 @@ namespace FaceVisual
         private TextView tv;
         private TextView tvName;
         private ImageView ivFace;
+
+        private const int p_width = 500;
+        private const int p_height = 700;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -56,43 +61,44 @@ namespace FaceVisual
             var settingTextView = FindViewById<TextView>(Resource.Id.settingTextView);
             settingTextView.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(SettingActivity));
-                StartActivity(intent);
+                //Intent intent = new Intent(this, typeof(SettingActivity));
+                //StartActivity(intent);
 
-                //var lp = vistor.LayoutParameters;
-                //lp.Width = 360;
-                //lp.Height = 500;
-                //vistor.LayoutParameters = lp;
-                //tvName.Text = "—Ó…‹Ω‹";
-                //tv.Text = "ª∂”≠π‚¡Ÿ";
-                //ivFace.SetImageResource(Resource.Drawable.face_ysj);
-                //var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
-                //sa.AnimationEnd += Sa_AnimationEnd;
-                //vistor.StartAnimation(sa);
+                var lp = vistor.LayoutParameters;
+                lp.Width = p_width;
+                lp.Height = p_height;
+                vistor.LayoutParameters = lp;
+                tvName.Text = "—Ó…‹Ω‹";
+                tv.Text = Config.Profile.Welcome2;
+                ivFace.SetImageResource(Resource.Drawable.no);
+                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                sa.AnimationEnd += Sa_AnimationEnd;
+                vistor.StartAnimation(sa);
             };
         }
 
         private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
         {
-            //Task.Factory.StartNew(() =>
-            //{
-            Thread.Sleep(1500);
+            Thread.Sleep(Config.Profile.Delay);
             forbidden = false;
-            //this.RunOnUiThread(new Action(() =>
-            //{
-            //    var lp = vistor.LayoutParameters;
-            //    lp.Width = 0;
-            //    lp.Height = 0;
-            //    vistor.LayoutParameters = lp;
-            //}));
             var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.translate);
-                vistor.StartAnimation(sa);
-            //});
+            vistor.StartAnimation(sa);
         }
 
         protected override void OnStart()
         {
             base.OnStart();
+
+            DisplayMetrics metric = new DisplayMetrics();
+            this.WindowManager.DefaultDisplay.GetMetrics(metric);
+
+            int width = metric.WidthPixels;  // øÌ∂»£®PX£©
+            int height = metric.HeightPixels;  // ∏ﬂ∂»£®PX£©
+
+            float density = metric.Density;  // √‹∂»£®0.75 / 1.0 / 1.5£©
+            int densityDpi = (int)metric.DensityDpi;  // √‹∂»DPI£®120 / 160 / 240£©
+
+            //Toast.MakeText(this, width + " " + height + " " + density + " " + densityDpi, ToastLength.Long).Show();
             Start();
         }
 
@@ -104,12 +110,12 @@ namespace FaceVisual
             Showtime();
             StartTimer();
 
-            socketMain = new HttpSocket();
+            socketMain = new HttpSocket(this);
             socketMain.SetCallback(OnRecognizePersonMain);
             var main = socketMain.Connect(cfg.ServerIp, cfg.CameraMain);
             await main;
 
-            socketSub = new HttpSocket();
+            socketSub = new HttpSocket(this);
             socketSub.SetCallback(OnRecognizePersonSub);
             var sub = socketSub.Connect(cfg.ServerIp, cfg.CameraSub);
             await sub;
@@ -149,11 +155,12 @@ namespace FaceVisual
                 //});
 
                 var lp = vistor.LayoutParameters;
-                lp.Width = 360;
-                lp.Height = 500;
+                lp.Width = p_width;
+                lp.Height = p_height;
                 vistor.LayoutParameters = lp;
                 tv.Text = "";
                 tvName.Text = "«Î…‘µ»...";
+                tvName.SetTextColor(Color.Red);
                 ivFace.SetImageResource(Resource.Drawable.no);
                 var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
                 sa.AnimationEnd += Sa_AnimationEnd;
@@ -187,10 +194,11 @@ namespace FaceVisual
                 #endregion
 
                 var lp = vistor.LayoutParameters;
-                lp.Width = 360;
-                lp.Height = 500;
+                lp.Width = p_width;
+                lp.Height = p_height;
                 vistor.LayoutParameters = lp;
                 tvName.Text = name;
+                tvName.SetTextColor(Color.Rgb(255, 106, 00));
                 tv.Text = Config.Profile.Welcome2;
                 ivFace.SetImageBitmap(faceImage);
                 faceImage.Dispose();

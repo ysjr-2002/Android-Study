@@ -9,10 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Threading;
 
 namespace Android_Demo
 {
-    [Activity(Label = "ImageActivity", MainLauncher = true)]
+    //, Theme = "@style/AppTheme"
+    [Activity(Label = "ImageActivity", MainLauncher = false )]
     public class ImageActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

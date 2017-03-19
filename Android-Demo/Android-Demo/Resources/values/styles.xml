@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="AppTheme" parent="android:Theme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/yellow</item>
+    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+  </style>
+</resources>

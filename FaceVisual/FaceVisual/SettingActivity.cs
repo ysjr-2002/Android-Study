@@ -19,7 +19,6 @@ namespace FaceVisual
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            this.OverridePendingTransition(Resource.Animation.anim_slide_in_left, Resource.Animation.anim_slide_out_left);
             // Create your application here
             this.SetContentView(Resource.Layout.Settings);
 
@@ -29,6 +28,7 @@ namespace FaceVisual
             var cameraSub = this.FindViewById<EditText>(Resource.Id.etCamerasub);
             var welcome1 = this.FindViewById<EditText>(Resource.Id.welcomeEditText1);
             var welcome2 = this.FindViewById<EditText>(Resource.Id.welcomeEditText2);
+            var delay = this.FindViewById<EditText>(Resource.Id.tvDelay);
 
             var cfg = Config.Profile;
             koala.Text = cfg.ServerIp;
@@ -36,6 +36,7 @@ namespace FaceVisual
             cameraSub.Text = cfg.CameraSub;
             welcome1.Text = cfg.Welcome1;
             welcome2.Text = cfg.Welcome2;
+            delay.Text = cfg.Delay.ToString();
 
             btnSave.Click += (s, e) =>
             {
@@ -69,6 +70,7 @@ namespace FaceVisual
                 Config.Profile.CameraSub = cameraSub.Text;
                 Config.Profile.Welcome1 = welcome1.Text;
                 Config.Profile.Welcome2 = welcome2.Text;
+                Config.Profile.Delay = Int32.Parse(delay.Text);
                 Config.SaveProfile();
 
                 StartActivity(typeof(FaceMainActivity));

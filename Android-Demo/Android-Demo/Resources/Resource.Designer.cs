@@ -66,17 +66,39 @@ namespace Android_Demo
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int white = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int yellow = 2131034113;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int face_ysj = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int shape = 2130837505;
+			public const int Icon = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int son = 2130837506;
+			public const int shape = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int son = 2130837507;
 			
 			static Drawable()
 			{
@@ -91,59 +113,59 @@ namespace Android_Demo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06000f
-			public const int MyButton = 2131099663;
+			// aapt resource value: 0x7f08000f
+			public const int MyButton = 2131230735;
 			
-			// aapt resource value: 0x7f060008
-			public const int alter = 2131099656;
+			// aapt resource value: 0x7f080008
+			public const int alter = 2131230728;
 			
-			// aapt resource value: 0x7f060010
-			public const int btnSendSMS1 = 2131099664;
+			// aapt resource value: 0x7f080010
+			public const int btnSendSMS1 = 2131230736;
 			
-			// aapt resource value: 0x7f060011
-			public const int btnSendSMS2 = 2131099665;
+			// aapt resource value: 0x7f080011
+			public const int btnSendSMS2 = 2131230737;
 			
-			// aapt resource value: 0x7f060002
-			public const int buttona = 2131099650;
+			// aapt resource value: 0x7f080002
+			public const int buttona = 2131230722;
 			
-			// aapt resource value: 0x7f060006
-			public const int buttonalter = 2131099654;
+			// aapt resource value: 0x7f080006
+			public const int buttonalter = 2131230726;
 			
-			// aapt resource value: 0x7f060005
-			public const int buttonr = 2131099653;
+			// aapt resource value: 0x7f080005
+			public const int buttonr = 2131230725;
 			
-			// aapt resource value: 0x7f060003
-			public const int buttons = 2131099651;
+			// aapt resource value: 0x7f080003
+			public const int buttons = 2131230723;
 			
-			// aapt resource value: 0x7f060004
-			public const int buttont = 2131099652;
+			// aapt resource value: 0x7f080004
+			public const int buttont = 2131230724;
 			
-			// aapt resource value: 0x7f060009
-			public const int faceImage = 2131099657;
+			// aapt resource value: 0x7f080009
+			public const int faceImage = 2131230729;
 			
-			// aapt resource value: 0x7f06000c
-			public const int iv1 = 2131099660;
+			// aapt resource value: 0x7f08000c
+			public const int iv1 = 2131230732;
 			
-			// aapt resource value: 0x7f06000d
-			public const int iv2 = 2131099661;
+			// aapt resource value: 0x7f08000d
+			public const int iv2 = 2131230733;
 			
-			// aapt resource value: 0x7f06000e
-			public const int iv3 = 2131099662;
+			// aapt resource value: 0x7f08000e
+			public const int iv3 = 2131230734;
 			
-			// aapt resource value: 0x7f060001
-			public const int linearLayout1 = 2131099649;
+			// aapt resource value: 0x7f080001
+			public const int linearLayout1 = 2131230721;
 			
-			// aapt resource value: 0x7f060000
-			public const int linearLayout2 = 2131099648;
+			// aapt resource value: 0x7f080000
+			public const int linearLayout2 = 2131230720;
 			
-			// aapt resource value: 0x7f060007
-			public const int rl = 2131099655;
+			// aapt resource value: 0x7f080007
+			public const int rl = 2131230727;
 			
-			// aapt resource value: 0x7f06000b
-			public const int tvName = 2131099659;
+			// aapt resource value: 0x7f08000b
+			public const int tvName = 2131230731;
 			
-			// aapt resource value: 0x7f06000a
-			public const int tvWecomeEmp = 2131099658;
+			// aapt resource value: 0x7f08000a
+			public const int tvWecomeEmp = 2131230730;
 			
 			static Id()
 			{
@@ -183,11 +205,11 @@ namespace Android_Demo
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int ApplicationName = 2131099649;
 			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int Hello = 2131099648;
 			
 			static String()
 			{
@@ -195,6 +217,22 @@ namespace Android_Demo
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f070000
+			public const int AppTheme = 2131165184;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}
