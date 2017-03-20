@@ -93,6 +93,9 @@ namespace BID_Front
 			// aapt resource value: 0x7f060005
 			public const int tvName = 2131099653;
 			
+			// aapt resource value: 0x7f060009
+			public const int tvServer = 2131099657;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -111,6 +114,9 @@ namespace BID_Front
 			
 			// aapt resource value: 0x7f030001
 			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int server = 2130903042;
 			
 			static Layout()
 			{
@@ -146,6 +152,9 @@ namespace BID_Front
 			
 			// aapt resource value: 0x7f050000
 			public const int AppSplash = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int button = 2131034113;
 			
 			static Style()
 			{

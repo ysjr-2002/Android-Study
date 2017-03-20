@@ -61,19 +61,19 @@ namespace FaceVisual
             var settingTextView = FindViewById<TextView>(Resource.Id.settingTextView);
             settingTextView.Click += delegate
             {
-                //Intent intent = new Intent(this, typeof(SettingActivity));
-                //StartActivity(intent);
+                Intent intent = new Intent(this, typeof(SettingActivity));
+                StartActivity(intent);
 
-                var lp = vistor.LayoutParameters;
-                lp.Width = p_width;
-                lp.Height = p_height;
-                vistor.LayoutParameters = lp;
-                tvName.Text = "—Ó…‹Ω‹";
-                tv.Text = Config.Profile.Welcome2;
-                ivFace.SetImageResource(Resource.Drawable.no);
-                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
-                sa.AnimationEnd += Sa_AnimationEnd;
-                vistor.StartAnimation(sa);
+                //var lp = vistor.LayoutParameters;
+                //lp.Width = p_width;
+                //lp.Height = p_height;
+                //vistor.LayoutParameters = lp;
+                //tvName.Text = "—Ó…‹Ω‹";
+                //tv.Text = Config.Profile.Welcome2;
+                //ivFace.SetImageResource(Resource.Drawable.no);
+                //var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                //sa.AnimationEnd += Sa_AnimationEnd;
+                //vistor.StartAnimation(sa);
             };
         }
 
