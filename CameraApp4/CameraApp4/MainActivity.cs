@@ -108,7 +108,6 @@ namespace CameraApp4
             camera.SetDisplayOrientation(90);
             camera.SetParameters(p);
             //camera.SetPreviewDisplay(holder);
-            MySocket.Current.OnPass += Current_OnPass;
         }
 
         private void Current_OnPass(string obj)
@@ -159,7 +158,6 @@ namespace CameraApp4
                         face = faceimage
                     };
                     var json = JsonConvert.SerializeObject(msg);
-                    MySocket.Current.Send(json);
                 }
                 catch (Exception)
                 {

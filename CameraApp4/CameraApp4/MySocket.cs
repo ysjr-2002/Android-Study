@@ -48,32 +48,24 @@ namespace CameraApp4
             }
         }
 
-        private MySocket()
+        private Activity activity = null;
+        public MySocket(Activity activity)
         {
-
+            this.activity = activity;
         }
 
-        private static MySocket _current = new MySocket();
-        public static MySocket Current
+        public Task Init(string serverIp)
         {
-            get
+            return Task.Factory.StartNew(() =>
             {
-                return _current;
-            }
-        }
-
-        public void Init(string serverIp)
-        {
-            //return Task.Factory.StartNew(() =>
-            //{
-            ws = new WebSocket(string.Format("ws://{0}:4649/Echo", serverIp));
-            ws.OnOpen += Ws_OnOpen;
-            ws.OnClose += Ws_OnClose;
-            ws.OnError += Ws_OnError;
-            ws.OnMessage += Ws_OnMessage;
-            ws.Connect();
-            ws.EmitOnPing = true;
-            //});
+                ws = new WebSocket(string.Format("ws://{0}:4649/Echo", serverIp));
+                ws.OnOpen += Ws_OnOpen;
+                ws.OnClose += Ws_OnClose;
+                ws.OnError += Ws_OnError;
+                ws.OnMessage += Ws_OnMessage;
+                ws.Connect();
+                ws.EmitOnPing = true;
+            });
         }
 
         private void Ws_OnMessage(object sender, MessageEventArgs e)
@@ -92,36 +84,51 @@ namespace CameraApp4
                     _onPassResult?.Invoke(e.Data);
                 }
             }
+            else if (e.IsPing)
+            {
+                Log.Info("DEBUG", DateTime.Now.ToString("HH:mm:ss") + " Ping");
+            }
         }
 
         private void Ws_OnError(object sender, ErrorEventArgs e)
         {
-            Toast.MakeText(Application.Context, "server error", ToastLength.Short).Show();
+            Config.Log("WebSocket Error");
             Reconnect();
         }
 
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
-            Toast.MakeText(Application.Context, "server close", ToastLength.Short).Show();
-            Reconnect();
+            Config.Log("WebSocket close");
         }
 
         private void Ws_OnOpen(object sender, EventArgs e)
         {
-            Toast.MakeText(Application.Context, "server connect", ToastLength.Short).Show();
+            Alert("server connect");
         }
 
         public void Send(string msg)
         {
-            ws.SendAsync(msg, null);
+            ws.Send(msg);
         }
 
-        private bool bRun = false;
-        private bool bReconnect = false;
-        private const int connect_interval = 5000;
         private void Reconnect()
         {
-            ws.Connect();
+            Close();
+            Init(Config.Profile.ServerIp);
+        }
+
+        public void Close()
+        {
+            ws?.Close();
+            ws = null;
+        }
+
+        private void Alert(string msg)
+        {
+            activity.RunOnUiThread(new Action(() =>
+            {
+                Toast.MakeText(Application.Context, msg, ToastLength.Short).Show();
+            }));
         }
     }
 }

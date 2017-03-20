@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MySocket.cs" />

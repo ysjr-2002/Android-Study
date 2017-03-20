@@ -22,7 +22,7 @@ namespace CameraApp4
             {
                 this.RunOnUiThread(new Action(() =>
                 {
-                    Intent intent = new Intent(this, typeof(MainActivity));
+                    Intent intent = new Intent(this, typeof(MainActivityEx));
                     StartActivity(intent);
                     Finish();
                 }));

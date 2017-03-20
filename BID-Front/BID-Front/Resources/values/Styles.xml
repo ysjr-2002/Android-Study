@@ -6,10 +6,11 @@
   </style>
 
   <style name="button">
-    <item name="android:layout_width">300dp</item>
-    <item name="android:layout_height">80dp</item>
-    <item name="android:textSize">40sp</item>
+    <item name="android:layout_width">400dp</item>
+    <item name="android:layout_height">92dp</item>
+    <item name="android:textSize">36sp</item>
     <item name="android:gravity">center</item>
+    <item name="android:layout_gravity">center</item>
     <item name="android:background">@drawable/shape</item>
     <item name="android:layout_margin">46dp</item>
   </style>

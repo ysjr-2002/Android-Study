@@ -20,8 +20,6 @@ namespace CameraApp4
             base.OnCreate(savedInstanceState);
             RequestWindowFeature(WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.init);
-            MySocket.Current.Init("");
-            MySocket.Current.OnCaputure += Current_OnCaputure;
         }
 
         private void Current_OnCaputure()

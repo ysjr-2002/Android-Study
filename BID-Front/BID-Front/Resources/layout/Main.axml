@@ -20,4 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#33ccff"
+        android:text="V1.0.0.0  "
+        android:gravity="right"
+        android:layout_gravity="center_vertical" />
 </LinearLayout>

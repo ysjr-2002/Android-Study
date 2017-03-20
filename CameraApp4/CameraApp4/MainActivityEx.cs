@@ -29,7 +29,7 @@ namespace CameraApp4
         private Android.Hardware.Camera camera;
 
         private bool bCapture = false;
-
+        private MySocket mySocket = null;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -54,9 +54,17 @@ namespace CameraApp4
 
         private void connect()
         {
-            MySocket.Current.Init(Config.Profile.ServerIp);
-            MySocket.Current.OnCaputure += Current_OnCaputure;
-            MySocket.Current.OnPass += Current_OnPass;
+            if(mySocket != null)
+            {
+                mySocket.OnCaputure -= Current_OnCaputure;
+                mySocket.OnPass -= Current_OnPass;
+                mySocket.Close();
+            }
+
+            mySocket = new MySocket(this);
+            mySocket.Init(Config.Profile.ServerIp);
+            mySocket.OnCaputure += Current_OnCaputure;
+            mySocket.OnPass += Current_OnPass;
             view = FindViewById<SurfaceView>(Resource.Id.sv_camera);
             viewtop = FindViewById<SVDraw>(Resource.Id.sv_top);
             start();
@@ -97,10 +105,18 @@ namespace CameraApp4
 
                 tvName.Text = message.name;
                 if (message.type == "ok")
+                {
                     tvWeclome.Text = "»¶Ó­¹âÁÙ";
+                    var color = Android.Graphics.Color.Argb(0xff, 0xff, 0x6a, 0);
+                    tvWeclome.SetTextColor(color);
+                    tvName.SetTextColor(color);
+                }
                 else
                 {
                     tvWeclome.Text = "±È¶ÔÊ§°Ü£¬ÇëÖØÐÂË¢¿¨";
+                    var color = Android.Graphics.Color.Argb(0xff, 0xff, 0, 0);
+                    tvWeclome.SetTextColor(color);
+                    tvName.SetTextColor(color);
                 }
 
                 ivFace.SetImageBitmap(faceImage);
@@ -112,7 +128,6 @@ namespace CameraApp4
 
                 dialog.Window.SetGravity(GravityFlags.Top);
                 dialog.Show();
-                dialog.Window.SetLayout(360, 500);
 
                 Task.Factory.StartNew(() =>
                 {
@@ -194,7 +209,7 @@ namespace CameraApp4
                     face = faceimage
                 };
                 var json = JsonConvert.SerializeObject(msg);
-                MySocket.Current.Send(json);
+                mySocket.Send(json);
             }
             else
             {
@@ -213,6 +228,12 @@ namespace CameraApp4
             return nbmp2;
         }
 
-
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            mySocket.OnCaputure -= Current_OnCaputure;
+            mySocket.OnPass -= Current_OnPass;
+            mySocket?.Close();
+        }
     }
 }

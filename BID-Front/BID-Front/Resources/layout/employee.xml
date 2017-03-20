@@ -6,9 +6,11 @@
     android:layout_height="wrap_content"
     android:id="@+id/tableLayout1"
     android:stretchColumns="1"
-    android:padding="24dp">
+    android:padding="12dp">
   <View
     android:layout_height="2dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
     android:background="#ff0000">
   </View>
   <TableRow
@@ -20,9 +22,10 @@
         android:layout_marginBottom="12dp"
         android:id="@+id/textView10" />
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="260dp"
+        android:layout_height="300dp"
         android:scaleType="fitCenter"
+        android:gravity="left"
         android:id="@+id/ivPhoto"
         />
     <Button android:text="拍照" 
@@ -57,7 +60,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvName"
         android:hint="请输入姓名"
-        android:inputType="number"
         android:layout_margin="6dp" />
   </TableRow>
   <TableRow
@@ -72,7 +74,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvEmail"
         android:hint="Email地址"
-        android:inputType="number"
         android:layout_margin="6dp" />
   </TableRow>
 </TableLayout>

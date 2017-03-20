@@ -9,6 +9,8 @@ using Android.Provider;
 using Android.Graphics;
 using Newtonsoft.Json;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace BID_Front
 {
@@ -69,32 +71,39 @@ namespace BID_Front
         protected override void OnStart()
         {
             base.OnStart();
-            connect();
+            Config.ReadProfile();
         }
 
-        private async void connect()
+        private void ConnectSocket()
         {
             socket = new MySocket(this);
-            var task = socket.Connect("192.168.0.4");
-            await task;
+            socket.Connect(Config.Profile.ServerIp);
+        }
+
+        private void ConnectDispose()
+        {
+            socket?.Close();
+            socket = null;
         }
 
         private void btSetting_Click(object sender, EventArgs e)
         {
             var view = LayoutInflater.Inflate(Resource.Layout.server, null);
             var builder = new AlertDialog.Builder(this);
-            builder.SetTitle("服务器配置");
+            builder.SetTitle("服务器设置");
             builder.SetView(view);
             builder.SetPositiveButton("确定", (a, b) =>
             {
                 var serverIp = tv_Server.Text;
-
                 if (string.IsNullOrEmpty(serverIp))
                 {
                     Dialog("请填写服务器地址！");
                     DialogCancel();
                     return;
                 }
+                Config.Profile.ServerIp = serverIp;
+                Config.SaveProfile();
+                Dialog("服务器设置保存成功！");
                 DialogDismiss();
             });
 
@@ -105,7 +114,8 @@ namespace BID_Front
             alertDialog = builder.Create();
             alertDialog.Show();
 
-            //tv_Server = view.FindViewById<EditText>(Resource.Id.tvServer);
+            tv_Server = view.FindViewById<EditText>(Resource.Id.tvServer);
+            tv_Server.Text = Config.Profile.ServerIp;
         }
 
         private void btTake_Click(object sender, EventArgs e)
@@ -116,6 +126,12 @@ namespace BID_Front
 
         private void btNewEmployee_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(Config.Profile.ServerIp))
+            {
+                Dialog("请设置服务器地址！");
+                return;
+            }
+
             var view = LayoutInflater.Inflate(Resource.Layout.employee, null);
             var builder = new AlertDialog.Builder(this);
             builder.SetTitle("员工录入");
@@ -140,10 +156,12 @@ namespace BID_Front
                     return;
                 }
 
+                ConnectSocket();
+
                 Message message = new Message
                 {
                     action = "employee",
-                    type = "ok",
+                    type = "save",
                     card = card,
                     name = name,
                     email = email,
@@ -159,6 +177,12 @@ namespace BID_Front
                 var json = JsonConvert.SerializeObject(message);
                 socket.Send(json);
 
+                Task.Factory.StartNew(() =>
+                {
+                    Thread.Sleep(1000);
+                    ConnectDispose();
+                });
+
                 DialogDismiss();
             });
 
@@ -172,6 +196,7 @@ namespace BID_Front
 
             bt_Take = view.FindViewById<Button>(Resource.Id.btntake);
             bt_Take.Click += btTake_Click;
+            bt_Take.RequestFocus();
 
             iv_photo = view.FindViewById<ImageView>(Resource.Id.ivPhoto);
             tv_card = view.FindViewById<TextView>(Resource.Id.tvCard);
