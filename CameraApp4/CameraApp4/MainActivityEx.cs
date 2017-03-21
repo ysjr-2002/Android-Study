@@ -54,12 +54,7 @@ namespace CameraApp4
 
         private void connect()
         {
-            if(mySocket != null)
-            {
-                mySocket.OnCaputure -= Current_OnCaputure;
-                mySocket.OnPass -= Current_OnPass;
-                mySocket.Close();
-            }
+            SocketClose();
 
             mySocket = new MySocket(this);
             mySocket.Init(Config.Profile.ServerIp);
@@ -231,9 +226,17 @@ namespace CameraApp4
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            mySocket.OnCaputure -= Current_OnCaputure;
-            mySocket.OnPass -= Current_OnPass;
-            mySocket?.Close();
+            this.SocketClose();
+        }
+
+        private void SocketClose()
+        {
+            if (mySocket != null)
+            {
+                mySocket.OnCaputure -= Current_OnCaputure;
+                mySocket.OnPass -= Current_OnPass;
+                mySocket.Close();
+            }
         }
     }
 }

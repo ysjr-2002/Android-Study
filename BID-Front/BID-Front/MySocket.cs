@@ -11,33 +11,7 @@ namespace BID_Front
     class MySocket
     {
         private WebSocket ws = null;
-        private Action _capture;
         private Activity activity;
-        private Action<string> _onPassResult;
-
-        public event Action OnCaputure
-        {
-            add
-            {
-                _capture = value;
-            }
-            remove
-            {
-                _capture -= value;
-            }
-        }
-
-        public event Action<string> OnPass
-        {
-            add
-            {
-                _onPassResult = value;
-            }
-            remove
-            {
-                _onPassResult -= value;
-            }
-        }
 
         public MySocket(Activity activity)
         {

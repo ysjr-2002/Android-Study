@@ -86,7 +86,7 @@ namespace CameraApp4
             }
             else if (e.IsPing)
             {
-                Log.Info("DEBUG", DateTime.Now.ToString("HH:mm:ss") + " Ping");
+                Config.Log("Ping");
             }
         }
 
