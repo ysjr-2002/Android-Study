@@ -168,7 +168,7 @@ namespace BID_Front
                 };
 
                 MemoryStream ms = new MemoryStream();
-                faceBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, ms);
+                faceBitmap.Compress(Bitmap.CompressFormat.Jpeg, 80, ms);
                 byte[] byteArray = ms.ToArray();
                 ms.Close();
                 faceBitmap.Dispose();
@@ -179,7 +179,7 @@ namespace BID_Front
 
                 Task.Factory.StartNew(() =>
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                     ConnectDispose();
                 });
 
@@ -211,7 +211,7 @@ namespace BID_Front
                 if (resultCode == Result.Ok)
                 {
                     faceBitmap = (Bitmap)data.Extras.Get("data");
-                    iv_photo.SetImageBitmap(faceBitmap);
+                    //iv_photo.SetImageBitmap(faceBitmap);
                 }
             }
         }
