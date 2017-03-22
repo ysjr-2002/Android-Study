@@ -99,6 +99,7 @@ namespace CameraApp4
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
             Config.Log("WebSocket close");
+            Reconnect();
         }
 
         private void Ws_OnOpen(object sender, EventArgs e)
@@ -119,7 +120,13 @@ namespace CameraApp4
 
         public void Close()
         {
-            ws?.Close();
+            if (ws.ReadyState == WebSocketState.Open)
+                ws?.Close();
+
+            ws.OnOpen -= Ws_OnOpen;
+            ws.OnClose -= Ws_OnClose;
+            ws.OnError -= Ws_OnError;
+            ws.OnMessage -= Ws_OnMessage;
             ws = null;
         }
 
