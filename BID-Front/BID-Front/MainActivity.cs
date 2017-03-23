@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
+using Uri = Android.Net.Uri;
 
 namespace BID_Front
 {
@@ -54,6 +55,14 @@ namespace BID_Front
             Toast.MakeText(this, msg, ToastLength.Short).Show();
         }
 
+        private void Alert(string msg)
+        {
+            this.RunOnUiThread(new Action(() =>
+            {
+                Toast.MakeText(Application.Context, msg, ToastLength.Short).Show();
+            }));
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -76,7 +85,7 @@ namespace BID_Front
 
         private void ConnectSocket()
         {
-            socket = new MySocket(this);
+            socket = new MySocket(this, SaveBack);
             socket.Connect(Config.Profile.ServerIp);
         }
 
@@ -84,6 +93,12 @@ namespace BID_Front
         {
             socket?.Close();
             socket = null;
+        }
+
+        private void SaveBack()
+        {
+            ConnectDispose();
+            Alert("保存成功");
         }
 
         private void btSetting_Click(object sender, EventArgs e)
@@ -116,12 +131,6 @@ namespace BID_Front
 
             tv_Server = view.FindViewById<EditText>(Resource.Id.tvServer);
             tv_Server.Text = Config.Profile.ServerIp;
-        }
-
-        private void btTake_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(MediaStore.ActionImageCapture);
-            StartActivityForResult(intent, Take_Picture);
         }
 
         private void btNewEmployee_Click(object sender, EventArgs e)
@@ -168,7 +177,7 @@ namespace BID_Front
                 };
 
                 MemoryStream ms = new MemoryStream();
-                faceBitmap.Compress(Bitmap.CompressFormat.Jpeg, 80, ms);
+                faceBitmap.Compress(Bitmap.CompressFormat.Png, 80, ms);
                 byte[] byteArray = ms.ToArray();
                 ms.Close();
                 faceBitmap.Dispose();
@@ -204,16 +213,69 @@ namespace BID_Front
             tv_email = view.FindViewById<TextView>(Resource.Id.tvEmail);
         }
 
+        string photoPath = "";
+        private void btTake_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(MediaStore.ActionImageCapture);
+            var photoName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
+            photoPath = System.IO.Path.Combine(GetDirectory(), photoName);
+            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(new Java.IO.File(photoPath)));
+            StartActivityForResult(intent, Take_Picture);
+        }
+
+        private string GetDirectory()
+        {
+            var root = Android.OS.Environment.ExternalStorageDirectory + "/pictures/";
+            if (System.IO.Directory.Exists(root) == false)
+            {
+                System.IO.Directory.CreateDirectory(root);
+            }
+            root = System.IO.Path.Combine(root, "obria");
+            if (System.IO.Directory.Exists(root) == false)
+            {
+                System.IO.Directory.CreateDirectory(root);
+            }
+            return root;
+        }
+
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             if (requestCode == Take_Picture)
             {
                 if (resultCode == Result.Ok)
                 {
-                    faceBitmap = (Bitmap)data.Extras.Get("data");
-                    //iv_photo.SetImageBitmap(faceBitmap);
+                    //var thumbnail = (Bitmap)data.Extras.Get("data");
+                    faceBitmap = LoadAndResizeBitmap(photoPath, 600, 800);
+                    iv_photo.SetImageBitmap(faceBitmap);
                 }
             }
+        }
+
+        public static Bitmap LoadAndResizeBitmap(string fileName, int width, int height)
+        {
+            // First we get the the dimensions of the file on disk
+            BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
+            BitmapFactory.DecodeFile(fileName, options);
+
+            // Next we calculate the ratio that we need to resize the image by
+            // in order to fit the requested dimensions.
+            int outHeight = options.OutHeight;
+            int outWidth = options.OutWidth;
+            int inSampleSize = 1;
+
+            if (outHeight > height || outWidth > width)
+            {
+                inSampleSize = outWidth > outHeight
+                                   ? outHeight / height
+                                   : outWidth / width;
+            }
+
+            // Now we will load the image and have BitmapFactory resize it for us.
+            options.InSampleSize = inSampleSize;
+            options.InJustDecodeBounds = false;
+            Bitmap resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
+
+            return resizedBitmap;
         }
     }
 }

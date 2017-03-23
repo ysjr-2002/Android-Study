@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/tvServer"
-        android:hint="请输入服务器Ip"
+        android:hint="请输入服务器IP"
          />
   </LinearLayout>
 </LinearLayout>
