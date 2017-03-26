@@ -89,16 +89,19 @@ namespace Android_Demo
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int face_ysj = 2130837504;
+			public const int border = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int Icon = 2130837505;
+			public const int face_ysj = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int shape = 2130837506;
+			public const int Icon = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int son = 2130837507;
+			public const int shape = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int son = 2130837508;
 			
 			static Drawable()
 			{
@@ -113,17 +116,17 @@ namespace Android_Demo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f08000f
-			public const int MyButton = 2131230735;
+			// aapt resource value: 0x7f08000e
+			public const int MyButton = 2131230734;
 			
 			// aapt resource value: 0x7f080008
 			public const int alter = 2131230728;
 			
-			// aapt resource value: 0x7f080010
-			public const int btnSendSMS1 = 2131230736;
+			// aapt resource value: 0x7f08000f
+			public const int btnSendSMS1 = 2131230735;
 			
-			// aapt resource value: 0x7f080011
-			public const int btnSendSMS2 = 2131230737;
+			// aapt resource value: 0x7f080010
+			public const int btnSendSMS2 = 2131230736;
 			
 			// aapt resource value: 0x7f080002
 			public const int buttona = 2131230722;
@@ -148,9 +151,6 @@ namespace Android_Demo
 			
 			// aapt resource value: 0x7f08000d
 			public const int iv2 = 2131230733;
-			
-			// aapt resource value: 0x7f08000e
-			public const int iv3 = 2131230734;
 			
 			// aapt resource value: 0x7f080001
 			public const int linearLayout1 = 2131230721;
@@ -226,6 +226,9 @@ namespace Android_Demo
 			
 			// aapt resource value: 0x7f070000
 			public const int AppTheme = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int button_text = 2131165185;
 			
 			static Style()
 			{

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ApplicationName">BID-识别</string>
+  <string name="ApplicationName">BID-Recognition</string>
+  <string name="popup">Pop-up time</string>
+  <string name="server">Server IP address</string>
+  <string name="popuphint">Please input Pop-up time</string>
+  <string name="serverhint">Please input server IP address</string>
+  <string name="save">Save</string>
+  <string name="setting">System setting</string>
 </resources>

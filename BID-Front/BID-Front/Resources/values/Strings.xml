@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ApplicationName">BID.前台</string>
-    <string name="record">员工登记</string>
+    <string name="ApplicationName">BID.Front</string>
+    <string name="record">EmployeeEnrollment</string>
+  <string name="setting">System setting</string>
+  <string name="confirm">Confirm</string>
+  <string name="cancel">Cancel</string>
+  <string name="photo">Photo</string>
+  <string name="take">Camera</string>
+  <string name="card">Card</string>
+  <string name="name">Name</string>
+  <string name="email">Email</string>
+  <string name="cardhint">Please input Badge Number</string>
+  <string name="namehint">Please input your Names(Frist/Last name)</string>
+  <string name="emailhint">Please input your Email</string>
+
+  <string name="server">Server</string>
+  <string name="serverhint">Please input server IP address</string>
 </resources>

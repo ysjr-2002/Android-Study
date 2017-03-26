@@ -12,12 +12,12 @@ using Android.Widget;
 
 namespace CameraApp4
 {
-    [Activity(Label = "系统设置")]
+    [Activity(Label = "@string/setting")]
     public class ConfigActivity : Activity
     {
-        EditText tvserver;
-        EditText tvdelay;
-        Button button;
+        private EditText tvserver;
+        private EditText tvdelay;
+        private Button button;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -42,15 +42,16 @@ namespace CameraApp4
 
             if (string.IsNullOrEmpty(server))
             {
-                toast("请输入服务器Ip地址");
+                var hint = Resources.GetString(Resource.String.serverhint);
+                toast(hint);
                 return;
             }
 
             var n = getNumber(delay);
 
-            if (n <= 0 || n > 5000)
+            if (n < 1000 || n > 5000)
             {
-                toast("请输入有效时间范围[1000~5000]");
+                toast("Please input valid time range[1000~5000]");
                 return;
             }
 

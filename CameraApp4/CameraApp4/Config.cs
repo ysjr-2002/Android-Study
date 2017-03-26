@@ -65,6 +65,11 @@ namespace CameraApp4
 
     public class Profile
     {
+        public Profile()
+        {
+            Delay = 2000;
+        }
+
         public string ServerIp { get; set; }
         public int Delay { get; set; }
     }

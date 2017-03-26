@@ -11,35 +11,37 @@
         android:id="@+id/tableRow1"
         android:layout_marginTop="0dp">
         <TextView
-            android:text="服务器地址:"
+            android:text="@string/server"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:id="@+id/textView10" />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvServer"
-            android:hint="请输入服务器地址"
+            android:hint="@string/serverhint"
             android:layout_margin="6dp" />
     </TableRow>
     <TableRow
         android:id="@+id/tableRow2"
         android:layout_marginTop="24dp">
         <TextView
-            android:text="弹窗时长:"
+            android:text="@string/popup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:id="@+id/textView10" />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvDelay"
-            android:hint="请输入弹窗时长"
+            android:hint="@string/popuphint"
             android:inputType="number"
             android:layout_margin="6dp" />
     </TableRow>
     <Button
-        android:text="保存"
+        android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btSave"

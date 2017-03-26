@@ -98,31 +98,31 @@ namespace BID_Front
         private void SaveBack()
         {
             ConnectDispose();
-            Alert("保存成功");
+            Alert("Save Success");
         }
 
         private void btSetting_Click(object sender, EventArgs e)
         {
             var view = LayoutInflater.Inflate(Resource.Layout.server, null);
             var builder = new AlertDialog.Builder(this);
-            builder.SetTitle("服务器设置");
+            builder.SetTitle("Server configrations");
             builder.SetView(view);
-            builder.SetPositiveButton("确定", (a, b) =>
+            builder.SetPositiveButton("Confirm", (a, b) =>
             {
                 var serverIp = tv_Server.Text;
                 if (string.IsNullOrEmpty(serverIp))
                 {
-                    Dialog("请填写服务器地址！");
+                    Dialog("Please input server IP address");
                     DialogCancel();
                     return;
                 }
                 Config.Profile.ServerIp = serverIp;
                 Config.SaveProfile();
-                Dialog("服务器设置保存成功！");
+                Dialog("Server configuration save success");
                 DialogDismiss();
             });
 
-            builder.SetNegativeButton("取消", (a, b) =>
+            builder.SetNegativeButton("Cancel", (a, b) =>
             {
                 DialogDismiss();
             });
@@ -137,15 +137,15 @@ namespace BID_Front
         {
             if (string.IsNullOrEmpty(Config.Profile.ServerIp))
             {
-                Dialog("请设置服务器地址！");
+                Dialog("Please config server IP addess");
                 return;
             }
 
             var view = LayoutInflater.Inflate(Resource.Layout.employee, null);
             var builder = new AlertDialog.Builder(this);
-            builder.SetTitle("员工录入");
+            builder.SetTitle("Employee Input");
             builder.SetView(view);
-            builder.SetPositiveButton("确定", (a, b) =>
+            builder.SetPositiveButton("Confirm", (a, b) =>
             {
                 var card = tv_card.Text;
                 var name = tv_name.Text;
@@ -153,14 +153,14 @@ namespace BID_Front
 
                 if (faceBitmap == null)
                 {
-                    Dialog("请拍照！");
+                    Dialog("Please take photo");
                     DialogCancel();
                     return;
                 }
 
                 if (string.IsNullOrEmpty(card))
                 {
-                    Dialog("请填写卡号！");
+                    Dialog("Please input cardno");
                     DialogCancel();
                     return;
                 }
@@ -195,7 +195,7 @@ namespace BID_Front
                 DialogDismiss();
             });
 
-            builder.SetNegativeButton("取消", (a, b) =>
+            builder.SetNegativeButton("Cancel", (a, b) =>
             {
                 DialogDismiss();
             });

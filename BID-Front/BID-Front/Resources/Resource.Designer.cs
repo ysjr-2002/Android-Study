@@ -134,8 +134,47 @@ namespace BID_Front
 			// aapt resource value: 0x7f040000
 			public const int ApplicationName = 2130968576;
 			
+			// aapt resource value: 0x7f040004
+			public const int cancel = 2130968580;
+			
+			// aapt resource value: 0x7f040007
+			public const int card = 2130968583;
+			
+			// aapt resource value: 0x7f04000a
+			public const int cardhint = 2130968586;
+			
+			// aapt resource value: 0x7f040003
+			public const int confirm = 2130968579;
+			
+			// aapt resource value: 0x7f040009
+			public const int email = 2130968585;
+			
+			// aapt resource value: 0x7f04000c
+			public const int emailhint = 2130968588;
+			
+			// aapt resource value: 0x7f040008
+			public const int name = 2130968584;
+			
+			// aapt resource value: 0x7f04000b
+			public const int namehint = 2130968587;
+			
+			// aapt resource value: 0x7f040005
+			public const int photo = 2130968581;
+			
 			// aapt resource value: 0x7f040001
 			public const int record = 2130968577;
+			
+			// aapt resource value: 0x7f04000d
+			public const int server = 2130968589;
+			
+			// aapt resource value: 0x7f04000e
+			public const int serverhint = 2130968590;
+			
+			// aapt resource value: 0x7f040002
+			public const int setting = 2130968578;
+			
+			// aapt resource value: 0x7f040006
+			public const int take = 2130968582;
 			
 			static String()
 			{

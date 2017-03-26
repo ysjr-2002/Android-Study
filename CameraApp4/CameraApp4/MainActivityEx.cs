@@ -101,14 +101,14 @@ namespace CameraApp4
                 tvName.Text = message.name;
                 if (message.type == "ok")
                 {
-                    tvWeclome.Text = "ª∂”≠π‚¡Ÿ";
+                    tvWeclome.Text = "Welcome";
                     var color = Android.Graphics.Color.Argb(0xff, 0xff, 0x6a, 0);
                     tvWeclome.SetTextColor(color);
                     tvName.SetTextColor(color);
                 }
                 else
                 {
-                    tvWeclome.Text = "±»∂‘ ß∞‹£¨«Î÷ÿ–¬À¢ø®";
+                    tvWeclome.Text = "Compare failure£¨Please try again";
                     var color = Android.Graphics.Color.Argb(0xff, 0xff, 0, 0);
                     tvWeclome.SetTextColor(color);
                     tvName.SetTextColor(color);
@@ -208,7 +208,7 @@ namespace CameraApp4
             }
             else
             {
-                Toast.MakeText(this, "◊•Õº ß∞‹", ToastLength.Short).Show();
+                Toast.MakeText(this, "Take photo failure", ToastLength.Short).Show();
             }
             bCapture = false;
         }

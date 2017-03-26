@@ -14,7 +14,7 @@
         style="@style/button" />
     <Button
         android:id="@+id/btSetting"
-        android:text="系统设置"
+        android:text="@string/setting"
         style="@style/button" />
     <View
         android:layout_width="match_parent"

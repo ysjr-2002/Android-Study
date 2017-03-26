@@ -43,6 +43,7 @@ namespace FaceVisual
                 socket.OnError += Socket_OnError;
                 socket.OnClose += Socket_OnClose;
                 socket.OnMessage += Socket_OnMessage;
+                socket.EmitOnPing = true;
                 socket.Connect();
             });
         }
