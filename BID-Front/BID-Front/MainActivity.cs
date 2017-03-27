@@ -12,6 +12,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using Uri = Android.Net.Uri;
+using Android.Media;
 
 namespace BID_Front
 {
@@ -245,7 +246,17 @@ namespace BID_Front
             }
         }
 
-        public static Bitmap LoadAndResizeBitmap(string fileName, int width, int height)
+        private Android.Graphics.Bitmap rotateMyBitmap(Android.Graphics.Bitmap bmp)
+        {
+            //*****旋转一下
+            Android.Graphics.Matrix matrix = new Android.Graphics.Matrix();
+            matrix.PostRotate(270);
+            Android.Graphics.Bitmap nbmp2 = Android.Graphics.Bitmap.CreateBitmap(bmp, 0, 0, bmp.Width, bmp.Height, matrix, true);
+            bmp.Dispose();
+            return nbmp2;
+        }
+
+        private Bitmap LoadAndResizeBitmap(string fileName, int width, int height)
         {
             // First we get the the dimensions of the file on disk
             BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
@@ -267,9 +278,9 @@ namespace BID_Front
             // Now we will load the image and have BitmapFactory resize it for us.
             options.InSampleSize = inSampleSize;
             options.InJustDecodeBounds = false;
-            Bitmap resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
-
-            return resizedBitmap;
+            var resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
+            var rotatedBitmap = rotateMyBitmap(resizedBitmap);
+            return rotatedBitmap;
         }
     }
 }
