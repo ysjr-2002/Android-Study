@@ -49,10 +49,11 @@ namespace CameraApp4
         protected override void OnStart()
         {
             base.OnStart();
-            connect();
+            ConnectSocket();
+            StartCamera();
         }
 
-        private void connect()
+        private void ConnectSocket()
         {
             SocketClose();
 
@@ -62,10 +63,9 @@ namespace CameraApp4
             mySocket.OnPass += Current_OnPass;
             view = FindViewById<SurfaceView>(Resource.Id.sv_camera);
             viewtop = FindViewById<SVDraw>(Resource.Id.sv_top);
-            start();
         }
 
-        private void start()
+        private void StartCamera()
         {
             holder = view.Holder;
             holder.AddCallback(this);

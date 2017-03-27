@@ -186,12 +186,6 @@ namespace BID_Front
                 var json = JsonConvert.SerializeObject(message);
                 socket.Send(json);
 
-                Task.Factory.StartNew(() =>
-                {
-                    Thread.Sleep(2000);
-                    ConnectDispose();
-                });
-
                 DialogDismiss();
             });
 

@@ -92,7 +92,7 @@ namespace CameraApp4
 
         private void Ws_OnError(object sender, ErrorEventArgs e)
         {
-            Config.Log("WebSocket Error");
+            Config.Log("WebSocket error");
             Reconnect();
         }
 
@@ -104,7 +104,7 @@ namespace CameraApp4
 
         private void Ws_OnOpen(object sender, EventArgs e)
         {
-            Alert("server connect");
+            Alert("Server connect");
         }
 
         public void Send(string msg)
@@ -120,8 +120,11 @@ namespace CameraApp4
 
         public void Close()
         {
+            if (ws == null)
+                return;
+
             if (ws.ReadyState == WebSocketState.Open)
-                ws?.Close();
+                ws.Close();
 
             ws.OnOpen -= Ws_OnOpen;
             ws.OnClose -= Ws_OnClose;

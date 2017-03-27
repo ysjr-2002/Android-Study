@@ -7,13 +7,12 @@
   <string name="cancel">Cancel</string>
   <string name="photo">Photo</string>
   <string name="take">Camera</string>
-  <string name="card">Card</string>
+  <string name="card">Badge Number</string>
   <string name="name">Name</string>
   <string name="email">Email</string>
   <string name="cardhint">Please input Badge Number</string>
   <string name="namehint">Please input your Names(Frist/Last name)</string>
   <string name="emailhint">Please input your Email</string>
-
   <string name="server">Server</string>
   <string name="serverhint">Please input server IP address</string>
 </resources>
