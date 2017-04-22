@@ -116,17 +116,23 @@ namespace Android_Demo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f08000e
-			public const int MyButton = 2131230734;
+			// aapt resource value: 0x7f080012
+			public const int MyButton = 2131230738;
+			
+			// aapt resource value: 0x7f08000c
+			public const int aa = 2131230732;
 			
 			// aapt resource value: 0x7f080008
 			public const int alter = 2131230728;
 			
-			// aapt resource value: 0x7f08000f
-			public const int btnSendSMS1 = 2131230735;
+			// aapt resource value: 0x7f08000d
+			public const int bb = 2131230733;
 			
-			// aapt resource value: 0x7f080010
-			public const int btnSendSMS2 = 2131230736;
+			// aapt resource value: 0x7f080013
+			public const int btnSendSMS1 = 2131230739;
+			
+			// aapt resource value: 0x7f080014
+			public const int btnSendSMS2 = 2131230740;
 			
 			// aapt resource value: 0x7f080002
 			public const int buttona = 2131230722;
@@ -143,14 +149,17 @@ namespace Android_Demo
 			// aapt resource value: 0x7f080004
 			public const int buttont = 2131230724;
 			
+			// aapt resource value: 0x7f08000e
+			public const int cc = 2131230734;
+			
 			// aapt resource value: 0x7f080009
 			public const int faceImage = 2131230729;
 			
-			// aapt resource value: 0x7f08000c
-			public const int iv1 = 2131230732;
+			// aapt resource value: 0x7f08000f
+			public const int iv1 = 2131230735;
 			
-			// aapt resource value: 0x7f08000d
-			public const int iv2 = 2131230733;
+			// aapt resource value: 0x7f080010
+			public const int iv2 = 2131230736;
 			
 			// aapt resource value: 0x7f080001
 			public const int linearLayout1 = 2131230721;
@@ -160,6 +169,9 @@ namespace Android_Demo
 			
 			// aapt resource value: 0x7f080007
 			public const int rl = 2131230727;
+			
+			// aapt resource value: 0x7f080011
+			public const int textView1 = 2131230737;
 			
 			// aapt resource value: 0x7f08000b
 			public const int tvName = 2131230731;
@@ -184,13 +196,16 @@ namespace Android_Demo
 			public const int bar = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int image = 2130903041;
+			public const int frame = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Main = 2130903042;
+			public const int image = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int visitor = 2130903043;
+			public const int Main = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int visitor = 2130903044;
 			
 			static Layout()
 			{

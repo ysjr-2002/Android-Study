@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarActivity.cs" />
+    <Compile Include="FrameActivity.cs" />
     <Compile Include="ImageActivity.cs" />
     <Compile Include="Resources\layout\AlphaImageView.cs" />
     <Compile Include="SMSActivity.cs" />
@@ -65,6 +66,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\image.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\frame.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -104,7 +108,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\shape.xml" />
+    <AndroidResource Include="Resources\drawable\shape.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />

@@ -6,7 +6,7 @@
     <Android_Demo.Resources.layout.AlphaImageView
         android:id="@+id/iv1"
         android:background="#ff0000"
-        android:src="@drawable/Icon"
+        android:src="@drawable/son"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
@@ -19,6 +19,15 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="5dp" />
+    <TextView
+        android:text="这是一个文本框"
+        android:background="#ff0000"
+        android:layout_marginTop="5dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_gravity="center"
+        android:id="@+id/textView1" />
     <Button
         android:text="这是一个按钮"
         android:background="@drawable/border"

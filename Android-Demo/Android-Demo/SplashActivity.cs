@@ -23,7 +23,7 @@ namespace Android_Demo
             System.Threading.Tasks.Task.Factory.StartNew(new Action(() =>
             {
                 Thread.Sleep(1);
-                Intent intent = new Intent(this, typeof(ImageActivity));
+                Intent intent = new Intent(this, typeof(FrameActivity));
                 StartActivity(intent);
                 Finish();
             }));

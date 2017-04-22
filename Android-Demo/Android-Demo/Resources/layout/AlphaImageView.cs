@@ -22,15 +22,7 @@ namespace Android_Demo.Resources.layout
 
         protected override void OnDraw(Canvas canvas)
         {
-            //base.OnDraw(canvas);
-            //canvas.DrawColor(Color.Yellow);
-            //Paint p = new Paint
-            //{
-            //    TextSize = 40,
-            //    AntiAlias = true,
-            //    Color = Color.Blue
-            //};
-            //canvas.DrawText("—Ó…‹Ω‹", 1, 32, p);
+            base.OnDraw(canvas);
         }
     }
 }
