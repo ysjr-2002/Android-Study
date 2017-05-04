@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <View
-        android:id="@+id/aa"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="#ff0000"
-        android:layout_gravity="center" />
-    <View
-        android:id="@+id/bb"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="#00ff00"
-        android:layout_gravity="center" />
-    <View
-        android:id="@+id/cc"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="#0000ff"
-        android:layout_gravity="center" />
-</FrameLayout>
+    <Button
+        android:text="返回"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnhome"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true" />
+    <Button
+        android:text="打开网页"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnhome"
+        android:id="@+id/btnopenurl" />
+    <ProgressBar
+        android:layout_below="@+id/btnopenurl"
+        android:id="@+id/progressbar1"
+        android:layout_width="match_parent"
+        android:progress="30"
+        android:max="100"
+        android:style="?android:attr/progressBarStylehorizontal"
+        android:layout_height="20dp" />
+</RelativeLayout>
