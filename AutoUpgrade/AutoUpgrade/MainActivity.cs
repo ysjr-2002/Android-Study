@@ -10,10 +10,11 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using Java.Lang;
+using System.Net.Sockets;
 
 namespace AutoUpgrade
 {
-    [Activity(Label = "AutoUpgrade", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "AutoUpgrade", MainLauncher = false, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
@@ -28,7 +29,6 @@ namespace AutoUpgrade
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
@@ -43,7 +43,6 @@ namespace AutoUpgrade
                 string url = "http://192.168.1.131:9872/1.apk";
                 Uri uri = new Uri(url);
 
-
                 string root = Android.OS.Environment.ExternalStorageDirectory.Path;
                 string folder = "upgrade";
 
@@ -57,9 +56,7 @@ namespace AutoUpgrade
                 {
                     System.IO.File.Delete(localFile);
                 }
-
                 web.DownloadFileAsync(uri, localFile);
-
                 web.DownloadFileCompleted += Web_DownloadFileCompleted;
             };
 
@@ -67,13 +64,21 @@ namespace AutoUpgrade
             MyHandler handler = new MyHandler(this);
             btn2.Click += delegate
             {
-                while (true)
+                //while (true)
+                //{
+                //    handler.ObtainMessage(MESSAGE_STATE_CHANGE).SendToTarget();
+                //    System.Threading.Thread.Sleep(1000);
+                //}
+                Task.Factory.StartNew(() =>
                 {
-                    handler.ObtainMessage(MESSAGE_STATE_CHANGE).SendToTarget();
-                    System.Threading.Thread.Sleep(1000);
-                }
-                //handler.SendMessage(new Message { What = MESSAGE_STATE_CHANGE });
-                //handler.SendMessage(msg);
+                    while (true)
+                    {
+                        var data = System.Text.Encoding.UTF8.GetBytes("data->" + DateTime.Now);
+                        UdpClient udp = new UdpClient();
+                        udp.Send(data, data.Length, new IPEndPoint(IPAddress.Parse("192.168.1.116"), 9872));
+                        System.Threading.Thread.Sleep(1000);
+                    }
+                });
             };
         }
 
