@@ -34,9 +34,9 @@ namespace FaceVisual
             return Task.Factory.StartNew(() =>
             {
                 this.koalaIp = koalaIp;
-                var wsUrl = string.Format("ws://{0}:9000", koalaIp);
-                //var rtspUrl = string.Format("rtsp://{0}/user=admin&password=&channel=1&stream=0.sdp?", cameraIp);
-                var rtspUrl = string.Format("rtsp://admin:admin123456@{0}/live1.sdp", cameraIp);
+                var wsUrl = string.Format("ws://{0}:9000/video", koalaIp.Trim());
+                var rtspUrl = string.Format("rtsp://{0}/user=admin&password=&channel=1&stream=0.sdp?", cameraIp.Trim());
+                //var rtspUrl = string.Format("rtsp://admin:admin123456@{0}/live1.sdp", cameraIp);
                 var url = string.Concat(wsUrl, "?url=", rtspUrl.UrlEncode());
                 socket = new WebSocket(url);
                 socket.OnOpen += Socket_OnOpen;
