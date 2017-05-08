@@ -116,23 +116,26 @@ namespace Android_Demo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080012
-			public const int MyButton = 2131230738;
+			// aapt resource value: 0x7f080018
+			public const int MyButton = 2131230744;
 			
 			// aapt resource value: 0x7f080008
 			public const int alter = 2131230728;
 			
-			// aapt resource value: 0x7f080013
-			public const int btnSendSMS1 = 2131230739;
+			// aapt resource value: 0x7f080019
+			public const int btnSendSMS1 = 2131230745;
 			
-			// aapt resource value: 0x7f080014
-			public const int btnSendSMS2 = 2131230740;
+			// aapt resource value: 0x7f08001a
+			public const int btnSendSMS2 = 2131230746;
 			
 			// aapt resource value: 0x7f08000c
 			public const int btnhome = 2131230732;
 			
 			// aapt resource value: 0x7f08000d
 			public const int btnopenurl = 2131230733;
+			
+			// aapt resource value: 0x7f080014
+			public const int btnsetprogress = 2131230740;
 			
 			// aapt resource value: 0x7f080002
 			public const int buttona = 2131230722;
@@ -152,11 +155,11 @@ namespace Android_Demo
 			// aapt resource value: 0x7f080009
 			public const int faceImage = 2131230729;
 			
-			// aapt resource value: 0x7f08000f
-			public const int iv1 = 2131230735;
+			// aapt resource value: 0x7f080015
+			public const int iv1 = 2131230741;
 			
-			// aapt resource value: 0x7f080010
-			public const int iv2 = 2131230736;
+			// aapt resource value: 0x7f080016
+			public const int iv2 = 2131230742;
 			
 			// aapt resource value: 0x7f080001
 			public const int linearLayout1 = 2131230721;
@@ -165,13 +168,28 @@ namespace Android_Demo
 			public const int linearLayout2 = 2131230720;
 			
 			// aapt resource value: 0x7f08000e
-			public const int progressbar1 = 2131230734;
+			public const int pb = 2131230734;
+			
+			// aapt resource value: 0x7f080010
+			public const int progressBar1 = 2131230736;
+			
+			// aapt resource value: 0x7f080011
+			public const int progressBar2 = 2131230737;
+			
+			// aapt resource value: 0x7f080012
+			public const int progressBar3 = 2131230738;
+			
+			// aapt resource value: 0x7f080013
+			public const int progressBar4 = 2131230739;
+			
+			// aapt resource value: 0x7f08000f
+			public const int progressbar1 = 2131230735;
 			
 			// aapt resource value: 0x7f080007
 			public const int rl = 2131230727;
 			
-			// aapt resource value: 0x7f080011
-			public const int textView1 = 2131230737;
+			// aapt resource value: 0x7f080017
+			public const int textView1 = 2131230743;
 			
 			// aapt resource value: 0x7f08000b
 			public const int tvName = 2131230731;

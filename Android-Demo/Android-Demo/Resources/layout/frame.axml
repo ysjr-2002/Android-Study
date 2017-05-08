@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
@@ -16,12 +15,43 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnhome"
         android:id="@+id/btnopenurl" />
-    <ProgressBar
-        android:layout_below="@+id/btnopenurl"
-        android:id="@+id/progressbar1"
+    <LinearLayout
+        android:id="@+id/pb"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:progress="30"
-        android:max="100"
-        android:style="?android:attr/progressBarStylehorizontal"
-        android:layout_height="20dp" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnopenurl">
+        <ProgressBar
+            android:id="@+id/progressbar1"
+            android:layout_width="match_parent"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_height="20dp" />
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:id="@+id/progressBar1" />
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar2" />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar3" />
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar4" />
+    </LinearLayout>
+    <Button
+        android:text="执行进度"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pb"
+        android:id="@+id/btnsetprogress" />
 </RelativeLayout>
