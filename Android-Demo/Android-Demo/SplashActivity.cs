@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Android_Demo
 {
@@ -20,13 +21,13 @@ namespace Android_Demo
         {
             base.OnCreate(savedInstanceState);
             // Create your application here
-            System.Threading.Tasks.Task.Factory.StartNew(new Action(() =>
+            Task.Factory.StartNew(() =>
             {
                 Thread.Sleep(1);
                 Intent intent = new Intent(this, typeof(FrameActivity));
                 StartActivity(intent);
                 Finish();
-            }));
+            });
         }
     }
 }

@@ -22,7 +22,7 @@ namespace FaceVisualExt
         protected void onCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Main);
-        }        
+            SetContentView(Resource.Layout.back);
+        }
     }
 }

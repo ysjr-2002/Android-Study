@@ -41,6 +41,43 @@ namespace FaceVisualExt
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040003
+			public const int accent = 2130968579;
+			
+			// aapt resource value: 0x7f040007
+			public const int divider = 2130968583;
+			
+			// aapt resource value: 0x7f040006
+			public const int icons = 2130968582;
+			
+			// aapt resource value: 0x7f040000
+			public const int primary = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int primary_dark = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int primary_light = 2130968578;
+			
+			// aapt resource value: 0x7f040004
+			public const int primary_text = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int secondary_text = 2130968581;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -60,8 +97,11 @@ namespace FaceVisualExt
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
+			// aapt resource value: 0x7f060001
+			public const int MyButton = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int good = 2131099648;
 			
 			static Id()
 			{
@@ -77,7 +117,10 @@ namespace FaceVisualExt
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int back = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int front = 2130903041;
 			
 			static Layout()
 			{
@@ -92,11 +135,11 @@ namespace FaceVisualExt
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{
