@@ -16,104 +16,45 @@ namespace FaceVisualExt
     [Activity(Label = "FaceVisualExt", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Unspecified)]
     public class MainActivity : Activity
     {
-        int count = 100;
-        static readonly string Filename = "count";
-        string path;
-        string filename;
-
-        protected async override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             this.RequestWindowFeature(WindowFeatures.NoTitle);
-            //this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+            this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             SetContentView(Resource.Layout.front);
-            GetDisplay();
-
-            path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            filename = Path.Combine(path, Filename);
+            ShowDisplay1();
 
             var btn = FindViewById<Button>(Resource.Id.MyButton);
-            btn.Click += async delegate
+            btn.Click += delegate
             {
-                await writeFileAsync();
+                debug("are you ok");
             };
-
-            var task = loadFileAsync();
-
-            try
-            {
-                ConnectivityManager connectivityManager = (ConnectivityManager)this.GetSystemService(ConnectivityService);
-                NetworkInfo networkInfo = connectivityManager.ActiveNetworkInfo;
-                bool isOnline = networkInfo.IsConnected;
-                if (isOnline)
-                {
-                    if (networkInfo.Type == ConnectivityType.Wifi)
-                    {
-
-                    }
-                }
-                else
-                {
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
-            }
         }
 
-        async Task<int> loadFileAsync()
-        {
-            if (File.Exists(filename))
-            {
-                using (var f = new StreamReader(OpenFileInput(Filename)))
-                {
-                    string line;
-                    do
-                    {
-                        line = await f.ReadLineAsync();
-                    } while (!f.EndOfStream);
-                    Console.WriteLine("Load Finished");
-                    return int.Parse(line);
-                }
-            }
-            return 0;
-        }
-
-        async Task writeFileAsync()
-        {
-            using (var f = new StreamWriter(OpenFileOutput(Filename, FileCreationMode.Append | FileCreationMode.WorldReadable)))
-            {
-                await f.WriteLineAsync(count.ToString()).ConfigureAwait(false);
-            }
-            Console.WriteLine("Save Finished!");
-        }
-
-        private void GetDisplay()
+        private void ShowDisplay1()
         {
             DisplayManager displayManager;//屏幕管理类
             Display[] displays;//屏幕数组
             displayManager = (DisplayManager)this.GetSystemService(Context.DisplayService);
             displays = displayManager.GetDisplays();
             //主屏
-            var display1 = displays[0];
             if (displays.Length >= 2)
             {
                 //副屏
-                var display2 = displays[1];
+                var display1 = displays[1];
+                DifferentDislay anotherDisplay = new DifferentDislay(this, display1);
+                anotherDisplay.Window.SetType(WindowManagerTypes.SystemAlert);
+                anotherDisplay.Show();
             }
             else
             {
                 return;
             }
+        }
 
-            DifferentDislay anotherDisplay = new DifferentDislay(this, display1);
-            //mPresentation.getWindow().setType(
-            //WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-            //mPresentation.Window.SetType(WindowManagerLayoutParams)
-            //anotherDisplay.Window.SetType(WindowManagerTypes.SystemAlert);
-            anotherDisplay.Window.SetType(WindowManagerTypes.SystemOverlay);
-            anotherDisplay.Show();
+        private void debug(string str)
+        {
+            Toast.MakeText(this, str, ToastLength.Short).Show();
         }
     }
 }

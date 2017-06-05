@@ -16,13 +16,17 @@ namespace FaceVisualExt
     {
         public DifferentDislay(Context outerContext, Display display) : base(outerContext, display)
         {
-
         }
 
-        protected void onCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.back);
+            var btn = FindViewById<Button>(Resource.Id.good);
+            btn.Click += delegate
+            {
+                Toast.MakeText(this.Context, "∏±∆¡œ‘ æ", ToastLength.Short).Show();
+            };
         }
     }
 }
