@@ -28,6 +28,40 @@ namespace FaceVisualExt
 		{
 		}
 		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int anim_slide_in_left = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int anim_slide_in_right = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int anim_slide_out_left = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int anim_slide_out_right = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int scale = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int translate = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int unscale = 2130968582;
+			
+			static Animation()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Animation()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -44,29 +78,14 @@ namespace FaceVisualExt
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f040003
-			public const int accent = 2130968579;
+			// aapt resource value: 0x7f050002
+			public const int face = 2131034114;
 			
-			// aapt resource value: 0x7f040007
-			public const int divider = 2130968583;
+			// aapt resource value: 0x7f050000
+			public const int red = 2131034112;
 			
-			// aapt resource value: 0x7f040006
-			public const int icons = 2130968582;
-			
-			// aapt resource value: 0x7f040000
-			public const int primary = 2130968576;
-			
-			// aapt resource value: 0x7f040001
-			public const int primary_dark = 2130968577;
-			
-			// aapt resource value: 0x7f040002
-			public const int primary_light = 2130968578;
-			
-			// aapt resource value: 0x7f040004
-			public const int primary_text = 2130968580;
-			
-			// aapt resource value: 0x7f040005
-			public const int secondary_text = 2130968581;
+			// aapt resource value: 0x7f050001
+			public const int white = 2131034113;
 			
 			static Color()
 			{
@@ -78,11 +97,51 @@ namespace FaceVisualExt
 			}
 		}
 		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f060002
+			public const int copyright_fontsize = 2131099650;
+			
+			// aapt resource value: 0x7f060004
+			public const int popname_fontsize = 2131099652;
+			
+			// aapt resource value: 0x7f060003
+			public const int popwelcome_fontsize = 2131099651;
+			
+			// aapt resource value: 0x7f060001
+			public const int time_fontsize = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int wel_fontsize = 2131099648;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int bg = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int no = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int popupbg = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int shape = 2130837508;
 			
 			static Drawable()
 			{
@@ -97,11 +156,62 @@ namespace FaceVisualExt
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int MyButton = 2131099649;
+			// aapt resource value: 0x7f090006
+			public const int alter = 2131296262;
 			
-			// aapt resource value: 0x7f060000
-			public const int good = 2131099648;
+			// aapt resource value: 0x7f090012
+			public const int btnSave = 2131296274;
+			
+			// aapt resource value: 0x7f09000b
+			public const int etCameraMain = 2131296267;
+			
+			// aapt resource value: 0x7f09000d
+			public const int etCamerasub = 2131296269;
+			
+			// aapt resource value: 0x7f090007
+			public const int faceImage = 2131296263;
+			
+			// aapt resource value: 0x7f090000
+			public const int good = 2131296256;
+			
+			// aapt resource value: 0x7f09000a
+			public const int koalaEditText = 2131296266;
+			
+			// aapt resource value: 0x7f090005
+			public const int rl = 2131296261;
+			
+			// aapt resource value: 0x7f090001
+			public const int textView1 = 2131296257;
+			
+			// aapt resource value: 0x7f09000f
+			public const int textView2 = 2131296271;
+			
+			// aapt resource value: 0x7f090004
+			public const int textView3 = 2131296260;
+			
+			// aapt resource value: 0x7f09000c
+			public const int textViewx = 2131296268;
+			
+			// aapt resource value: 0x7f090011
+			public const int tvDelay = 2131296273;
+			
+			// aapt resource value: 0x7f090009
+			public const int tvName = 2131296265;
+			
+			// aapt resource value: 0x7f090003
+			public const int tvTime = 2131296259;
+			
+			// aapt resource value: 0x7f090008
+			public const int tvWecomeEmp = 2131296264;
+			
+			// aapt resource value: 0x7f090002
+			public const int tvWelcome = 2131296258;
+			
+			// aapt resource value: 0x7f09000e
+			public const int welcomeEditText1 = 2131296270;
+			
+			// aapt resource value: 0x7f090010
+			public const int welcomeEditText2 = 2131296272;
 			
 			static Id()
 			{
@@ -122,6 +232,9 @@ namespace FaceVisualExt
 			// aapt resource value: 0x7f030001
 			public const int front = 2130903041;
 			
+			// aapt resource value: 0x7f030002
+			public const int settings = 2130903042;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -135,11 +248,11 @@ namespace FaceVisualExt
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			// aapt resource value: 0x7f070001
+			public const int ApplicationName = 2131165185;
 			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			// aapt resource value: 0x7f070000
+			public const int Hello = 2131165184;
 			
 			static String()
 			{
@@ -147,6 +260,22 @@ namespace FaceVisualExt
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f080000
+			public const int settingEditText = 2131230720;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

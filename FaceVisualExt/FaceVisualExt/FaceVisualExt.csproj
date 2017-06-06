@@ -43,19 +43,32 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.2.18538, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\websocket-sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootReceiver.cs" />
+    <Compile Include="Code\FaceRecornize.cs" />
+    <Compile Include="Code\RecognizeState.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="DifferentDisplay.cs" />
-    <Compile Include="GsmSignalStrengthListener.cs" />
+    <Compile Include="HttpSocket.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Router.cs" />
+    <Compile Include="SettingActivity.cs" />
+    <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -64,12 +77,13 @@
     <AndroidResource Include="Resources\layout\back.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\settings.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\front.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -79,6 +93,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\colors.xml" />
+    <Content Include="dll\Newtonsoft.Json.dll" />
+    <Content Include="dll\websocket-sharp.dll" />
+    <AndroidResource Include="Resources\anim\anim_slide_in_left.xml" />
+    <AndroidResource Include="Resources\anim\anim_slide_in_right.xml" />
+    <AndroidResource Include="Resources\anim\anim_slide_out_left.xml" />
+    <AndroidResource Include="Resources\anim\anim_slide_out_right.xml" />
+    <AndroidResource Include="Resources\anim\scale.xml" />
+    <AndroidResource Include="Resources\anim\translate.xml" />
+    <AndroidResource Include="Resources\anim\unscale.xml" />
+    <AndroidResource Include="Resources\drawable\bg.png" />
+    <AndroidResource Include="Resources\drawable\no.png" />
+    <AndroidResource Include="Resources\drawable\popupbg.png" />
+    <AndroidResource Include="Resources\drawable\shape.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
     <Content Include="资料.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
