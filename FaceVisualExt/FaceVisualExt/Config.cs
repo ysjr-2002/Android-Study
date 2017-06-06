@@ -55,7 +55,7 @@ namespace FaceVisualExt
             Profile.CameraSub = "192.168.1.7";
             Profile.Welcome1 = "欢迎光临";
             Profile.Welcome2 = "欢迎再次光临";
-            Profile.Delay = 5000;
+            Profile.Delay = 3000;
         }
 
         public static void SaveProfile()

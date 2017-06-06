@@ -12,6 +12,7 @@ using Android.Widget;
 using FaceVisualExt.Code;
 using Android.Graphics;
 using Android.Views.Animations;
+using Android.Util;
 
 namespace FaceVisualExt
 {
@@ -26,10 +27,10 @@ namespace FaceVisualExt
         private TextView tvTime;
         private TextView tvWelcome;
         private ImageView ivFace;
-        private const int p_width = 500;
-        private const int p_height = 700;
+        private const int POPUP_DIALOG_WIDTH = 500;
+        private const int POPUP_DIALOG_HEIGHT = 700;
         private Handler handler = new Handler();
-
+        private Color fontcolor = Color.White;
         public DifferentDislay(Context outerContext, Display display) : base(outerContext, display)
         {
         }
@@ -46,19 +47,34 @@ namespace FaceVisualExt
             ivFace = this.FindViewById<ImageView>(Resource.Id.faceImage);
             tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
             tvName = this.FindViewById<TextView>(Resource.Id.tvName);
+
+            fontcolor = this.Resources.GetColor(Resource.Color.face);
+            tvName.SetTextColor(fontcolor);
         }
 
+        protected override void OnStart()
+        {
+            base.OnStart();
+            tvWelcome.Text = Config.Profile.Welcome2;
+            //DisplayMetrics dm = new DisplayMetrics();
+            //this.Window.WindowManager.DefaultDisplay.GetMetrics(dm);
+            //Toast.MakeText(this.Context, "Sub " + dm.WidthPixels + " " + dm.HeightPixels + " " + dm.DensityDpi, ToastLength.Long).Show();
+        }
+
+        public void UpdateTimer(string hms)
+        {
+            tvTime.Text = hms;
+        }
 
         public void ShowFace(string name, Bitmap faceImage)
         {
             handler.Post(() =>
             {
                 var lp = vistor.LayoutParameters;
-                lp.Width = p_width;
-                lp.Height = p_height;
+                lp.Width = POPUP_DIALOG_WIDTH;
+                lp.Height = POPUP_DIALOG_HEIGHT;
                 vistor.LayoutParameters = lp;
                 tvName.Text = name;
-                tvName.SetTextColor(this.Resources.GetColor(Resource.Color.face));
                 tv.Text = Config.Profile.Welcome2;
                 ivFace.SetImageBitmap(faceImage);
                 faceImage.Dispose();
@@ -71,12 +87,11 @@ namespace FaceVisualExt
             handler.Post(() =>
             {
                 var lp = vistor.LayoutParameters;
-                lp.Width = p_width;
-                lp.Height = p_height;
+                lp.Width = POPUP_DIALOG_WIDTH;
+                lp.Height = POPUP_DIALOG_HEIGHT;
                 vistor.LayoutParameters = lp;
+                tv.Text = string.Empty;
                 tvName.Text = "«Î…‘µ»";
-                tvName.SetTextColor(Color.Rgb(255, 106, 00));
-                tv.Text = Config.Profile.Welcome2;
                 ivFace.SetImageResource(Resource.Drawable.no);
                 StartShow();
             });
@@ -85,7 +100,14 @@ namespace FaceVisualExt
         private void StartShow()
         {
             var sa = AnimationUtils.LoadAnimation(this.Context, Resource.Animation.scale);
-            //sa.AnimationEnd += Sa_AnimationEnd;
+            sa.AnimationEnd += Sa_AnimationEnd;
+            vistor.StartAnimation(sa);
+        }
+
+        private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
+        {
+            System.Threading.Thread.Sleep(Config.Profile.Delay);
+            var sa = AnimationUtils.LoadAnimation(this.Context, Resource.Animation.translate);
             vistor.StartAnimation(sa);
         }
     }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <dimen name="wel_fontsize">24sp</dimen>
-  <dimen name="time_fontsize">12sp</dimen>
-  <dimen name="copyright_fontsize">9sp</dimen>
+  <dimen name="wel_fontsize">48sp</dimen>
+  <dimen name="time_fontsize">24sp</dimen>
+  <dimen name="copyright_fontsize">12sp</dimen>
   <!--弹出框字体-->
   <dimen name="popwelcome_fontsize">24sp</dimen>
   <dimen name="popname_fontsize">48sp</dimen>

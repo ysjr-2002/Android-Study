@@ -14,6 +14,7 @@ using FaceVisualExt.Code;
 using Android.Graphics;
 using System.Timers;
 using Android.Views.Animations;
+using Android.Util;
 
 namespace FaceVisualExt
 {
@@ -54,6 +55,7 @@ namespace FaceVisualExt
             tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
             tvName = this.FindViewById<TextView>(Resource.Id.tvName);
 
+            Config.ReadProfile();
             ShowDisplay1();
         }
 
@@ -81,7 +83,9 @@ namespace FaceVisualExt
         protected override void OnStart()
         {
             base.OnStart();
-            Config.ReadProfile();
+            //DisplayMetrics dm = new DisplayMetrics();
+            //this.WindowManager.DefaultDisplay.GetMetrics(dm);
+            //Toast.MakeText(this, "Main " + dm.WidthPixels + " " + dm.HeightPixels + " " + dm.DensityDpi, ToastLength.Long).Show();
             Start();
             Emit();
         }
@@ -124,7 +128,40 @@ namespace FaceVisualExt
         //副摄像机
         private void OnRecognizePersonSub(FaceRecognized entity)
         {
-            forbidden = true;
+            if (forbidden)
+                return;
+
+            var url = "";
+            if (entity.person.avatar.StartsWith("http"))
+                url = entity.person.avatar;
+            else
+                url = "http://" + Config.Profile.ServerIp + entity.person.avatar;
+            var name = entity.person.name;
+            var faceImage = Tools.getFaceBitmap(url);
+            subDisplay.ShowFace(name, faceImage);
+            Forbidden();
+        }
+
+        public void Forbidden()
+        {
+            handler.Post(() =>
+            {
+                var lp = vistor.LayoutParameters;
+                lp.Width = POPUP_DIALOG_WIDTH;
+                lp.Height = POPUP_DIALOG_HEIGHT;
+                vistor.LayoutParameters = lp;
+                tv.Text = string.Empty;
+                tvName.Text = "请稍等";
+                ivFace.SetImageResource(Resource.Drawable.no);
+                StartShow();
+            });
+        }
+
+        private void StartShow()
+        {
+            var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+            sa.AnimationEnd += Sa_AnimationEnd;
+            vistor.StartAnimation(sa);
         }
 
         private void ShowFace(string name, Bitmap faceImage)
@@ -167,7 +204,9 @@ namespace FaceVisualExt
         {
             RunOnUiThread(new Action(() =>
             {
-                tvTime.Text = DateTime.Now.ToString("HH:mm:ss");
+                var hms = DateTime.Now.ToString("HH:mm:ss");
+                tvTime.Text = hms;
+                subDisplay?.UpdateTimer(hms);
             }));
         }
 
@@ -191,6 +230,8 @@ namespace FaceVisualExt
                         },
                     };
                     OnRecognizePersonMain(fr);
+                    System.Threading.Thread.Sleep(10000);
+                    OnRecognizePersonSub(fr);
                     System.Threading.Thread.Sleep(10000);
                 }
             });
