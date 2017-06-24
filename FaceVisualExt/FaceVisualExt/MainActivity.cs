@@ -93,7 +93,6 @@ namespace FaceVisualExt
         private async void Start()
         {
             var cfg = Config.Profile;
-
             tvWelcome.Text = cfg.Welcome1;
             Showtime();
             StartTimer();
@@ -138,7 +137,7 @@ namespace FaceVisualExt
                 url = "http://" + Config.Profile.ServerIp + entity.person.avatar;
             var name = entity.person.name;
             var faceImage = Tools.getFaceBitmap(url);
-            subDisplay.ShowFace(name, faceImage);
+            subDisplay?.ShowFace(name, faceImage);
             Forbidden();
         }
 
