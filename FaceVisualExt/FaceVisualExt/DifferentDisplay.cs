@@ -56,9 +56,9 @@ namespace FaceVisualExt
         {
             base.OnStart();
             tvWelcome.Text = Config.Profile.Welcome2;
-            //DisplayMetrics dm = new DisplayMetrics();
-            //this.Window.WindowManager.DefaultDisplay.GetMetrics(dm);
-            //Toast.MakeText(this.Context, "Sub " + dm.WidthPixels + " " + dm.HeightPixels + " " + dm.DensityDpi, ToastLength.Long).Show();
+            DisplayMetrics dm = new DisplayMetrics();
+            this.Window.WindowManager.DefaultDisplay.GetMetrics(dm);
+            Toast.MakeText(this.Context, "Sub display=" + dm.WidthPixels + " " + dm.HeightPixels + " " + dm.DensityDpi, ToastLength.Long).Show();
         }
 
         public void UpdateTimer(string hms)

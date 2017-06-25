@@ -55,7 +55,7 @@ namespace FaceVisualExt
             tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
             tvName = this.FindViewById<TextView>(Resource.Id.tvName);
 
-            Config.ReadProfile();
+            //Config.ReadProfile();
             ShowDisplay1();
         }
 
@@ -83,11 +83,11 @@ namespace FaceVisualExt
         protected override void OnStart()
         {
             base.OnStart();
-            //DisplayMetrics dm = new DisplayMetrics();
-            //this.WindowManager.DefaultDisplay.GetMetrics(dm);
-            //Toast.MakeText(this, "Main " + dm.WidthPixels + " " + dm.HeightPixels + " " + dm.DensityDpi, ToastLength.Long).Show();
+            DisplayMetrics dm = new DisplayMetrics();
+            this.WindowManager.DefaultDisplay.GetMetrics(dm);
+            Toast.MakeText(this, "Main display=" + dm.WidthPixels + " " + dm.HeightPixels + " " + dm.DensityDpi, ToastLength.Long).Show();
             Start();
-            Emit();
+            //Emit();
         }
 
         private async void Start()
@@ -97,9 +97,10 @@ namespace FaceVisualExt
             Showtime();
             StartTimer();
 
-            //socketMain = new HttpSocket(this);
-            //socketMain.SetCallback(OnRecognizePersonMain);
-            //var main = socketMain.Connect(cfg.ServerIp, cfg.CameraMain);
+            socketMain = new HttpSocket(this);
+            socketMain.SetCallback(OnRecognizePersonMain);
+            var main = socketMain.Connect(cfg.ServerIp, cfg.CameraMain);
+            await main;
 
             //socketSub = new HttpSocket(this);
             //socketSub.SetCallback(OnRecognizePersonSub);

@@ -82,11 +82,12 @@ namespace FaceVisualExt
     {
         public Profile()
         {
-            CameraMain = "192.168.1.2";
+            ServerIp = "192.168.1.60";
+            CameraMain = "192.168.1.12";
             CameraSub = "192.168.1.3";
             Delay = 1000;
             Welcome1 = "ª∂”≠π‚¡Ÿ";
-            Welcome2 = "ª∂”≠ƒ˙";
+            Welcome2 = "ª∂”≠‘Ÿ¥Œπ‚¡Ÿ";
         }
 
         public string ServerIp { get; set; }

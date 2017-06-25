@@ -84,7 +84,7 @@ namespace FaceVisualExt
 
         private void Socket_OnOpen(object sender, EventArgs e)
         {
-            Dialog("WebSocket connect ok");
+            //Dialog("WebSocket connect ok");
         }
 
         private void Dialog(string msg)
