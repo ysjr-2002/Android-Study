@@ -55,7 +55,7 @@ namespace FaceVisualExt
             tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
             tvName = this.FindViewById<TextView>(Resource.Id.tvName);
 
-            //Config.ReadProfile();
+            Config.ReadProfile();
             ShowDisplay1();
         }
 

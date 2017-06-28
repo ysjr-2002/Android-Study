@@ -36,26 +36,20 @@ namespace FaceVisualExt
 
         public static void ReadProfile()
         {
-            //var root = Android.OS.Environment.ExternalStorageDirectory.Path;
-            //var dir = System.IO.Path.Combine(root, faceroot);
-            //var filePath = System.IO.Path.Combine(dir, config);
-            //if (System.IO.File.Exists(filePath))
-            //{
-            //    var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
-            //    var array = content.Split(spliter);
-            //    Profile.ServerIp = array[0];
-            //    Profile.CameraMain = array[1];
-            //    Profile.CameraSub = array[2];
-            //    Profile.Welcome1 = array[3];
-            //    Profile.Welcome2 = array[4];
-            //    Profile.Delay = Convert.ToInt32(array[5]);
-            //}
-            Profile.ServerIp = "192.168.1.5";
-            Profile.CameraMain = "192.168.1.6";
-            Profile.CameraSub = "192.168.1.7";
-            Profile.Welcome1 = "欢迎光临";
-            Profile.Welcome2 = "欢迎再次光临";
-            Profile.Delay = 3000;
+            var root = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var dir = System.IO.Path.Combine(root, faceroot);
+            var filePath = System.IO.Path.Combine(dir, config);
+            if (System.IO.File.Exists(filePath))
+            {
+                var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
+                var array = content.Split(spliter);
+                Profile.ServerIp = array[0];
+                Profile.CameraMain = array[1];
+                Profile.CameraSub = array[2];
+                Profile.Welcome1 = array[3];
+                Profile.Welcome2 = array[4];
+                Profile.Delay = Convert.ToInt32(array[5]);
+            }
         }
 
         public static void SaveProfile()
