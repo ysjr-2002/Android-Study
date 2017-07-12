@@ -89,11 +89,12 @@ namespace App1
             {
                 StartActivity(typeof(SubActivity));
                 this.Finish();
+                //OverridePendingTransition(Resource.Animation.fade_in, Resource.Animation.anim_slide_out_left);
             };
 
             button7.Click += delegate
             {
-                StartActivity(typeof(SubActivity));
+                StartActivity(typeof(Sub1Activity));
             };
 
             Console.WriteLine("onCreate " + typeof(MainActivity).FullName);

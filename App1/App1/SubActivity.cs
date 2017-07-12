@@ -20,6 +20,7 @@ namespace App1
         {
             base.OnCreate(savedInstanceState);
             // Create your application here
+            RequestWindowFeature(WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.sub);
 
             var btn1 = FindViewById<Button>(Resource.Id.button1);
