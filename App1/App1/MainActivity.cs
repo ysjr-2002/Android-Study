@@ -10,7 +10,7 @@ using Android.Locations;
 
 namespace App1
 {
-    [Activity(Label = "App1", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "App1", MainLauncher = false, Icon = "@drawable/Icon3")]
     public class MainActivity : Activity, ILocationListener
     {
         protected override void OnCreate(Bundle bundle)

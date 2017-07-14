@@ -79,7 +79,16 @@ namespace App1
 			public const int Icon = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int image = 2130837507;
+			public const int Icon1 = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int Icon2 = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Icon3 = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int image = 2130837510;
 			
 			static Drawable()
 			{
@@ -127,6 +136,9 @@ namespace App1
 			// aapt resource value: 0x7f060008
 			public const int imageView1 = 2131099656;
 			
+			// aapt resource value: 0x7f06000b
+			public const int textView1 = 2131099659;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -148,6 +160,9 @@ namespace App1
 			
 			// aapt resource value: 0x7f030002
 			public const int sub = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Test = 2130903043;
 			
 			static Layout()
 			{
