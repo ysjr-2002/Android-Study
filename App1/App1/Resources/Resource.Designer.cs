@@ -90,6 +90,9 @@ namespace App1
 			// aapt resource value: 0x7f020006
 			public const int image = 2130837510;
 			
+			// aapt resource value: 0x7f020007
+			public const int on = 2130837511;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -103,41 +106,41 @@ namespace App1
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int MyButton = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int MyButton = 2131165184;
 			
-			// aapt resource value: 0x7f060002
-			public const int MyButton1 = 2131099650;
+			// aapt resource value: 0x7f070002
+			public const int MyButton1 = 2131165186;
 			
-			// aapt resource value: 0x7f060003
-			public const int MyButton2 = 2131099651;
+			// aapt resource value: 0x7f070003
+			public const int MyButton2 = 2131165187;
 			
-			// aapt resource value: 0x7f060004
-			public const int MyButton4 = 2131099652;
+			// aapt resource value: 0x7f070004
+			public const int MyButton4 = 2131165188;
 			
-			// aapt resource value: 0x7f060005
-			public const int MyButton5 = 2131099653;
+			// aapt resource value: 0x7f070005
+			public const int MyButton5 = 2131165189;
 			
-			// aapt resource value: 0x7f060006
-			public const int MyButton6 = 2131099654;
+			// aapt resource value: 0x7f070006
+			public const int MyButton6 = 2131165190;
 			
-			// aapt resource value: 0x7f060007
-			public const int MyButton7 = 2131099655;
+			// aapt resource value: 0x7f070007
+			public const int MyButton7 = 2131165191;
 			
-			// aapt resource value: 0x7f060001
-			public const int MyButtonInit = 2131099649;
+			// aapt resource value: 0x7f070001
+			public const int MyButtonInit = 2131165185;
 			
-			// aapt resource value: 0x7f060009
-			public const int button1 = 2131099657;
+			// aapt resource value: 0x7f070009
+			public const int button1 = 2131165193;
 			
-			// aapt resource value: 0x7f06000a
-			public const int button2 = 2131099658;
+			// aapt resource value: 0x7f07000a
+			public const int button2 = 2131165194;
 			
-			// aapt resource value: 0x7f060008
-			public const int imageView1 = 2131099656;
+			// aapt resource value: 0x7f070008
+			public const int imageView1 = 2131165192;
 			
-			// aapt resource value: 0x7f06000b
-			public const int textView1 = 2131099659;
+			// aapt resource value: 0x7f07000b
+			public const int img = 2131165195;
 			
 			static Id()
 			{
@@ -189,6 +192,22 @@ namespace App1
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int testTheme = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

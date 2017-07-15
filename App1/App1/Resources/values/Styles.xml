@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="testTheme" >
+    <!--parent="android:Theme.DeviceDefault.Light"-->
+    <!--<item name="android:background">#00ffffff</item>-->
+    <item name="android:typeface">sans</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowIsTranslucent">true</item>
+  </style>
+</resources>
