@@ -13,7 +13,7 @@ using Android.Util;
 
 namespace App1
 {
-    [Activity(Label = "SubActivity")]
+    [Activity(Label = "SubActivity", MainLauncher = false)]
     public class SubActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -22,9 +22,9 @@ namespace App1
             // Create your application here
             RequestWindowFeature(WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.sub);
-
             var btn1 = FindViewById<Button>(Resource.Id.button1);
             var btn2 = FindViewById<Button>(Resource.Id.button2);
+            var btn3 = FindViewById<Button>(Resource.Id.button3);
             btn1.Click += delegate
             {
                 StartActivity(typeof(MainActivity));
@@ -34,7 +34,14 @@ namespace App1
             {
                 StartActivity(typeof(MainActivity));
             };
-            Console.WriteLine("onCreate " + typeof(SubActivity).FullName);            
+            btn3.Click += delegate
+            {
+                AppPreferences app = new AppPreferences(this);
+                var content = app.getAccessKey();
+                Toast.MakeText(this, content, ToastLength.Short).Show();
+            };
+
+            Console.WriteLine("onCreate " + typeof(SubActivity).FullName);
         }
 
         protected override void OnStart()

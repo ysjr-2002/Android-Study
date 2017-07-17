@@ -94,10 +94,26 @@ namespace App1
 
             button7.Click += delegate
             {
-                StartActivity(typeof(Sub1Activity));
+                Intent intent = new Intent(this, typeof(ResultActivity));
+                StartActivityForResult(intent, 10);
             };
 
             Console.WriteLine("onCreate " + typeof(MainActivity).FullName);
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if(requestCode == 10)
+            {
+            }
+
+            if (resultCode == Result.Ok)
+            {
+                var content = data.GetStringExtra("ysj");
+                Toast.MakeText(this, content, ToastLength.Short).Show();
+            }
         }
 
         protected override void OnStart()

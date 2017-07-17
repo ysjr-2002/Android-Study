@@ -47,5 +47,6 @@
         android:src="@drawable/face_ysj"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="center"
         android:id="@+id/imageView1" />
 </LinearLayout>

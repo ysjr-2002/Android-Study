@@ -8,6 +8,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button1" />
+    <Button
+        android:text="复制文件"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2" />
+    <Button
+        android:text="保存Share Perferences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3" />
+<!--style="@style/button_text"-->
+    <Button
+        android:text="读取Share Perferences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@drawable/red_button"
+        android:id="@+id/button4" />
 <!--android:background="#ff0000"-->
 <!--<TextView
         android:text="Text"
@@ -18,7 +36,7 @@
         android:id="@+id/textView1" />-->
     <ImageView
         android:id="@+id/img"
-        android:background="#ff0000"
+        android:background="#20ff0000"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"

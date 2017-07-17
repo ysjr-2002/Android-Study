@@ -66,6 +66,22 @@ namespace App1
 			}
 		}
 		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int ysj = 2131034112;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -93,6 +109,9 @@ namespace App1
 			// aapt resource value: 0x7f020007
 			public const int on = 2130837511;
 			
+			// aapt resource value: 0x7f020008
+			public const int red_button = 2130837512;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -106,41 +125,50 @@ namespace App1
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070000
-			public const int MyButton = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int MyButton = 2131230720;
 			
-			// aapt resource value: 0x7f070002
-			public const int MyButton1 = 2131165186;
+			// aapt resource value: 0x7f080002
+			public const int MyButton1 = 2131230722;
 			
-			// aapt resource value: 0x7f070003
-			public const int MyButton2 = 2131165187;
+			// aapt resource value: 0x7f080003
+			public const int MyButton2 = 2131230723;
 			
-			// aapt resource value: 0x7f070004
-			public const int MyButton4 = 2131165188;
+			// aapt resource value: 0x7f080004
+			public const int MyButton4 = 2131230724;
 			
-			// aapt resource value: 0x7f070005
-			public const int MyButton5 = 2131165189;
+			// aapt resource value: 0x7f080005
+			public const int MyButton5 = 2131230725;
 			
-			// aapt resource value: 0x7f070006
-			public const int MyButton6 = 2131165190;
+			// aapt resource value: 0x7f080006
+			public const int MyButton6 = 2131230726;
 			
-			// aapt resource value: 0x7f070007
-			public const int MyButton7 = 2131165191;
+			// aapt resource value: 0x7f080007
+			public const int MyButton7 = 2131230727;
 			
-			// aapt resource value: 0x7f070001
-			public const int MyButtonInit = 2131165185;
+			// aapt resource value: 0x7f080001
+			public const int MyButtonInit = 2131230721;
 			
-			// aapt resource value: 0x7f070009
-			public const int button1 = 2131165193;
+			// aapt resource value: 0x7f08000a
+			public const int button1 = 2131230730;
 			
-			// aapt resource value: 0x7f07000a
-			public const int button2 = 2131165194;
+			// aapt resource value: 0x7f08000b
+			public const int button2 = 2131230731;
 			
-			// aapt resource value: 0x7f070008
-			public const int imageView1 = 2131165192;
+			// aapt resource value: 0x7f08000c
+			public const int button3 = 2131230732;
 			
-			// aapt resource value: 0x7f07000b
-			public const int img = 2131165195;
+			// aapt resource value: 0x7f08000d
+			public const int button4 = 2131230733;
+			
+			// aapt resource value: 0x7f080008
+			public const int imageView1 = 2131230728;
+			
+			// aapt resource value: 0x7f08000e
+			public const int img = 2131230734;
+			
+			// aapt resource value: 0x7f080009
+			public const int textview1 = 2131230729;
 			
 			static Id()
 			{
@@ -162,10 +190,13 @@ namespace App1
 			public const int myimage = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int sub = 2130903042;
+			public const int result = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Test = 2130903043;
+			public const int sub = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Test = 2130903044;
 			
 			static Layout()
 			{
@@ -180,11 +211,11 @@ namespace App1
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int ApplicationName = 2131099649;
 			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int Hello = 2131099648;
 			
 			static String()
 			{
@@ -199,8 +230,11 @@ namespace App1
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int testTheme = 2131099648;
+			// aapt resource value: 0x7f070001
+			public const int button_text = 2131165185;
+			
+			// aapt resource value: 0x7f070000
+			public const int testTheme = 2131165184;
 			
 			static Style()
 			{
