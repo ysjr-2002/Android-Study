@@ -18,7 +18,7 @@ using Android.Preferences;
 namespace App1
 {
     //Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen"
-    [Activity(Label = "TestActivity", MainLauncher = true)]
+    [Activity(Label = "TestActivity", MainLauncher = false)]
     public class TestActivity : Activity
     {
         TextView abc;

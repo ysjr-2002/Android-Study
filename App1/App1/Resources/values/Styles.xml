@@ -22,4 +22,8 @@
     <item name="android:shadowDy" >1</item>
     <item name="android:shadowRadius" >2</item>
   </style>
+
+  <style name="ysjTheme">
+    <item name="android:background">#fff</item>
+  </style>
 </resources>

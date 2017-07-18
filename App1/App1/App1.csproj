@@ -59,6 +59,7 @@
     <Compile Include="Sub1Activity.cs" />
     <Compile Include="SubActivity.cs" />
     <Compile Include="TestActivity.cs" />
+    <Compile Include="YsjActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -74,6 +75,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\result.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ysj.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

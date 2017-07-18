@@ -198,6 +198,9 @@ namespace App1
 			// aapt resource value: 0x7f030004
 			public const int Test = 2130903044;
 			
+			// aapt resource value: 0x7f030005
+			public const int ysj = 2130903045;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -235,6 +238,9 @@ namespace App1
 			
 			// aapt resource value: 0x7f070000
 			public const int testTheme = 2131165184;
+			
+			// aapt resource value: 0x7f070002
+			public const int ysjTheme = 2131165186;
 			
 			static Style()
 			{
