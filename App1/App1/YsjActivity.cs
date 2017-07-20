@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace App1
 {
-    [Activity(Label = "YsjActivity", MainLauncher = true, Theme = "@style/ysjTheme")]
+    [Activity(Label = "YsjActivity", MainLauncher = false, Theme = "@style/ysjTheme")]
     public class YsjActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

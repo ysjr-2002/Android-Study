@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AppPreferences.cs" />
     <Compile Include="Boot.cs" />
+    <Compile Include="CustomGestureDetector.cs" />
     <Compile Include="ImageViewPlus.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Sub1Activity.cs" />
     <Compile Include="SubActivity.cs" />
     <Compile Include="TestActivity.cs" />
+    <Compile Include="TestViewFlipperActivity.cs" />
     <Compile Include="YsjActivity.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +80,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ysj.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\flipper.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -143,6 +148,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values-v17\dimens.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\son2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\son1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\son3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_in_right.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_out_right.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
