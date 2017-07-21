@@ -26,4 +26,8 @@
   <style name="ysjTheme">
     <item name="android:background">#fff</item>
   </style>
+
+  <style name="viewFilpperTheme"  parnet="@android:style/Theme.Material.Light.NoActionBar.Fullscreen">
+    <item name="android:windowIsTranslucent">true</item>
+  </style>
 </resources>

@@ -260,6 +260,9 @@ namespace App1
 			// aapt resource value: 0x7f070000
 			public const int testTheme = 2131165184;
 			
+			// aapt resource value: 0x7f070003
+			public const int viewFilpperTheme = 2131165187;
+			
 			// aapt resource value: 0x7f070002
 			public const int ysjTheme = 2131165186;
 			
