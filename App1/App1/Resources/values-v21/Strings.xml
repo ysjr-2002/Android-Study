@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="intro_message">本程序用于演示侵入模式(Immersive mode)实现和隐藏状态栏和导航栏</string>
+</resources>

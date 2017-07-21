@@ -140,50 +140,56 @@ namespace App1
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080001
-			public const int MyButton = 2131230721;
-			
-			// aapt resource value: 0x7f080003
-			public const int MyButton1 = 2131230723;
-			
 			// aapt resource value: 0x7f080004
-			public const int MyButton2 = 2131230724;
-			
-			// aapt resource value: 0x7f080005
-			public const int MyButton4 = 2131230725;
+			public const int MyButton = 2131230724;
 			
 			// aapt resource value: 0x7f080006
-			public const int MyButton5 = 2131230726;
+			public const int MyButton1 = 2131230726;
 			
 			// aapt resource value: 0x7f080007
-			public const int MyButton6 = 2131230727;
+			public const int MyButton2 = 2131230727;
 			
 			// aapt resource value: 0x7f080008
-			public const int MyButton7 = 2131230728;
-			
-			// aapt resource value: 0x7f080002
-			public const int MyButtonInit = 2131230722;
-			
-			// aapt resource value: 0x7f08000b
-			public const int button1 = 2131230731;
-			
-			// aapt resource value: 0x7f08000c
-			public const int button2 = 2131230732;
-			
-			// aapt resource value: 0x7f08000d
-			public const int button3 = 2131230733;
-			
-			// aapt resource value: 0x7f08000e
-			public const int button4 = 2131230734;
+			public const int MyButton4 = 2131230728;
 			
 			// aapt resource value: 0x7f080009
-			public const int imageView1 = 2131230729;
-			
-			// aapt resource value: 0x7f08000f
-			public const int img = 2131230735;
+			public const int MyButton5 = 2131230729;
 			
 			// aapt resource value: 0x7f08000a
-			public const int textview1 = 2131230730;
+			public const int MyButton6 = 2131230730;
+			
+			// aapt resource value: 0x7f08000b
+			public const int MyButton7 = 2131230731;
+			
+			// aapt resource value: 0x7f080005
+			public const int MyButtonInit = 2131230725;
+			
+			// aapt resource value: 0x7f080002
+			public const int button1 = 2131230722;
+			
+			// aapt resource value: 0x7f08000e
+			public const int button2 = 2131230734;
+			
+			// aapt resource value: 0x7f08000f
+			public const int button3 = 2131230735;
+			
+			// aapt resource value: 0x7f080010
+			public const int button4 = 2131230736;
+			
+			// aapt resource value: 0x7f08000c
+			public const int imageView1 = 2131230732;
+			
+			// aapt resource value: 0x7f080011
+			public const int img = 2131230737;
+			
+			// aapt resource value: 0x7f080001
+			public const int textView1 = 2131230721;
+			
+			// aapt resource value: 0x7f08000d
+			public const int textview1 = 2131230733;
+			
+			// aapt resource value: 0x7f080003
+			public const int view1 = 2131230723;
 			
 			// aapt resource value: 0x7f080000
 			public const int viewFlipper1 = 2131230720;
@@ -205,22 +211,25 @@ namespace App1
 			public const int flipper = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int immersive = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int myimage = 2130903042;
+			public const int Main = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int result = 2130903043;
+			public const int myimage = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int sub = 2130903044;
+			public const int result = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int Test = 2130903045;
+			public const int sub = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int ysj = 2130903046;
+			public const int Test = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int ysj = 2130903047;
 			
 			static Layout()
 			{
@@ -240,6 +249,9 @@ namespace App1
 			
 			// aapt resource value: 0x7f060000
 			public const int Hello = 2131099648;
+			
+			// aapt resource value: 0x7f060002
+			public const int intro_message = 2131099650;
 			
 			static String()
 			{

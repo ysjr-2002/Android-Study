@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace App1
 {
-    [Activity(Label = "TestViewFlipperActivity", MainLauncher = true, Theme = "@style/viewFilpperTheme")]
+    [Activity(Label = "TestViewFlipperActivity", MainLauncher = false, Theme = "@style/viewFilpperTheme")]
     public class TestViewFlipperActivity : Activity
     {
         int[] resources = new int[3] { Resource.Drawable.son1, Resource.Drawable.son2, Resource.Drawable.son3 };
