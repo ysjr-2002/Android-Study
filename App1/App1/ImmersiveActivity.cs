@@ -12,19 +12,17 @@ using Android.Widget;
 
 namespace App1
 {
-    [Activity(Label = "ImmersiveActivity", MainLauncher = true, Theme = "@android:style/Theme.Material.Light")]
+    [Activity(Label = "ImmersiveActivity", MainLauncher = false, Theme = "@android:style/Theme.Material.Light")]
     public class ImmersiveActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             // Create your application here
-            this.SetContentView(Resource.Layout.immersive);
-
-            var btn = FindViewById<Button>(Resource.Id.button1);
-            btn.Click += Btn_Click;
-
-            this.Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
+            //this.SetContentView(Resource.Layout.immersive);
+            //var btn = FindViewById<Button>(Resource.Id.button1);
+            //btn.Click += Btn_Click;
+            //this.Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
         }
 
         private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)

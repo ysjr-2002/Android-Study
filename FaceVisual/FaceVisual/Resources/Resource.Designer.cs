@@ -118,9 +118,6 @@ namespace FaceVisual
 			// aapt resource value: 0x7f020005
 			public const int shape = 2130837509;
 			
-			// aapt resource value: 0x7f020006
-			public const int ysj = 2130837510;
-			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -134,80 +131,83 @@ namespace FaceVisual
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090008
-			public const int alter = 2131296264;
+			// aapt resource value: 0x7f090009
+			public const int alter = 2131296265;
 			
 			// aapt resource value: 0x7f090000
 			public const int backTextView = 2131296256;
 			
-			// aapt resource value: 0x7f090015
-			public const int btnSave = 2131296277;
-			
-			// aapt resource value: 0x7f09000e
-			public const int etCameraMain = 2131296270;
-			
-			// aapt resource value: 0x7f090010
-			public const int etCamerasub = 2131296272;
-			
-			// aapt resource value: 0x7f090009
-			public const int faceImage = 2131296265;
-			
-			// aapt resource value: 0x7f09000c
-			public const int include = 2131296268;
-			
-			// aapt resource value: 0x7f090018
-			public const int item1 = 2131296280;
-			
-			// aapt resource value: 0x7f09000d
-			public const int koalaEditText = 2131296269;
-			
-			// aapt resource value: 0x7f090002
-			public const int linearLayout1 = 2131296258;
+			// aapt resource value: 0x7f090017
+			public const int btnSave = 2131296279;
 			
 			// aapt resource value: 0x7f090016
-			public const int personFace = 2131296278;
+			public const int btnSelect = 2131296278;
 			
-			// aapt resource value: 0x7f090017
-			public const int personName = 2131296279;
+			// aapt resource value: 0x7f09000f
+			public const int etCameraMain = 2131296271;
 			
-			// aapt resource value: 0x7f090007
-			public const int rl = 2131296263;
+			// aapt resource value: 0x7f090011
+			public const int etCamerasub = 2131296273;
+			
+			// aapt resource value: 0x7f09000a
+			public const int faceImage = 2131296266;
+			
+			// aapt resource value: 0x7f09000d
+			public const int include = 2131296269;
+			
+			// aapt resource value: 0x7f090019
+			public const int item1 = 2131296281;
+			
+			// aapt resource value: 0x7f09000e
+			public const int koalaEditText = 2131296270;
 			
 			// aapt resource value: 0x7f090003
-			public const int settingTextView = 2131296259;
+			public const int linearLayout1 = 2131296259;
+			
+			// aapt resource value: 0x7f090002
+			public const int mainroot = 2131296258;
+			
+			// aapt resource value: 0x7f090008
+			public const int rl = 2131296264;
+			
+			// aapt resource value: 0x7f090018
+			public const int root = 2131296280;
+			
+			// aapt resource value: 0x7f090004
+			public const int settingTextView = 2131296260;
 			
 			// aapt resource value: 0x7f090001
 			public const int textView1 = 2131296257;
 			
-			// aapt resource value: 0x7f090012
-			public const int textView2 = 2131296274;
+			// aapt resource value: 0x7f090013
+			public const int textView2 = 2131296275;
+			
+			// aapt resource value: 0x7f090007
+			public const int textView3 = 2131296263;
+			
+			// aapt resource value: 0x7f090010
+			public const int textViewx = 2131296272;
+			
+			// aapt resource value: 0x7f090015
+			public const int tvDelay = 2131296277;
+			
+			// aapt resource value: 0x7f09000c
+			public const int tvName = 2131296268;
 			
 			// aapt resource value: 0x7f090006
-			public const int textView3 = 2131296262;
-			
-			// aapt resource value: 0x7f09000f
-			public const int textViewx = 2131296271;
-			
-			// aapt resource value: 0x7f090014
-			public const int tvDelay = 2131296276;
+			public const int tvTime = 2131296262;
 			
 			// aapt resource value: 0x7f09000b
-			public const int tvName = 2131296267;
+			public const int tvWecomeEmp = 2131296267;
 			
 			// aapt resource value: 0x7f090005
-			public const int tvTime = 2131296261;
+			public const int tvWelcome = 2131296261;
 			
-			// aapt resource value: 0x7f09000a
-			public const int tvWecomeEmp = 2131296266;
+			// aapt resource value: 0x7f090012
+			public const int welcomeEditText1 = 2131296274;
 			
-			// aapt resource value: 0x7f090004
-			public const int tvWelcome = 2131296260;
-			
-			// aapt resource value: 0x7f090011
-			public const int welcomeEditText1 = 2131296273;
-			
-			// aapt resource value: 0x7f090013
-			public const int welcomeEditText2 = 2131296275;
+			// aapt resource value: 0x7f090014
+			public const int welcomeEditText2 = 2131296276;
 			
 			static Id()
 			{
@@ -232,10 +232,7 @@ namespace FaceVisual
 			public const int Settings = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int toast_image = 2130903043;
-			
-			// aapt resource value: 0x7f030004
-			public const int visitor = 2130903044;
+			public const int Splash = 2130903043;
 			
 			static Layout()
 			{

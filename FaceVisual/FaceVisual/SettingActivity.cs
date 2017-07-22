@@ -29,6 +29,8 @@ namespace FaceVisual
             var welcome1 = this.FindViewById<EditText>(Resource.Id.welcomeEditText1);
             var welcome2 = this.FindViewById<EditText>(Resource.Id.welcomeEditText2);
             var delay = this.FindViewById<EditText>(Resource.Id.tvDelay);
+            var btnSelect = this.FindViewById<Button>(Resource.Id.btnSelect);
+            btnSelect.Click += BtnSelect_Click;
 
             var cfg = Config.Profile;
             koala.Text = cfg.ServerIp;
@@ -76,6 +78,25 @@ namespace FaceVisual
                 StartActivity(typeof(FaceMainActivity));
                 this.Finish();
             };
+        }
+
+        private void BtnSelect_Click(object sender, EventArgs e)
+        {
+            var imageIntent = new Intent();
+            imageIntent.SetType("image/*");
+            imageIntent.SetAction(Intent.ActionGetContent);
+            StartActivityForResult(
+                Intent.CreateChooser(imageIntent, "Select photo"), 0);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Result.Ok)
+            {
+                Config.Profile.BgUri = data.Data.ToString();
+            }
         }
 
         private int getNumber(string s)

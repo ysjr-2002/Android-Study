@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Threading;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 
 namespace FaceVisual
 {
@@ -19,15 +21,22 @@ namespace FaceVisual
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            System.Threading.Tasks.Task.Factory.StartNew(new Action(() =>
+            this.SetContentView(Resource.Layout.Splash);
+
+            //var path = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "lzl.jpg");
+            //var ll = FindViewById<LinearLayout>(Resource.Id.root);
+            //BitmapDrawable bd = new BitmapDrawable(path);
+            //ll.Background = bd;
+            //Config.ReadProfile();
+         
+
+            Handler handler = new Handler();
+            handler.PostDelayed(() =>
             {
-                this.RunOnUiThread(new Action(() =>
-                {
-                    Intent intent = new Intent(this, typeof(FaceMainActivity));
-                    StartActivity(intent);
-                    Finish();
-                }));
-            }));
+                Intent intent = new Intent(this, typeof(FaceMainActivity));
+                StartActivity(intent);
+                Finish();
+            }, 2000);
         }
     }
 }

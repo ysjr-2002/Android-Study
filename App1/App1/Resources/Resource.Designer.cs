@@ -98,34 +98,49 @@ namespace App1
 			public const int face_ysj = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int Icon = 2130837506;
+			public const int faceleft = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int Icon1 = 2130837507;
+			public const int Icon = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int Icon2 = 2130837508;
+			public const int Icon1 = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int Icon3 = 2130837509;
+			public const int Icon2 = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int image = 2130837510;
+			public const int Icon3 = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int on = 2130837511;
+			public const int image = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int red_button = 2130837512;
+			public const int imageborder = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int son1 = 2130837513;
+			public const int on = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int son2 = 2130837514;
+			public const int qq1 = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int son3 = 2130837515;
+			public const int qq2 = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int red_button = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int son1 = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int son2 = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int son3 = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int two = 2130837520;
 			
 			static Drawable()
 			{
@@ -167,20 +182,26 @@ namespace App1
 			// aapt resource value: 0x7f080002
 			public const int button1 = 2131230722;
 			
-			// aapt resource value: 0x7f08000e
-			public const int button2 = 2131230734;
-			
-			// aapt resource value: 0x7f08000f
-			public const int button3 = 2131230735;
-			
 			// aapt resource value: 0x7f080010
-			public const int button4 = 2131230736;
+			public const int button2 = 2131230736;
+			
+			// aapt resource value: 0x7f080011
+			public const int button3 = 2131230737;
+			
+			// aapt resource value: 0x7f080012
+			public const int button4 = 2131230738;
 			
 			// aapt resource value: 0x7f08000c
 			public const int imageView1 = 2131230732;
 			
-			// aapt resource value: 0x7f080011
-			public const int img = 2131230737;
+			// aapt resource value: 0x7f080013
+			public const int img = 2131230739;
+			
+			// aapt resource value: 0x7f08000f
+			public const int path = 2131230735;
+			
+			// aapt resource value: 0x7f08000e
+			public const int size = 2131230734;
 			
 			// aapt resource value: 0x7f080001
 			public const int textView1 = 2131230721;
@@ -223,13 +244,16 @@ namespace App1
 			public const int result = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int sub = 2130903045;
+			public const int study1 = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int Test = 2130903046;
+			public const int sub = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int ysj = 2130903047;
+			public const int Test = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int ysj = 2130903048;
 			
 			static Layout()
 			{
@@ -266,8 +290,14 @@ namespace App1
 		public partial class Style
 		{
 			
+			// aapt resource value: 0x7f070005
+			public const int Theme_Custom = 2131165189;
+			
 			// aapt resource value: 0x7f070001
 			public const int button_text = 2131165185;
+			
+			// aapt resource value: 0x7f070004
+			public const int et = 2131165188;
 			
 			// aapt resource value: 0x7f070000
 			public const int testTheme = 2131165184;

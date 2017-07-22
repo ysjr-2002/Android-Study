@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
@@ -43,6 +44,7 @@ namespace FaceVisual
             base.OnCreate(savedInstanceState);
 
             Config.ReadProfile();
+
             if (string.IsNullOrEmpty(Config.Profile.ServerIp))
             {
                 StartActivity(typeof(SettingActivity));
@@ -50,6 +52,9 @@ namespace FaceVisual
                 return;
             }
             SetContentView(Resource.Layout.FaceMain);
+
+            SetBackground();
+
             tvWelcome = FindViewById<TextView>(Resource.Id.tvWelcome);
             tvTime = FindViewById<TextView>(Resource.Id.tvTime);
             vistor = this.FindViewById<LinearLayout>(Resource.Id.alter);
@@ -75,6 +80,23 @@ namespace FaceVisual
                 //sa.AnimationEnd += Sa_AnimationEnd;
                 //vistor.StartAnimation(sa);
             };
+        }
+
+        private void SetBackground()
+        {
+            if (string.IsNullOrEmpty(Config.Profile.BgUri) == true)
+                return;
+
+            var root = FindViewById<LinearLayout>(Resource.Id.mainroot);
+            //var temp = BitmapFactory.DecodeFile(Config.Profile.BgUri);
+            //BitmapDrawable bd = new BitmapDrawable();
+            //root.Background = bd;
+            //bd.Dispose();
+
+            ImageView temp = new ImageView(this);
+            temp.SetImageURI(Android.Net.Uri.Parse(Config.Profile.BgUri));
+
+            var draw = temp.Drawable;
         }
 
         private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)

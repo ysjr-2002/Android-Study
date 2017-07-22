@@ -30,4 +30,10 @@
   <style name="viewFilpperTheme"  parnet="@android:style/Theme.Material.Light.NoActionBar.Fullscreen">
     <item name="android:windowIsTranslucent">true</item>
   </style>
+
+  <style name="et">
+    <item name="android:textSize">36sp</item>
+    <item name="android:layout_margin">10dp</item>
+    <item name="android:background">@drawable/border</item>
+  </style>
 </resources>

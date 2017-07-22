@@ -49,6 +49,7 @@ namespace FaceVisual
                 Profile.Welcome1 = array[3];
                 Profile.Welcome2 = array[4];
                 Profile.Delay = Convert.ToInt32(array[5]);
+                Profile.BgUri = array[6];
             }
         }
 
@@ -62,11 +63,13 @@ namespace FaceVisual
 
             var filePath = System.IO.Path.Combine(dir, config);
             var content = string.Concat(Profile.ServerIp, spliter,
-                Profile.CameraMain, spliter,
+                 Profile.CameraMain, spliter,
                  Profile.CameraSub, spliter,
-                  Profile.Welcome1, spliter,
-                  Profile.Welcome2, spliter,
-                Profile.Delay);
+                 Profile.Welcome1, spliter,
+                 Profile.Welcome2, spliter,
+                    Profile.Delay, spliter,
+                    Profile.BgUri
+                    );
 
             System.IO.File.WriteAllText(filePath, content, Encoding.UTF8);
         }
@@ -89,5 +92,6 @@ namespace FaceVisual
         public string Welcome1 { get; set; }
         public string Welcome2 { get; set; }
         public int Delay { get; set; }
+        public string BgUri { get; set; }
     }
 }
