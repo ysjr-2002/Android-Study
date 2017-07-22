@@ -95,6 +95,7 @@ namespace FaceVisual
 
             ImageView temp = new ImageView(this);
             temp.SetImageURI(Android.Net.Uri.Parse(Config.Profile.BgUri));
+            root.AddView(temp);
 
             var draw = temp.Drawable;
         }
