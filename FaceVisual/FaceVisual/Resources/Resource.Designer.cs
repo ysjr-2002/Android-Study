@@ -138,7 +138,10 @@ namespace FaceVisual
 			public const int backTextView = 2131296256;
 			
 			// aapt resource value: 0x7f090017
-			public const int btnSave = 2131296279;
+			public const int btnDefault = 2131296279;
+			
+			// aapt resource value: 0x7f090018
+			public const int btnSave = 2131296280;
 			
 			// aapt resource value: 0x7f090016
 			public const int btnSelect = 2131296278;
@@ -155,8 +158,8 @@ namespace FaceVisual
 			// aapt resource value: 0x7f09000d
 			public const int include = 2131296269;
 			
-			// aapt resource value: 0x7f090019
-			public const int item1 = 2131296281;
+			// aapt resource value: 0x7f09001a
+			public const int item1 = 2131296282;
 			
 			// aapt resource value: 0x7f09000e
 			public const int koalaEditText = 2131296270;
@@ -170,8 +173,8 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090008
 			public const int rl = 2131296264;
 			
-			// aapt resource value: 0x7f090018
-			public const int root = 2131296280;
+			// aapt resource value: 0x7f090019
+			public const int root = 2131296281;
 			
 			// aapt resource value: 0x7f090004
 			public const int settingTextView = 2131296260;
@@ -287,6 +290,9 @@ namespace FaceVisual
 			
 			// aapt resource value: 0x7f070003
 			public const int settingEditText = 2131165187;
+			
+			// aapt resource value: 0x7f070004
+			public const int splashTheme = 2131165188;
 			
 			// aapt resource value: 0x7f070000
 			public const int ysj = 2131165184;

@@ -20,7 +20,7 @@ using static Android.Animation.Animator;
 
 namespace FaceVisual
 {
-    [Activity(Label = "@string/ApplicationName", MainLauncher = false, Icon = "@drawable/Icon")]
+    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/Icon")]
     public class FaceMainActivity : RootActivity
     {
         private System.Timers.Timer timer = null;
@@ -88,16 +88,9 @@ namespace FaceVisual
                 return;
 
             var root = FindViewById<LinearLayout>(Resource.Id.mainroot);
-            //var temp = BitmapFactory.DecodeFile(Config.Profile.BgUri);
-            //BitmapDrawable bd = new BitmapDrawable();
-            //root.Background = bd;
-            //bd.Dispose();
-
-            ImageView temp = new ImageView(this);
-            temp.SetImageURI(Android.Net.Uri.Parse(Config.Profile.BgUri));
-            root.AddView(temp);
-
-            var draw = temp.Drawable;
+            BitmapDrawable bd = new BitmapDrawable(Config.Profile.BgUri);
+            root.Background = bd;
+            bd.Dispose();
         }
 
         private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
@@ -121,7 +114,7 @@ namespace FaceVisual
             float density = metric.Density;  // √‹∂»£®0.75 / 1.0 / 1.5£©
             int densityDpi = (int)metric.DensityDpi;  // √‹∂»DPI£®120 / 160 / 240£©
 
-            //Toast.MakeText(this, width + " " + height + " " + density + " " + densityDpi, ToastLength.Long).Show();
+            Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
             Start();
         }
 

@@ -15,20 +15,13 @@ using Android.Graphics.Drawables;
 
 namespace FaceVisual
 {
-    [Activity(Label = "@string/ApplicationName", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class SplashActivity : RootActivity
+    [Activity(Label = "@string/ApplicationName", Theme = "@style/splashTheme", MainLauncher = true)]
+    public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.Splash);
-
-            //var path = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "lzl.jpg");
-            //var ll = FindViewById<LinearLayout>(Resource.Id.root);
-            //BitmapDrawable bd = new BitmapDrawable(path);
-            //ll.Background = bd;
-            //Config.ReadProfile();
-         
 
             Handler handler = new Handler();
             handler.PostDelayed(() =>
@@ -36,7 +29,7 @@ namespace FaceVisual
                 Intent intent = new Intent(this, typeof(FaceMainActivity));
                 StartActivity(intent);
                 Finish();
-            }, 2000);
+            }, 1000);
         }
     }
 }

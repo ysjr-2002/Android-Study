@@ -1,6 +1,8 @@
 using Android.App;
 using Android.Content;
+using Android.Database;
 using Android.OS;
+using Android.Provider;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
@@ -30,7 +32,9 @@ namespace FaceVisual
             var welcome2 = this.FindViewById<EditText>(Resource.Id.welcomeEditText2);
             var delay = this.FindViewById<EditText>(Resource.Id.tvDelay);
             var btnSelect = this.FindViewById<Button>(Resource.Id.btnSelect);
+            var btnDefault = this.FindViewById<Button>(Resource.Id.btnDefault);
             btnSelect.Click += BtnSelect_Click;
+            btnDefault.Click += BtnDefault_Click;
 
             var cfg = Config.Profile;
             koala.Text = cfg.ServerIp;
@@ -80,13 +84,18 @@ namespace FaceVisual
             };
         }
 
+        private void BtnDefault_Click(object sender, EventArgs e)
+        {
+            Config.Profile.BgUri = string.Empty;
+            Toast.MakeText(this, "…Ë÷√≥…π¶", ToastLength.Short).Show();
+        }
+
         private void BtnSelect_Click(object sender, EventArgs e)
         {
             var imageIntent = new Intent();
             imageIntent.SetType("image/*");
             imageIntent.SetAction(Intent.ActionGetContent);
-            StartActivityForResult(
-                Intent.CreateChooser(imageIntent, "Select photo"), 0);
+            StartActivityForResult(Intent.CreateChooser(imageIntent, "photo"), 0);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -95,8 +104,27 @@ namespace FaceVisual
 
             if (resultCode == Result.Ok)
             {
-                Config.Profile.BgUri = data.Data.ToString();
+                var imagePath = GetPathToImage(data.Data);
+                Config.Profile.BgUri = imagePath;
             }
+        }
+
+        private string GetPathToImage(Android.Net.Uri uri)
+        {
+            ICursor cursor = this.ContentResolver.Query(uri, null, null, null, null);
+            cursor.MoveToFirst();
+            string document_id = cursor.GetString(0);
+            document_id = document_id.Split(':')[1];
+            cursor.Close();
+
+            cursor = ContentResolver.Query(
+            Android.Provider.MediaStore.Images.Media.ExternalContentUri,
+            null, MediaStore.Images.Media.InterfaceConsts.Id + " = ? ", new String[] { document_id }, null);
+            cursor.MoveToFirst();
+            string path = cursor.GetString(cursor.GetColumnIndex(MediaStore.Images.Media.InterfaceConsts.Data));
+            cursor.Close();
+
+            return path;
         }
 
         private int getNumber(string s)

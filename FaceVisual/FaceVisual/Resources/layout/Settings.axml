@@ -135,12 +135,18 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
+            android:layout_gravity="center"
             android:gravity="right" />
         <Button
             android:id="@+id/btnSelect"
             android:layout_width="wrap_content"
             android:text="选择..."
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnDefault"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="默认"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <Button

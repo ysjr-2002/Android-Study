@@ -12,6 +12,9 @@ using Android.Widget;
 using Android.Graphics;
 using System.Threading.Tasks;
 using Android.Content.Res;
+using Android.Database;
+using Android.Provider;
+using Android.Graphics.Drawables;
 
 namespace App1
 {
@@ -42,7 +45,7 @@ namespace App1
             //Bitmap bitmapToDisplay = await LoadScaledDownBitmapForDisplayAsync(Resources, options, 100, 100);
             //iv.SetImageBitmap(bitmapToDisplay);
 
-            iv.SetImageURI(Android.Net.Uri.Parse("content://media/external/images/media/756"));
+            //iv.SetImageURI(Android.Net.Uri.Parse("content://media/external/images/media/756"));
 
             var btn = FindViewById<Button>(Resource.Id.path);
             btn.Click += Btn_Click;
@@ -63,8 +66,34 @@ namespace App1
             if (resultCode == Result.Ok)
             {
                 var temp = data;
-                iv.SetImageURI(data.Data);
+                //iv.SetImageURI(data.Data);
+
+                var pickedImage = data.Data;
+
+
+                BitmapDrawable bd = new BitmapDrawable(pickedImage.ToString());
+                iv.Background = bd;
+                // Let's read picked image path using content resolver
+                var imagePath = GetPathToImage(data.Data);
             }
+        }
+
+        private string GetPathToImage(Android.Net.Uri uri)
+        {
+            ICursor cursor = this.ContentResolver.Query(uri, null, null, null, null);
+            cursor.MoveToFirst();
+            string document_id = cursor.GetString(0);
+            document_id = document_id.Split(':')[1];
+            cursor.Close();
+
+            cursor = ContentResolver.Query(
+            Android.Provider.MediaStore.Images.Media.ExternalContentUri,
+            null, MediaStore.Images.Media.InterfaceConsts.Id + " = ? ", new String[] { document_id }, null);
+            cursor.MoveToFirst();
+            string path = cursor.GetString(cursor.GetColumnIndex(MediaStore.Images.Media.InterfaceConsts.Data));
+            cursor.Close();
+
+            return path;
         }
 
         public async Task<Bitmap> LoadScaledDownBitmapForDisplayAsync(Resources res, BitmapFactory.Options options, int reqWidth, int reqHeight)
