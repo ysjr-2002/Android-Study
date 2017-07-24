@@ -60,8 +60,14 @@ namespace AppX45
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int abc = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int abc = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int about = 2131165185;
+			
+			// aapt resource value: 0x7f070002
+			public const int exit = 2131165186;
 			
 			static Id()
 			{
@@ -85,6 +91,22 @@ namespace AppX45
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int menu1 = 2131099648;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}

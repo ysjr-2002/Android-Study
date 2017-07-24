@@ -49,7 +49,8 @@ namespace FaceVisual
                 Profile.Welcome1 = array[3];
                 Profile.Welcome2 = array[4];
                 Profile.Delay = Convert.ToInt32(array[5]);
-                Profile.BgUri = array[6];
+                if (array.Length > 6)
+                    Profile.BgUri = array[6];
             }
         }
 
