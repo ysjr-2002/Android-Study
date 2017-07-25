@@ -104,8 +104,15 @@ namespace FaceVisual
 
             if (resultCode == Result.Ok)
             {
-                var imagePath = GetPathToImage(data.Data);
-                Config.Profile.BgUri = imagePath;
+                if (data.Data.ToString().StartsWith("content"))
+                {
+                    var imagePath = GetPathToImage(data.Data);
+                    Config.Profile.BgUri = imagePath;
+                }
+                else
+                {
+                    Config.Profile.BgUri = data.Data.Path;
+                }
             }
         }
 

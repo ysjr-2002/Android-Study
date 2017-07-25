@@ -44,13 +44,6 @@ namespace FaceVisual
             base.OnCreate(savedInstanceState);
 
             Config.ReadProfile();
-
-            if (string.IsNullOrEmpty(Config.Profile.ServerIp))
-            {
-                StartActivity(typeof(SettingActivity));
-                this.Finish();
-                return;
-            }
             SetContentView(Resource.Layout.FaceMain);
 
             SetBackground();
@@ -158,18 +151,6 @@ namespace FaceVisual
             forbidden = true;
             RunOnUiThread(() =>
             {
-                //var view = LinearLayout.Inflate(this, Resource.Layout.no, null);
-                //var builder = new AlertDialog.Builder(this);
-                //builder.SetView(view);
-                //var dialog = builder.Create();
-                //dialog.Show();
-                //Task.Factory.StartNew(() =>
-                //{
-                //    Thread.Sleep(Config.Profile.Delay);
-                //    dialog.Dismiss();
-                //    forbidden = false;
-                //});
-
                 var lp = vistor.LayoutParameters;
                 lp.Width = p_width;
                 lp.Height = p_height;
@@ -188,27 +169,6 @@ namespace FaceVisual
         {
             RunOnUiThread(() =>
             {
-                #region ¾É·½Ê½
-                //var view = LinearLayout.Inflate(this, Resource.Layout.visitor, null);
-                //var ivFace = view.FindViewById<ImageView>(Resource.Id.faceImage);
-                //var tv = view.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
-                //var tvName = view.FindViewById<TextView>(Resource.Id.tvName);
-                //tvName.Text = name;
-                //tv.Text = Config.Profile.Welcome2;
-                //ivFace.SetImageBitmap(faceImage);
-                //faceImage.Dispose();
-                //var builder = new AlertDialog.Builder(this);
-                //builder.SetView(view);
-                //var dialog = builder.Create();
-                //dialog.Show();
-                //Task.Factory.StartNew(() =>
-                //{
-                //    Thread.Sleep(stayInerval);
-                //    faceImage?.Dispose();
-                //    dialog.Dismiss();
-                //}); 
-                #endregion
-
                 var lp = vistor.LayoutParameters;
                 lp.Width = p_width;
                 lp.Height = p_height;
@@ -218,6 +178,7 @@ namespace FaceVisual
                 tv.Text = Config.Profile.Welcome2;
                 ivFace.SetImageBitmap(faceImage);
                 faceImage.Dispose();
+                GC.Collect();
                 var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
                 sa.AnimationEnd += Sa_AnimationEnd;
                 vistor.StartAnimation(sa);

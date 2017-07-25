@@ -288,6 +288,9 @@ namespace FaceVisual
 			// aapt resource value: 0x7f070002
 			public const int CustomTitleStyle = 2131165186;
 			
+			// aapt resource value: 0x7f070005
+			public const int leftTextView = 2131165189;
+			
 			// aapt resource value: 0x7f070003
 			public const int settingEditText = 2131165187;
 			

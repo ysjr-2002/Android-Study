@@ -10,15 +10,11 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="12dp">
         <TextView
             android:text="设备:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
             android:id="@+id/textView1"
-            android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
-            android:gravity="center|right" />
+            style="@style/leftTextView" />
         <EditText
             android:inputType="text"
             android:hint="请输入设备IP"
@@ -28,17 +24,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="主摄像机:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
             android:id="@+id/textView1"
-            android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
-            android:gravity="right|center" />
+            style="@style/leftTextView" />
         <EditText
             android:inputType="text"
             android:hint="请输入主摄像机IP"
@@ -48,17 +40,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="副摄像机:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
             android:id="@+id/textViewx"
-            android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
-            android:gravity="right|center" />
+            style="@style/leftTextView" />
         <EditText
             android:inputType="text"
             android:hint="请输入副摄像机IP"
@@ -68,17 +56,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="欢迎一:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1"
-            android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
-            android:gravity="right|center" />
+            style="@style/leftTextView"
+            android:id="@+id/textView1" />
         <EditText
             android:inputType="text"
             android:hint="请输入欢迎语一"
@@ -88,17 +72,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="欢迎二:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
-            android:gravity="right|center" />
+            style="@style/leftTextView"
+            android:id="@+id/textView2" />
         <EditText
             android:hint="请输入欢迎语二"
             style="@style/settingEditText"
@@ -107,17 +87,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="弹窗:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:textAlignment="textEnd"
-            android:layout_gravity="fill_vertical"
-            android:gravity="right|center" />
+            style="@style/leftTextView" />
         <EditText
             android:hint="请输入弹窗时长"
             style="@style/settingEditText"
@@ -126,17 +102,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="背景:"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:textAlignment="textEnd"
-            android:layout_gravity="center"
-            android:gravity="right" />
+            style="@style/leftTextView" />
         <Button
             android:id="@+id/btnSelect"
             android:layout_width="wrap_content"
@@ -155,7 +127,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnSave"
         android:gravity="center"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp" />

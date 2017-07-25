@@ -49,7 +49,8 @@ namespace FaceVisual
                 Profile.Welcome1 = array[3];
                 Profile.Welcome2 = array[4];
                 Profile.Delay = Convert.ToInt32(array[5]);
-                Profile.BgUri = array[6];
+                if (array.Length > 6)
+                    Profile.BgUri = array[6];
             }
         }
 
@@ -79,8 +80,9 @@ namespace FaceVisual
     {
         public Profile()
         {
-            CameraMain = "192.168.1.2";
-            CameraSub = "192.168.1.3";
+            ServerIp = "192.168.1.100";
+            CameraMain = "192.168.1.101";
+            CameraSub = "192.168.1.10";
             Delay = 1000;
             Welcome1 = "»¶Ó­¹âÁÙ";
             Welcome2 = "»¶Ó­Äú";
