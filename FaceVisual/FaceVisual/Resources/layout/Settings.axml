@@ -18,7 +18,7 @@
             android:id="@+id/textView1"
             android:textAlignment="textEnd"
             android:layout_gravity="fill_vertical"
-            android:gravity="right" />
+            android:gravity="center|right" />
         <EditText
             android:inputType="text"
             android:hint="请输入设备IP"
@@ -38,7 +38,7 @@
             android:id="@+id/textView1"
             android:textAlignment="textEnd"
             android:layout_gravity="fill_vertical"
-            android:gravity="right" />
+            android:gravity="right|center" />
         <EditText
             android:inputType="text"
             android:hint="请输入主摄像机IP"
@@ -58,7 +58,7 @@
             android:id="@+id/textViewx"
             android:textAlignment="textEnd"
             android:layout_gravity="fill_vertical"
-            android:gravity="right" />
+            android:gravity="right|center" />
         <EditText
             android:inputType="text"
             android:hint="请输入副摄像机IP"
@@ -78,7 +78,7 @@
             android:id="@+id/textView1"
             android:textAlignment="textEnd"
             android:layout_gravity="fill_vertical"
-            android:gravity="right" />
+            android:gravity="right|center" />
         <EditText
             android:inputType="text"
             android:hint="请输入欢迎语一"
@@ -98,7 +98,7 @@
             android:id="@+id/textView2"
             android:textAlignment="textEnd"
             android:layout_gravity="fill_vertical"
-            android:gravity="right" />
+            android:gravity="right|center" />
         <EditText
             android:hint="请输入欢迎语二"
             style="@style/settingEditText"
@@ -117,7 +117,7 @@
             android:id="@+id/textView2"
             android:textAlignment="textEnd"
             android:layout_gravity="fill_vertical"
-            android:gravity="right" />
+            android:gravity="right|center" />
         <EditText
             android:hint="请输入弹窗时长"
             style="@style/settingEditText"
