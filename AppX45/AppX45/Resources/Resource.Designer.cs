@@ -45,7 +45,25 @@ namespace AppX45
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int Bulbs = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int FlowerBuds = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Fruits = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Icon = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int Legumes = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Tubers = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int Vegetables = 2130837510;
 			
 			static Drawable()
 			{
@@ -61,7 +79,22 @@ namespace AppX45
 		{
 			
 			// aapt resource value: 0x7f070007
-			public const int about = 2131165191;
+			public const int Image = 2131165191;
+			
+			// aapt resource value: 0x7f070008
+			public const int List = 2131165192;
+			
+			// aapt resource value: 0x7f070004
+			public const int Text = 2131165188;
+			
+			// aapt resource value: 0x7f070005
+			public const int Text1 = 2131165189;
+			
+			// aapt resource value: 0x7f070006
+			public const int Text2 = 2131165190;
+			
+			// aapt resource value: 0x7f07000d
+			public const int about = 2131165197;
 			
 			// aapt resource value: 0x7f070003
 			public const int consoleText = 2131165187;
@@ -72,20 +105,23 @@ namespace AppX45
 			// aapt resource value: 0x7f070000
 			public const int demoTitle = 2131165184;
 			
-			// aapt resource value: 0x7f070006
-			public const int deviceList = 2131165190;
+			// aapt resource value: 0x7f07000b
+			public const int deviceList = 2131165195;
 			
-			// aapt resource value: 0x7f070008
-			public const int exit = 2131165192;
+			// aapt resource value: 0x7f07000e
+			public const int exit = 2131165198;
 			
-			// aapt resource value: 0x7f070005
-			public const int progressBar = 2131165189;
+			// aapt resource value: 0x7f07000a
+			public const int progressBar = 2131165194;
 			
-			// aapt resource value: 0x7f070004
-			public const int progressBarTitle = 2131165188;
+			// aapt resource value: 0x7f070009
+			public const int progressBarTitle = 2131165193;
 			
 			// aapt resource value: 0x7f070001
 			public const int separator = 2131165185;
+			
+			// aapt resource value: 0x7f07000c
+			public const int tt = 2131165196;
 			
 			static Id()
 			{
@@ -104,7 +140,16 @@ namespace AppX45
 			public const int console = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int CustomView = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int HomeScreen = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int mylistview = 2130903044;
 			
 			static Layout()
 			{
@@ -143,6 +188,9 @@ namespace AppX45
 			
 			// aapt resource value: 0x7f040002
 			public const int refreshing = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int tt = 2130968579;
 			
 			static String()
 			{

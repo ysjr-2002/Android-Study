@@ -22,7 +22,7 @@ namespace FaceVisual
 
         static Config()
         {
-            Profile = new Profile();
+            Profile = new Profile();            
         }
 
         public static void Log(string content)
