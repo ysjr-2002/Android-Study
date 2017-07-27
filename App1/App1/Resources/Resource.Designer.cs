@@ -62,6 +62,15 @@ namespace App1
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010000
+			public const int borderRadius = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int type = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int ysj = 2130771970;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -155,65 +164,71 @@ namespace App1
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080004
-			public const int MyButton = 2131230724;
-			
 			// aapt resource value: 0x7f080006
-			public const int MyButton1 = 2131230726;
-			
-			// aapt resource value: 0x7f080007
-			public const int MyButton2 = 2131230727;
+			public const int MyButton = 2131230726;
 			
 			// aapt resource value: 0x7f080008
-			public const int MyButton4 = 2131230728;
+			public const int MyButton1 = 2131230728;
 			
 			// aapt resource value: 0x7f080009
-			public const int MyButton5 = 2131230729;
+			public const int MyButton2 = 2131230729;
 			
 			// aapt resource value: 0x7f08000a
-			public const int MyButton6 = 2131230730;
+			public const int MyButton4 = 2131230730;
 			
 			// aapt resource value: 0x7f08000b
-			public const int MyButton7 = 2131230731;
-			
-			// aapt resource value: 0x7f080005
-			public const int MyButtonInit = 2131230725;
-			
-			// aapt resource value: 0x7f080002
-			public const int button1 = 2131230722;
-			
-			// aapt resource value: 0x7f080010
-			public const int button2 = 2131230736;
-			
-			// aapt resource value: 0x7f080011
-			public const int button3 = 2131230737;
-			
-			// aapt resource value: 0x7f080012
-			public const int button4 = 2131230738;
+			public const int MyButton5 = 2131230731;
 			
 			// aapt resource value: 0x7f08000c
-			public const int imageView1 = 2131230732;
-			
-			// aapt resource value: 0x7f080013
-			public const int img = 2131230739;
-			
-			// aapt resource value: 0x7f08000f
-			public const int path = 2131230735;
-			
-			// aapt resource value: 0x7f08000e
-			public const int size = 2131230734;
-			
-			// aapt resource value: 0x7f080001
-			public const int textView1 = 2131230721;
+			public const int MyButton6 = 2131230732;
 			
 			// aapt resource value: 0x7f08000d
-			public const int textview1 = 2131230733;
+			public const int MyButton7 = 2131230733;
 			
-			// aapt resource value: 0x7f080003
-			public const int view1 = 2131230723;
+			// aapt resource value: 0x7f080007
+			public const int MyButtonInit = 2131230727;
+			
+			// aapt resource value: 0x7f080004
+			public const int button1 = 2131230724;
+			
+			// aapt resource value: 0x7f080012
+			public const int button2 = 2131230738;
+			
+			// aapt resource value: 0x7f080013
+			public const int button3 = 2131230739;
+			
+			// aapt resource value: 0x7f080014
+			public const int button4 = 2131230740;
 			
 			// aapt resource value: 0x7f080000
-			public const int viewFlipper1 = 2131230720;
+			public const int circle = 2131230720;
+			
+			// aapt resource value: 0x7f08000e
+			public const int imageView1 = 2131230734;
+			
+			// aapt resource value: 0x7f080015
+			public const int img = 2131230741;
+			
+			// aapt resource value: 0x7f080011
+			public const int path = 2131230737;
+			
+			// aapt resource value: 0x7f080001
+			public const int round = 2131230721;
+			
+			// aapt resource value: 0x7f080010
+			public const int size = 2131230736;
+			
+			// aapt resource value: 0x7f080003
+			public const int textView1 = 2131230723;
+			
+			// aapt resource value: 0x7f08000f
+			public const int textview1 = 2131230735;
+			
+			// aapt resource value: 0x7f080005
+			public const int view1 = 2131230725;
+			
+			// aapt resource value: 0x7f080002
+			public const int viewFlipper1 = 2131230722;
 			
 			static Id()
 			{
@@ -253,7 +268,10 @@ namespace App1
 			public const int Test = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int ysj = 2130903048;
+			public const int TestView = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int ysj = 2130903049;
 			
 			static Layout()
 			{
@@ -314,6 +332,33 @@ namespace App1
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] shit = new int[] {
+					2130771968,
+					2130771969,
+					2130771970};
+			
+			// aapt resource value: 0
+			public const int shit_borderRadius = 0;
+			
+			// aapt resource value: 1
+			public const int shit_type = 1;
+			
+			// aapt resource value: 2
+			public const int shit_ysj = 2;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

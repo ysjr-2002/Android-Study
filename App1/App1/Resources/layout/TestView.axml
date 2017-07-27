@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res" 
+    android:layout_height="match_parent">
+    <App1.RoundImageView
+        android:layout_height="200dip"
+        android:src="@drawable/face_ysj"
+        android:layout_width="200dip"
+        custom:borderRadius="5sp"
+        custom:type="round"
+        custom:ysj="杨绍杰"
+        android:layout_centerInParent="true" />
+</RelativeLayout>

@@ -18,7 +18,7 @@ using Android.Graphics.Drawables;
 
 namespace App1
 {
-    [Activity(Label = "Study1Activity", MainLauncher = true)]
+    [Activity(Label = "Study1Activity", MainLauncher = false)]
     public class Study1Activity : Activity
     {
         //https://github.com/avenwu/IndexImageView
