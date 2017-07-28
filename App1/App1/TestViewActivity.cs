@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Util;
+using Android.Content.Res;
+using System.IO;
 
 namespace App1
 {
@@ -38,8 +40,17 @@ namespace App1
 
             if (displayMetrics == this.Resources.DisplayMetrics)
             {
-
             }
+
+            var content = "";
+            AssetManager assset = this.Assets;
+            using (StreamReader sr = new StreamReader(assset.Open("readme.txt")))
+            {
+                content = sr.ReadToEnd();
+            }
+            TextView tv = new TextView(this);
+            tv.Text = content;
+            SetContentView(tv);
         }
     }
 }
