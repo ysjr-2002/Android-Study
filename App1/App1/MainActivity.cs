@@ -10,7 +10,7 @@ using Android.Locations;
 
 namespace App1
 {
-    [Activity(Label = "App1", MainLauncher = false, Icon = "@drawable/Icon")]
+    [Activity(Label = "App1", MainLauncher = true, Icon = "@drawable/Icon")]
     public class MainActivity : Activity, ILocationListener
     {
         protected override void OnCreate(Bundle bundle)
@@ -66,10 +66,17 @@ namespace App1
 
             button4.Click += delegate
             {
-                DisplayMetrics dm = new DisplayMetrics();
-                WindowManager.DefaultDisplay.GetMetrics(dm);
-                var info = dm.WidthPixels + " " + dm.HeightPixels + " " + dm.Xdpi + " " + dm.Ydpi;
+                //DisplayMetrics dm = new DisplayMetrics();
+                //WindowManager.DefaultDisplay.GetMetrics(dm);
+                var dm = this.Resources.DisplayMetrics;
+                var info = dm.WidthPixels + " " + dm.HeightPixels + " " + dm.Xdpi + " " + dm.Ydpi + " " + dm.Density + " " + dm.DensityDpi + " " + dm.ScaledDensity;
                 Toast.MakeText(this, info, ToastLength.Short).Show();
+
+                var image = this.FindViewById<ImageView>(Resource.Id.imageView1);
+                var lp = image.LayoutParameters;
+
+                var width = ConvertPixelToDp(lp.Width);
+                var height = ConvertPixelToDp(lp.Height);
             };
 
             button5.Click += delegate
@@ -87,25 +94,31 @@ namespace App1
 
             button6.Click += delegate
             {
-                StartActivity(typeof(SubActivity));
-                this.Finish();
+                //StartActivity(typeof(SubActivity));
+                //this.Finish();
                 //OverridePendingTransition(Resource.Animation.fade_in, Resource.Animation.anim_slide_out_left);
             };
 
             button7.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(ResultActivity));
-                StartActivityForResult(intent, 10);
+                //Intent intent = new Intent(this, typeof(ResultActivity));
+                //StartActivityForResult(intent, 10);
             };
 
             Console.WriteLine("onCreate " + typeof(MainActivity).FullName);
+        }
+
+        private int ConvertPixelToDp(int pixelValue)
+        {
+            var dp = (int)(pixelValue / this.Resources.DisplayMetrics.Density);
+            return dp;
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            if(requestCode == 10)
+            if (requestCode == 10)
             {
             }
 

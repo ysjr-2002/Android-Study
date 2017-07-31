@@ -18,9 +18,9 @@ namespace App1
     {
         public override void OnReceive(Context context, Intent intent)
         {
-            Intent newIntent = new Intent(context, typeof(TestActivity));
-            newIntent.SetFlags(ActivityFlags.NewTask);
-            context.StartActivity(newIntent);
+            //Intent newIntent = new Intent(context, typeof(TestActivity));
+            //newIntent.SetFlags(ActivityFlags.NewTask);
+            //context.StartActivity(newIntent);
         }
     }
 }
