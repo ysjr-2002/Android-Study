@@ -68,15 +68,13 @@ namespace App1
             {
                 //DisplayMetrics dm = new DisplayMetrics();
                 //WindowManager.DefaultDisplay.GetMetrics(dm);
-                var dm = this.Resources.DisplayMetrics;
-                var info = dm.WidthPixels + " " + dm.HeightPixels + " " + dm.Xdpi + " " + dm.Ydpi + " " + dm.Density + " " + dm.DensityDpi + " " + dm.ScaledDensity;
-                Toast.MakeText(this, info, ToastLength.Short).Show();
-
-                var image = this.FindViewById<ImageView>(Resource.Id.imageView1);
-                var lp = image.LayoutParameters;
-
-                var width = ConvertPixelToDp(lp.Width);
-                var height = ConvertPixelToDp(lp.Height);
+                //var dm = this.Resources.DisplayMetrics;
+                //var info = dm.WidthPixels + " " + dm.HeightPixels + " " + dm.Xdpi + " " + dm.Ydpi + " " + dm.Density + " " + dm.DensityDpi + " " + dm.ScaledDensity;
+                //Toast.MakeText(this, info, ToastLength.Short).Show();
+                //var image = this.FindViewById<ImageView>(Resource.Id.imageView1);
+                //var lp = image.LayoutParameters;
+                //var width = ConvertPixelToDp(lp.Width);
+                //var height = ConvertPixelToDp(lp.Height);
             };
 
             button5.Click += delegate
