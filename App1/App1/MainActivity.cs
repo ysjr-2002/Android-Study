@@ -7,6 +7,9 @@ using Android.Widget;
 using Android.OS;
 using Android.Util;
 using Android.Locations;
+using Test;
+using System.Text;
+using System.IO;
 
 namespace App1
 {
@@ -101,9 +104,65 @@ namespace App1
             {
                 //Intent intent = new Intent(this, typeof(ResultActivity));
                 //StartActivityForResult(intent, 10);
+
+                //var a = Test.TestAdd.InvokeTestAdd(10, 10);
+                //Toast.MakeText(this, a.ToString(), ToastLength.Short).Show();
+
+                //Test.TestAdd xx = new TestAdd();
+                //var b = xx.Add(100, 100);
+                //Toast.MakeText(this, b.ToString(), ToastLength.Short).Show();
+
+                //Com.Ysj.Hello.Person p = new Com.Ysj.Hello.Person();
+                //var name = p.GetName("ysj");
+                //var number = p.GetNnumber(1000);
+                //var print = p.Print();
+
+                //Toast.MakeText(this, name + " " + number + " " + print, ToastLength.Short).Show();
+
+                _uhf_SwitchSerialPort();
+
+                if (Android.OS.Build.VERSION.Release == Com.AndroidVersions.V403)
+                {
+
+                }
+                if (Android.OS.Build.VERSION.Release == Com.AndroidVersions.V511)
+                {
+
+                }
+
+                var temp = Android.OS.Build.VERSION.Sdk;
+
+                Com.Fntech.IO.Serial.SerialPort sp = null;
+
+                sp = new Com.Fntech.IO.Serial.SerialPort(new Java.IO.File("/dev/ttySAC1"), 115200, 0, 8, 0);
+                sp.Close();
+
             };
 
             Console.WriteLine("onCreate " + typeof(MainActivity).FullName);
+        }
+
+        public static void _uhf_SwitchSerialPort()
+        {
+            writeFile("/sys/class/gpio/gpio908/direction", "out");
+            writeFile("/sys/class/gpio/gpio908/value", "1");
+        }
+
+        private static void writeFile(String fileName, String writestr)
+        {
+            try
+            {
+                //Java.IO.FileOutputStream fout = new Java.IO.FileOutputStream(fileName);
+                byte[] bytes = Encoding.UTF8.GetBytes(writestr);
+                //fout.Write(bytes);
+                //fout.Close();
+
+                var fs = new StreamWriter(fileName);
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         private int ConvertPixelToDp(int pixelValue)
