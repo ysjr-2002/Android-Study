@@ -45,8 +45,8 @@
         android:text="LifeTime-No-Finish" />
     <ImageView
         android:src="@drawable/face_ysj"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
         android:id="@+id/imageView1" />
 </LinearLayout>
