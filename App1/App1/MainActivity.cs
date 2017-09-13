@@ -130,13 +130,10 @@ namespace App1
 
                 }
 
-                var temp = Android.OS.Build.VERSION.Sdk;
-
-                Com.Fntech.IO.Serial.SerialPort sp = null;
-
-                sp = new Com.Fntech.IO.Serial.SerialPort(new Java.IO.File("/dev/ttySAC1"), 115200, 0, 8, 0);
-                sp.Close();
-
+                //var temp = Android.OS.Build.VERSION.Sdk;
+                //Com.Fntech.IO.Serial.SerialPort sp = null;
+                //sp = new Com.Fntech.IO.Serial.SerialPort(new Java.IO.File("/dev/ttySAC1"), 115200, 0, 8, 0);
+                //sp.Close();
             };
 
             Console.WriteLine("onCreate " + typeof(MainActivity).FullName);
@@ -144,21 +141,41 @@ namespace App1
 
         public static void _uhf_SwitchSerialPort()
         {
-            writeFile("/sys/class/gpio/gpio908/direction", "out");
-            writeFile("/sys/class/gpio/gpio908/value", "1");
+            //writeFile("/sys/class/gpio/gpio908/direction", "out");
+            //writeFile("/sys/class/gpio/gpio908/value", "1");
+
+            var root = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var state = Android.OS.Environment.ExternalStorageState;
+            var shit = System.Environment.CurrentDirectory;
+
+            var path = System.IO.Path.Combine(root, "ysj.txt");
+            if (System.IO.File.Exists(path) == false)
+            {
+                var data = Encoding.UTF8.GetBytes("this is c#");
+                var fs = File.Create(path);
+                fs.Write(data, 0, data.Length);
+                fs.Close();
+            }
+            else
+            {
+                var bytes = Encoding.UTF8.GetBytes("this is java");
+                Java.IO.FileOutputStream fout = new Java.IO.FileOutputStream(path);
+                fout.Write(bytes);
+                fout.Close();
+            }
         }
 
         private static void writeFile(String fileName, String writestr)
         {
             try
             {
-                //Java.IO.FileOutputStream fout = new Java.IO.FileOutputStream(fileName);
+                Java.IO.FileOutputStream fout = new Java.IO.FileOutputStream(fileName);
                 byte[] bytes = Encoding.UTF8.GetBytes(writestr);
-                //fout.Write(bytes);
-                //fout.Close();
+                fout.Write(bytes);
+                fout.Close();
 
-                var fs = new StreamWriter(fileName);
-                fs.Close();
+                //var fs = new StreamWriter(fileName);
+                //fs.Close();
             }
             catch (Exception e)
             {
