@@ -98,9 +98,9 @@
     <AndroidNativeLibrary Include="libs\x86\libJniTest.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidNativeLibrary>
-    <AndroidNativeLibrary Include="libs\armeabi-v7a\libJniTest.so">
+    <EmbeddedNativeLibrary Include="libs\armeabi-v7a\libJniTest.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </AndroidNativeLibrary>
+    </EmbeddedNativeLibrary>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
