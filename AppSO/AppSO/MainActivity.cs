@@ -11,11 +11,12 @@ using Android.Util;
 using System.Threading.Tasks;
 using Android.Net;
 using ExcelDataReader;
-using Java.Lang;
+using Android.Database;
+using Android.Provider;
 
 namespace AppSO
 {
-    [Activity(Label = "AppSO", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "AppSO", MainLauncher = false, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
@@ -27,8 +28,14 @@ namespace AppSO
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            dbRoot = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "mydata");
+            //dbRoot = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "mydata");
+            //dbPath = System.IO.Path.Combine(dbRoot, "mls.db");
+
+            dbRoot = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "CanFindLocation");
+            System.IO.Directory.CreateDirectory(dbRoot);
+
             dbPath = System.IO.Path.Combine(dbRoot, "mls.db");
+
             // Get our button from the layout resource,
             // and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.MyButton);
@@ -36,23 +43,32 @@ namespace AppSO
             button.Click += delegate
             {
                 var id = getpid();
-                Toast.MakeText(this, id.ToString(), ToastLength.Short).Show();
+                dialog(id.ToString());
+
+                var str = getString();
+                dialog(str);
             };
 
-            Button button1 = FindViewById<Button>(Resource.Id.MyButton1);
-            button1.Click += delegate
+            Button btnCreate = FindViewById<Button>(Resource.Id.Create);
+            btnCreate.Click += delegate
             {
-                createDatabase(dbPath);
+                var result = createDatabase(dbPath);
+                if (System.IO.File.Exists(dbPath))
+                {
+                    dialog("创建成功");
+                }
+                else
+                    dialog("创建失败");
             };
 
-            Button button2 = FindViewById<Button>(Resource.Id.MyButton2);
-            button2.Click += Button2_Click;
+            Button btnInsert = FindViewById<Button>(Resource.Id.Insert);
+            btnInsert.Click += Button2_Click;
 
-            Button button3 = FindViewById<Button>(Resource.Id.MyButton3);
-            button3.Click += Button3_Click;
+            Button btnSearch = FindViewById<Button>(Resource.Id.Search);
+            btnSearch.Click += Button3_Click;
 
-            Button button4 = FindViewById<Button>(Resource.Id.MyButton4);
-            button4.Click += async delegate
+            Button btnClear = FindViewById<Button>(Resource.Id.Clear);
+            btnClear.Click += async delegate
            {
                var connection = new SQLiteAsyncConnection(dbPath);
                {
@@ -62,24 +78,28 @@ namespace AppSO
            };
 
 
-            Button button5 = FindViewById<Button>(Resource.Id.MyButton5);
-            button5.Click += async delegate
+            Button btnFind = FindViewById<Button>(Resource.Id.Find);
+            btnFind.Click += async delegate
             {
                 var connection = new SQLiteAsyncConnection(dbPath);
                 {
                     var list = await connection.QueryAsync<Person>("select * from person where Name='杨绍杰'");
+                    if (list == null)
+                    {
+                        dialog("查询失败！");
+                        return;
+                    }
                     dialog("find count->" + list.Count);
                     var person = list[0];
                     dialog(person.Name);
                 };
             };
 
-
-            Button button6 = FindViewById<Button>(Resource.Id.MyButton6);
-            button6.Click += Button6_Click;
+            Button btnImport = FindViewById<Button>(Resource.Id.Import);
+            btnImport.Click += btnImport_click;
         }
 
-        private void Button6_Click(object sender, System.EventArgs e)
+        private void btnImport_click(object sender, System.EventArgs e)
         {
             showFileChooser();
         }
@@ -89,6 +109,7 @@ namespace AppSO
         {
             Intent intent = new Intent(Intent.ActionGetContent);
             intent.SetType("*/*");
+            intent.AddCategory(Intent.CategoryOpenable);
             try
             {
                 StartActivityForResult(Intent.CreateChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
@@ -120,17 +141,36 @@ namespace AppSO
 
         }
 
+        private string GetPathToImage(Android.Net.Uri uri)
+        {
+            ICursor cursor = this.ContentResolver.Query(uri, null, null, null, null);
+            cursor.MoveToFirst();
+            string document_id = cursor.GetString(0);
+            document_id = document_id.Split(':')[1];
+            cursor.Close();
+
+            cursor = ContentResolver.Query(
+            Android.Provider.MediaStore.Images.Media.ExternalContentUri,
+            null, MediaStore.Images.Media.InterfaceConsts.Id + " = ? ", new string[] { document_id }, null);
+            cursor.MoveToFirst();
+            string path = cursor.GetString(cursor.GetColumnIndex(MediaStore.Images.Media.InterfaceConsts.Data));
+            cursor.Close();
+
+            return path;
+        }
+
         private async void doImport(Uri uri)
         {
-            handle = new Handler((m) =>
-            {
-                if (m.What == 100)
-                {
+            //handle = new Handler((m) =>
+            //{
+            //    if (m.What == 100)
+            //    {
 
-                }
-            });
+            //    }
+            //});
 
-            var selectPath = uri.Path;
+            //var selectPath = uri.Path;
+            var selectPath = GetPathToImage(uri);
             if (System.IO.File.Exists(selectPath))
             {
                 var ext = System.IO.Path.GetExtension(selectPath).ToLower();
@@ -140,6 +180,10 @@ namespace AppSO
                     handle.SendMessage(new Message { What = 100 });
                     return;
                 }
+            }
+            else
+            {
+                return;
             }
 
             ProgressDialog pd = ProgressDialog.Show(this, "提示", "导入中，请稍等...");
@@ -192,7 +236,7 @@ namespace AppSO
 
         private async void Button2_Click(object sender, System.EventArgs e)
         {
-            await Insert(new Person { });
+            await Insert(new Person { Name = "杨绍杰", Code = "123", Photo = "ysj.jpg" });
             Toast.MakeText(this, "结束", ToastLength.Short).Show();
         }
 
@@ -208,6 +252,8 @@ namespace AppSO
         {
             try
             {
+
+
                 var connection = new SQLiteAsyncConnection(path);
                 {
                     connection.CreateTableAsync<Person>();

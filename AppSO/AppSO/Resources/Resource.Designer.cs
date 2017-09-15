@@ -60,26 +60,32 @@ namespace AppSO
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050004
+			public const int Clear = 2131034116;
+			
+			// aapt resource value: 0x7f050001
+			public const int Create = 2131034113;
+			
+			// aapt resource value: 0x7f050005
+			public const int Find = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int Import = 2131034118;
+			
+			// aapt resource value: 0x7f050002
+			public const int Insert = 2131034114;
+			
 			// aapt resource value: 0x7f050000
 			public const int MyButton = 2131034112;
 			
-			// aapt resource value: 0x7f050001
-			public const int MyButton1 = 2131034113;
-			
-			// aapt resource value: 0x7f050002
-			public const int MyButton2 = 2131034114;
-			
 			// aapt resource value: 0x7f050003
-			public const int MyButton3 = 2131034115;
+			public const int Search = 2131034115;
 			
-			// aapt resource value: 0x7f050004
-			public const int MyButton4 = 2131034116;
+			// aapt resource value: 0x7f050008
+			public const int btnClose = 2131034120;
 			
-			// aapt resource value: 0x7f050005
-			public const int MyButton5 = 2131034117;
-			
-			// aapt resource value: 0x7f050006
-			public const int MyButton6 = 2131034118;
+			// aapt resource value: 0x7f050007
+			public const int btnOpen = 2131034119;
 			
 			static Id()
 			{
@@ -96,6 +102,9 @@ namespace AppSO
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Reader = 2130903041;
 			
 			static Layout()
 			{
