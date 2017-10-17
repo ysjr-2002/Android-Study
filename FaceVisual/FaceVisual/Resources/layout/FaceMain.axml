@@ -79,7 +79,7 @@
                 <ImageView
                     android:id="@+id/faceImage"
                     android:layout_marginTop="48dp"
-                    android:layout_width="360dp"
+                    android:layout_width="720dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:scaleType="fitCenter"
