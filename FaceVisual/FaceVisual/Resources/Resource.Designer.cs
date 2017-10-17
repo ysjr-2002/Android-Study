@@ -78,6 +78,9 @@ namespace FaceVisual
 		public partial class Color
 		{
 			
+			// aapt resource value: 0x7f050003
+			public const int black = 2131034115;
+			
 			// aapt resource value: 0x7f050002
 			public const int face = 2131034114;
 			

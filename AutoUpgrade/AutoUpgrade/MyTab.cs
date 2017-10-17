@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace AutoUpgrade
 {
-    [Activity(Label = "MyTab", MainLauncher = true)]
+    [Activity(Label = "MyTab", MainLauncher = false)]
     public class MyTab : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

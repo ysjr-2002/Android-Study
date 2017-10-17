@@ -8,9 +8,27 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Hello" />
+      <Button
+        android:id="@+id/button_version"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="版本" />
     <Button
         android:id="@+id/MyButton2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="线程" />
+        android:text="写" />
+    <Button
+        android:id="@+id/MyButton3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="读" />
+    <EditText
+        android:id="@+id/edittext_write"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/edittext_read"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

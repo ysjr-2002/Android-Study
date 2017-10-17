@@ -14,85 +14,110 @@ using Newtonsoft.Json;
 using FaceVisual.Code;
 using FaceVisual;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Web;
 
 namespace FaceVisual
 {
     class HttpSocket
     {
-        private string koalaIp = "";
-        private WebSocket socket = null;
-        private Action<FaceRecognized> callback = null;
-
-        private Activity _activity = null;
-        public HttpSocket(Activity activity)
+        private string _koalaIp = "";
+        private string _cameraIp = "";
+        private bool _open = false;
+        private WebSocket _socket = null;
+        private Action<FaceRecognized> _callback = null;
+        private Handler _handler = null;
+        private const int sleep = 10 * 1000;
+        public HttpSocket(Handler handler, string koalaIp, string cameraIp, Action<FaceRecognized> callback)
         {
-            _activity = activity;
+            _handler = handler;
+            _koalaIp = koalaIp;
+            _cameraIp = cameraIp;
+            _callback = callback;
         }
 
-        public Task Connect(string koalaIp, string cameraIp)
+        public Task<bool> Connect()
         {
             return Task.Factory.StartNew(() =>
             {
-                this.koalaIp = koalaIp;
-                var wsUrl = string.Format("ws://{0}:9000/video", koalaIp.Trim());
-                var rtspUrl = string.Format("rtsp://{0}/user=admin&password=&channel=1&stream=0.sdp?", cameraIp.Trim());
-                //var rtspUrl = string.Format("rtsp://admin:admin123456@{0}/live1.sdp", cameraIp);
-                var url = string.Concat(wsUrl, "?url=", rtspUrl.UrlEncode());
-                socket = new WebSocket(url);
-                socket.OnOpen += Socket_OnOpen;
-                socket.OnError += Socket_OnError;
-                socket.OnClose += Socket_OnClose;
-                socket.OnMessage += Socket_OnMessage;
-                socket.EmitOnPing = true;
-                socket.Connect();
+                Dispose();
+
+                var url = string.Format("ws://{0}:9000/video", _koalaIp.Trim());
+                //C2
+                //var rtsp = string.Format("rtsp://{0}/user=admin&password=&channel=1&stream=0.sdp", _cameraIp.Trim());
+                //¾ÞÁú
+                var rtsp = string.Format("rtsp://{0}:554/media/live/1/1", _cameraIp.Trim());
+                rtsp = HttpUtility.UrlEncode(rtsp);
+                var all = string.Concat(url, "?url=", rtsp);
+
+                _socket = new WebSocket(all);
+                _socket.OnOpen += _socket_OnOpen;
+                _socket.OnError += _socket_OnError;
+                _socket.OnClose += _socket_OnClose;
+                _socket.OnMessage += _socket_OnMessage;
+                _socket.Connect();
+                return _open;
             });
         }
 
-        public void Close()
-        {
-            socket?.Close();
-        }
-
-        public void SetCallback(Action<FaceRecognized> callback)
-        {
-            this.callback = callback;
-        }
-
-        private void Socket_OnMessage(object sender, MessageEventArgs e)
+        private void _socket_OnMessage(object sender, MessageEventArgs e)
         {
             if (e.IsText)
             {
                 var entity = JsonConvert.DeserializeObject<FaceRecognized>(e.Data);
                 if (entity.type == RecognizeState.recognized.ToString())
                 {
-                    callback?.Invoke(entity);
+                    _callback.Invoke(entity);
                 }
             }
         }
 
-        private void Socket_OnError(object sender, ErrorEventArgs e)
+        private void _socket_OnClose(object sender, CloseEventArgs e)
         {
-            Config.Log(koalaIp + " Websocket error");
-            Dialog("WebSocket connection error");
-        }
-
-        private void Socket_OnClose(object sender, CloseEventArgs e)
-        {
-            Config.Log(koalaIp + " Websocket close");
-            Dialog("WebSocket connection close");
-        }
-
-        private void Socket_OnOpen(object sender, EventArgs e)
-        {
-            Dialog("WebSocket connect ok");
-        }
-
-        private void Dialog(string msg)
-        {
-            _activity.RunOnUiThread(() =>
+            _open = false;
+            _handler.SendEmptyMessage(FaceMainActivity.connect_error);
+            if (!_appclose)
             {
-                Toast.MakeText(Application.Context, msg, ToastLength.Short).Show();
-            });
+                Task.Factory.StartNew(() =>
+                {
+                    Thread.Sleep(sleep);
+                    Connect();
+                });
+            }
+        }
+
+        private void _socket_OnError(object sender, ErrorEventArgs e)
+        {
+            _open = false;
+        }
+
+        private void _socket_OnOpen(object sender, EventArgs e)
+        {
+            _open = true;
+            _handler.SendEmptyMessage(FaceMainActivity.connect_ok);
+        }
+
+        private void Dispose()
+        {
+            if (_socket == null)
+                return;
+
+            if (_socket.ReadyState == WebSocketState.Open)
+                _socket.Close();
+
+            _socket.OnOpen -= _socket_OnOpen;
+            _socket.OnClose -= _socket_OnClose;
+            _socket.OnError -= _socket_OnError;
+            _socket.OnMessage -= _socket_OnMessage;
+            _socket = null;
+        }
+
+        private bool _appclose = false;
+        public void Disconnect()
+        {
+            _appclose = true;
+            _socket?.CloseAsync();
+            _socket = null;
         }
     }
 }

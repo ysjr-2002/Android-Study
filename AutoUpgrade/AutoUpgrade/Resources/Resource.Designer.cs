@@ -63,14 +63,26 @@ namespace AutoUpgrade
 			// aapt resource value: 0x7f050000
 			public const int MyButton = 2131034112;
 			
-			// aapt resource value: 0x7f050001
-			public const int MyButton2 = 2131034113;
+			// aapt resource value: 0x7f050002
+			public const int MyButton2 = 2131034114;
 			
 			// aapt resource value: 0x7f050003
-			public const int fragmentContainer = 2131034115;
+			public const int MyButton3 = 2131034115;
 			
-			// aapt resource value: 0x7f050002
-			public const int sampleTextView = 2131034114;
+			// aapt resource value: 0x7f050001
+			public const int button_version = 2131034113;
+			
+			// aapt resource value: 0x7f050005
+			public const int edittext_read = 2131034117;
+			
+			// aapt resource value: 0x7f050004
+			public const int edittext_write = 2131034116;
+			
+			// aapt resource value: 0x7f050007
+			public const int fragmentContainer = 2131034119;
+			
+			// aapt resource value: 0x7f050006
+			public const int sampleTextView = 2131034118;
 			
 			static Id()
 			{

@@ -20,9 +20,10 @@ using static Android.Animation.Animator;
 
 namespace FaceVisual
 {
-    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/Icon")]
+    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/Icon", MainLauncher = false)]
     public class FaceMainActivity : RootActivity
     {
+        //威盛的板子 1080*1820
         private System.Timers.Timer timer = null;
         private TextView tvTime = null;
         private TextView tvWelcome = null;
@@ -36,8 +37,12 @@ namespace FaceVisual
         private TextView tvName;
         private ImageView ivFace;
 
-        private const int p_width = 500;
-        private const int p_height = 700;
+        private const int p_width = 1000;
+        private const int p_height = 1400;
+
+        private Handler handler = null;
+        public static int connect_error = 1000;
+        public static int connect_ok = 1001;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,6 +51,7 @@ namespace FaceVisual
             Config.ReadProfile();
             SetContentView(Resource.Layout.FaceMain);
 
+            SetTimer();
             SetBackground();
 
             tvWelcome = FindViewById<TextView>(Resource.Id.tvWelcome);
@@ -61,18 +67,26 @@ namespace FaceVisual
             {
                 Intent intent = new Intent(this, typeof(SettingActivity));
                 StartActivity(intent);
-
-                //var lp = vistor.LayoutParameters;
-                //lp.Width = p_width;
-                //lp.Height = p_height;
-                //vistor.LayoutParameters = lp;
-                //tvName.Text = "杨绍杰";
-                //tv.Text = Config.Profile.Welcome2;
-                //ivFace.SetImageResource(Resource.Drawable.no);
-                //var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
-                //sa.AnimationEnd += Sa_AnimationEnd;
-                //vistor.StartAnimation(sa);
             };
+
+            handler = new Handler((msg) =>
+            {
+                if (msg.What == connect_error)
+                {
+                    Toast.MakeText(this, "websocket连接失败", ToastLength.Short).Show();
+                }
+                if (msg.What == connect_ok)
+                {
+                    Toast.MakeText(this, "websocket连接成功", ToastLength.Short).Show();
+                }
+            });
+        }
+
+        private void SetTimer()
+        {
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += Timer_Elapsed;
         }
 
         private void SetBackground()
@@ -119,15 +133,20 @@ namespace FaceVisual
             Showtime();
             StartTimer();
 
-            socketMain = new HttpSocket(this);
-            socketMain.SetCallback(OnRecognizePersonMain);
-            var main = socketMain.Connect(cfg.ServerIp, cfg.CameraMain);
-            await main;
+            socketMain = new HttpSocket(handler, cfg.ServerIp, cfg.CameraMain, OnRecognizePersonMain);
+            await socketMain.Connect();
 
-            socketSub = new HttpSocket(this);
-            socketSub.SetCallback(OnRecognizePersonSub);
-            var sub = socketSub.Connect(cfg.ServerIp, cfg.CameraSub);
-            await sub;
+            //socketSub = new HttpSocket(this);
+            //socketSub.SetCallback(OnRecognizePersonSub);
+            //var sub = socketSub.Connect(cfg.ServerIp, cfg.CameraSub);
+            //await sub;
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            timer?.Stop();
+            socketMain?.Disconnect();
         }
 
         private void OnRecognizePersonMain(FaceRecognized entity)
@@ -200,10 +219,7 @@ namespace FaceVisual
 
         private void StartTimer()
         {
-            timer = new System.Timers.Timer();
-            timer.Interval = 1000;
             timer.Start();
-            timer.Elapsed += Timer_Elapsed;
         }
 
         private void Showtime()
@@ -222,8 +238,8 @@ namespace FaceVisual
         protected override void OnDestroy()
         {
             timer?.Stop();
-            socketMain?.Close();
-            socketSub?.Close();
+            socketMain?.Disconnect();
+            //socketSub?.Disconnect();
             base.OnDestroy();
         }
     }

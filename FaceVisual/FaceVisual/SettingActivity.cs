@@ -121,7 +121,11 @@ namespace FaceVisual
             ICursor cursor = this.ContentResolver.Query(uri, null, null, null, null);
             cursor.MoveToFirst();
             string document_id = cursor.GetString(0);
-            document_id = document_id.Split(':')[1];
+            var array = document_id.Split(':');
+            if (array.Length >= 2)
+                document_id = array[1];
+            else
+                document_id = array[0];
             cursor.Close();
 
             cursor = ContentResolver.Query(

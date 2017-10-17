@@ -22,7 +22,7 @@ namespace FaceVisual
 
         static Config()
         {
-            Profile = new Profile();            
+            Profile = new Profile();
         }
 
         public static void Log(string content)
@@ -36,43 +36,59 @@ namespace FaceVisual
 
         public static void ReadProfile()
         {
-            var root = Android.OS.Environment.ExternalStorageDirectory.Path;
-            var dir = System.IO.Path.Combine(root, faceroot);
-            var filePath = System.IO.Path.Combine(dir, config);
-            if (System.IO.File.Exists(filePath))
-            {
-                var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
-                var array = content.Split(spliter);
-                Profile.ServerIp = array[0];
-                Profile.CameraMain = array[1];
-                Profile.CameraSub = array[2];
-                Profile.Welcome1 = array[3];
-                Profile.Welcome2 = array[4];
-                Profile.Delay = Convert.ToInt32(array[5]);
-                if (array.Length > 6)
-                    Profile.BgUri = array[6];
-            }
+            //var root = Android.OS.Environment.ExternalStorageDirectory.Path;
+            //var dir = System.IO.Path.Combine(root, faceroot);
+            //var filePath = System.IO.Path.Combine(dir, config);
+            //if (System.IO.File.Exists(filePath))
+            //{
+            //    var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
+            //    var array = content.Split(spliter);
+            //    Profile.ServerIp = array[0];
+            //    Profile.CameraMain = array[1];
+            //    Profile.CameraSub = array[2];
+            //    Profile.Welcome1 = array[3];
+            //    Profile.Welcome2 = array[4];
+            //    Profile.Delay = Convert.ToInt32(array[5]);
+            //    if (array.Length > 6)
+            //        Profile.BgUri = array[6];
+            //}
+
+            ISharedPreferences sp = Application.Context.GetSharedPreferences("face", FileCreationMode.Private);
+            Profile.ServerIp = sp.GetString("serverIp", "192.168.1.100");
+            Profile.CameraMain = sp.GetString("cameraIp", "192.168.1.101");
+            Profile.Welcome1 = sp.GetString("welcome1", "ª∂”≠π‚¡Ÿ");
+            Profile.Delay = sp.GetInt("delay", 2000);
+            Profile.BgUri = sp.GetString("bgUri", "");
         }
 
         public static void SaveProfile()
         {
-            var root = Android.OS.Environment.ExternalStorageDirectory.Path;
-            var dir = System.IO.Path.Combine(root, faceroot);
-            var sub = new System.IO.DirectoryInfo(dir);
-            if (!sub.Exists)
-                sub.Create();
+            //var root = Android.OS.Environment.ExternalStorageDirectory.Path;
+            //var dir = System.IO.Path.Combine(root, faceroot);
+            //var sub = new System.IO.DirectoryInfo(dir);
+            //if (!sub.Exists)
+            //    sub.Create();
 
-            var filePath = System.IO.Path.Combine(dir, config);
-            var content = string.Concat(Profile.ServerIp, spliter,
-                 Profile.CameraMain, spliter,
-                 Profile.CameraSub, spliter,
-                 Profile.Welcome1, spliter,
-                 Profile.Welcome2, spliter,
-                    Profile.Delay, spliter,
-                    Profile.BgUri
-                    );
+            //var filePath = System.IO.Path.Combine(dir, config);
+            //var content = string.Concat(Profile.ServerIp, spliter,
+            //     Profile.CameraMain, spliter,
+            //     Profile.CameraSub, spliter,
+            //     Profile.Welcome1, spliter,
+            //     Profile.Welcome2, spliter,
+            //        Profile.Delay, spliter,
+            //        Profile.BgUri
+            //        );
 
-            System.IO.File.WriteAllText(filePath, content, Encoding.UTF8);
+            //System.IO.File.WriteAllText(filePath, content, Encoding.UTF8);
+
+            ISharedPreferences sp = Application.Context.GetSharedPreferences("face", FileCreationMode.Private);
+            ISharedPreferencesEditor editor = sp.Edit();
+            editor.PutString("serverIp", Profile.ServerIp);
+            editor.PutString("cameraIp", Profile.CameraMain);
+            editor.PutString("welcome1", Profile.Welcome1);
+            editor.PutInt("delay", Profile.Delay);
+            editor.PutString("bgUri", Profile.BgUri);
+            editor.Commit();
         }
     }
 
@@ -83,7 +99,7 @@ namespace FaceVisual
             ServerIp = "192.168.1.100";
             CameraMain = "192.168.1.101";
             CameraSub = "192.168.1.10";
-            Delay = 1000;
+            Delay = 2000;
             Welcome1 = "ª∂”≠π‚¡Ÿ";
             Welcome2 = "ª∂”≠ƒ˙";
         }

@@ -3,11 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/root"
+    android:background="@color/white"
     android:layout_height="match_parent">
     <TextView
         android:layout_gravity="center"
         android:gravity="center"
         android:text="人脸识别可视化"
+        android:textSize="24sp"
         android:textColor="#000"
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
