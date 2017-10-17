@@ -57,6 +57,7 @@ namespace FaceVisual
             Profile.ServerIp = sp.GetString("serverIp", "192.168.1.100");
             Profile.CameraMain = sp.GetString("cameraIp", "192.168.1.101");
             Profile.Welcome1 = sp.GetString("welcome1", "ª∂”≠π‚¡Ÿ");
+            Profile.Welcome2 = sp.GetString("welcome2", "ª∂”≠π‚¡Ÿ");
             Profile.Delay = sp.GetInt("delay", 2000);
             Profile.BgUri = sp.GetString("bgUri", "");
         }
@@ -86,6 +87,7 @@ namespace FaceVisual
             editor.PutString("serverIp", Profile.ServerIp);
             editor.PutString("cameraIp", Profile.CameraMain);
             editor.PutString("welcome1", Profile.Welcome1);
+            editor.PutString("welcome2", Profile.Welcome2);
             editor.PutInt("delay", Profile.Delay);
             editor.PutString("bgUri", Profile.BgUri);
             editor.Commit();
@@ -101,7 +103,7 @@ namespace FaceVisual
             CameraSub = "192.168.1.10";
             Delay = 2000;
             Welcome1 = "ª∂”≠π‚¡Ÿ";
-            Welcome2 = "ª∂”≠ƒ˙";
+            Welcome2 = "ª∂”≠π‚¡Ÿ";
         }
 
         public string ServerIp { get; set; }
