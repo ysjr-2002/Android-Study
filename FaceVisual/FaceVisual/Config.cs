@@ -36,23 +36,6 @@ namespace FaceVisual
 
         public static void ReadProfile()
         {
-            //var root = Android.OS.Environment.ExternalStorageDirectory.Path;
-            //var dir = System.IO.Path.Combine(root, faceroot);
-            //var filePath = System.IO.Path.Combine(dir, config);
-            //if (System.IO.File.Exists(filePath))
-            //{
-            //    var content = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
-            //    var array = content.Split(spliter);
-            //    Profile.ServerIp = array[0];
-            //    Profile.CameraMain = array[1];
-            //    Profile.CameraSub = array[2];
-            //    Profile.Welcome1 = array[3];
-            //    Profile.Welcome2 = array[4];
-            //    Profile.Delay = Convert.ToInt32(array[5]);
-            //    if (array.Length > 6)
-            //        Profile.BgUri = array[6];
-            //}
-
             ISharedPreferences sp = Application.Context.GetSharedPreferences("face", FileCreationMode.Private);
             Profile.ServerIp = sp.GetString("serverIp", "192.168.1.100");
             Profile.CameraMain = sp.GetString("cameraIp", "192.168.1.101");
@@ -64,24 +47,6 @@ namespace FaceVisual
 
         public static void SaveProfile()
         {
-            //var root = Android.OS.Environment.ExternalStorageDirectory.Path;
-            //var dir = System.IO.Path.Combine(root, faceroot);
-            //var sub = new System.IO.DirectoryInfo(dir);
-            //if (!sub.Exists)
-            //    sub.Create();
-
-            //var filePath = System.IO.Path.Combine(dir, config);
-            //var content = string.Concat(Profile.ServerIp, spliter,
-            //     Profile.CameraMain, spliter,
-            //     Profile.CameraSub, spliter,
-            //     Profile.Welcome1, spliter,
-            //     Profile.Welcome2, spliter,
-            //        Profile.Delay, spliter,
-            //        Profile.BgUri
-            //        );
-
-            //System.IO.File.WriteAllText(filePath, content, Encoding.UTF8);
-
             ISharedPreferences sp = Application.Context.GetSharedPreferences("face", FileCreationMode.Private);
             ISharedPreferencesEditor editor = sp.Edit();
             editor.PutString("serverIp", Profile.ServerIp);

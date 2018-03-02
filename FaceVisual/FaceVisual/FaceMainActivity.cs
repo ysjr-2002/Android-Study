@@ -26,9 +26,9 @@ namespace FaceVisual
         //威盛的板子 1080*1820
         private System.Timers.Timer timer = null;
         private TextView tvTime = null;
+        private TextView tvWeek = null;
         private TextView tvWelcome = null;
         private HttpSocket socketMain = null;
-        private HttpSocket socketSub = null;
 
         private const int stayInerval = 2000;
 
@@ -37,8 +37,8 @@ namespace FaceVisual
         private TextView tvName;
         private ImageView ivFace;
 
-        private const int p_width = 1000;
-        private const int p_height = 1400;
+        private const int p_width = 900;
+        private const int p_height = 1200;
 
         private Handler handler = null;
         public static int connect_error = 1000;
@@ -55,6 +55,7 @@ namespace FaceVisual
             SetBackground();
 
             tvWelcome = FindViewById<TextView>(Resource.Id.tvWelcome);
+            tvWeek = FindViewById<TextView>(Resource.Id.tvWeek);
             tvTime = FindViewById<TextView>(Resource.Id.tvTime);
             vistor = this.FindViewById<LinearLayout>(Resource.Id.alter);
 
@@ -67,6 +68,8 @@ namespace FaceVisual
             {
                 Intent intent = new Intent(this, typeof(SettingActivity));
                 StartActivity(intent);
+                //var faceImage = getFaceBitmap("https://pic3.zhimg.com/v2-071d4282fb28c00ba03d418a7889f55e_r.jpg");
+                //ShowFace("ysj", faceImage);
             };
 
             handler = new Handler((msg) =>
@@ -103,7 +106,7 @@ namespace FaceVisual
         private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
         {
             Thread.Sleep(Config.Profile.Delay);
-            forbidden = false;
+            //forbidden = false;
             var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.translate);
             vistor.StartAnimation(sa);
         }
@@ -121,7 +124,7 @@ namespace FaceVisual
             float density = metric.Density;  // 密度（0.75 / 1.0 / 1.5）
             int densityDpi = (int)metric.DensityDpi;  // 密度DPI（120 / 160 / 240）
 
-            Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
+            //Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
             Start();
         }
 
@@ -135,11 +138,6 @@ namespace FaceVisual
 
             socketMain = new HttpSocket(handler, cfg.ServerIp, cfg.CameraMain, OnRecognizePersonMain);
             await socketMain.Connect();
-
-            //socketSub = new HttpSocket(this);
-            //socketSub.SetCallback(OnRecognizePersonSub);
-            //var sub = socketSub.Connect(cfg.ServerIp, cfg.CameraSub);
-            //await sub;
         }
 
         protected override void OnPause()
@@ -151,38 +149,39 @@ namespace FaceVisual
 
         private void OnRecognizePersonMain(FaceRecognized entity)
         {
-            if (forbidden)
-                return;
+            //if (forbidden)
+            //    return;
 
-            var url = "";
+            var avatar = "";
             if (entity.person.avatar.StartsWith("http"))
-                url = entity.person.avatar;
+                avatar = entity.person.avatar;
             else
-                url = "http://" + Config.Profile.ServerIp + entity.person.avatar;
+                avatar = "http://" + Config.Profile.ServerIp + entity.person.avatar;
             var name = entity.person.name;
-            var faceImage = getFaceBitmap(url);
+
+            var faceImage = getFaceBitmap(avatar);
             ShowFace(name, faceImage);
         }
 
-        private bool forbidden = false;
-        private void OnRecognizePersonSub(FaceRecognized entity)
-        {
-            forbidden = true;
-            RunOnUiThread(() =>
-            {
-                var lp = vistor.LayoutParameters;
-                lp.Width = p_width;
-                lp.Height = p_height;
-                vistor.LayoutParameters = lp;
-                tv.Text = "";
-                tvName.Text = "请稍等...";
-                tvName.SetTextColor(Color.Red);
-                ivFace.SetImageResource(Resource.Drawable.no);
-                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
-                sa.AnimationEnd += Sa_AnimationEnd;
-                vistor.StartAnimation(sa);
-            });
-        }
+        //private bool forbidden = false;
+        //private void OnRecognizePersonSub(FaceRecognized entity)
+        //{
+        //    forbidden = true;
+        //    RunOnUiThread(() =>
+        //    {
+        //        var lp = vistor.LayoutParameters;
+        //        lp.Width = p_width;
+        //        lp.Height = p_height;
+        //        vistor.LayoutParameters = lp;
+        //        tv.Text = "";
+        //        tvName.Text = "请稍等...";
+        //        tvName.SetTextColor(Color.Red);
+        //        ivFace.SetImageResource(Resource.Drawable.no);
+        //        var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+        //        sa.AnimationEnd += Sa_AnimationEnd;
+        //        vistor.StartAnimation(sa);
+        //    });
+        //}
 
         private void ShowFace(string name, Bitmap faceImage)
         {
@@ -197,6 +196,7 @@ namespace FaceVisual
                 tv.Text = Config.Profile.Welcome2;
                 ivFace.SetImageBitmap(faceImage);
                 faceImage.Dispose();
+                //Picasso.With(this).Load(avatar).Into(ivFace);
                 GC.Collect();
                 var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
                 sa.AnimationEnd += Sa_AnimationEnd;
@@ -226,10 +226,13 @@ namespace FaceVisual
         {
             RunOnUiThread(new Action(() =>
             {
+                int dayOfWeek = (int)DateTime.Now.DayOfWeek;
+                tvWeek.Text = weeks[dayOfWeek];
                 tvTime.Text = DateTime.Now.ToString("HH:mm:ss");
             }));
         }
 
+        string[] weeks = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             Showtime();
@@ -239,7 +242,6 @@ namespace FaceVisual
         {
             timer?.Stop();
             socketMain?.Disconnect();
-            //socketSub?.Disconnect();
             base.OnDestroy();
         }
     }

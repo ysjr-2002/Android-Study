@@ -46,18 +46,26 @@
                     android:textColor="@color/face"
                     android:gravity="center_horizontal|center_vertical" />
                 <TextView
+                    android:text="星期日"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvWeek"
+                    android:textColor="@color/face"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:paddingTop="24dp"
+                    android:textSize="48sp" />
+                <TextView
                     android:text="17:00:00"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvTime"
                     android:textColor="@color/face"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:paddingTop="48dp"
-                    android:textSize="48sp" />
+                    android:paddingTop="6dp"
+                    android:textSize="32sp" />
                 <TextView
                     android:textColor="@color/face"
-                    android:text="奥比岛技术有限公司-人脸可视化-V1.0.0.0"
+                    android:text="人脸可视化-V1.0.0.0"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

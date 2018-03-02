@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootReceiver.cs" />
     <Compile Include="Code\FaceRecornize.cs" />
     <Compile Include="Code\RecognizeState.cs" />
     <Compile Include="Config.cs" />

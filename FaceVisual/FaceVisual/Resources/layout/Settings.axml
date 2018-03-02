@@ -6,13 +6,17 @@
     <include
         android:id="@+id/include"
         layout="@layout/custom_title" />
+    <View
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp">
         <TextView
-            android:text="设备:"
+            android:text="识别服务器:"
             android:id="@+id/textView1"
             style="@style/leftTextView" />
         <EditText
@@ -28,12 +32,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="主摄像机:"
+            android:text="摄像机:"
             android:id="@+id/textView1"
             style="@style/leftTextView" />
         <EditText
             android:inputType="text"
-            android:hint="请输入主摄像机IP"
+            android:hint="请输入摄像机IP"
             style="@style/settingEditText"
             android:id="@+id/etCameraMain"
             android:singleLine="true" />
@@ -132,4 +136,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp" />
+    <View
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp" />
 </LinearLayout>

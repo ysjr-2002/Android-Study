@@ -29,7 +29,7 @@ namespace FaceVisual
                 Intent intent = new Intent(this, typeof(FaceMainActivity));
                 StartActivity(intent);
                 Finish();
-            }, 1000);
+            }, 2000);
         }
     }
 }
