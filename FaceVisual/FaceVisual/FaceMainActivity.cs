@@ -35,10 +35,10 @@ namespace FaceVisual
         private View vistor = null;
         private TextView tv;
         private TextView tvName;
-        private ImageView ivFace;
+        private DE.Hdodenhof.CircleImageView.CircleImageView face;
 
-        private const int p_width = 900;
-        private const int p_height = 1200;
+        private const int p_width = 500;
+        private const int p_height = 800;
 
         private Handler handler = null;
         public static int connect_error = 1000;
@@ -59,7 +59,7 @@ namespace FaceVisual
             tvTime = FindViewById<TextView>(Resource.Id.tvTime);
             vistor = this.FindViewById<LinearLayout>(Resource.Id.alter);
 
-            ivFace = this.FindViewById<ImageView>(Resource.Id.faceImage);
+            face = this.FindViewById<DE.Hdodenhof.CircleImageView.CircleImageView>(Resource.Id.abc);
             tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
             tvName = this.FindViewById<TextView>(Resource.Id.tvName);
 
@@ -68,8 +68,6 @@ namespace FaceVisual
             {
                 Intent intent = new Intent(this, typeof(SettingActivity));
                 StartActivity(intent);
-                //var faceImage = getFaceBitmap("https://pic3.zhimg.com/v2-071d4282fb28c00ba03d418a7889f55e_r.jpg");
-                //ShowFace("ysj", faceImage);
             };
 
             handler = new Handler((msg) =>
@@ -92,6 +90,11 @@ namespace FaceVisual
             timer.Elapsed += Timer_Elapsed;
         }
 
+        private async void test()
+        {
+            await Task.Delay(1000);
+        }
+
         private void SetBackground()
         {
             if (string.IsNullOrEmpty(Config.Profile.BgUri) == true)
@@ -105,10 +108,14 @@ namespace FaceVisual
 
         private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
         {
-            Thread.Sleep(Config.Profile.Delay);
+            Thread.Sleep(Config.Profile.Delay * 10);
             //forbidden = false;
-            var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.translate);
-            vistor.StartAnimation(sa);
+
+            this.RunOnUiThread(new Action(() =>
+            {
+                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.translate);
+                vistor.StartAnimation(sa);
+            }));
         }
 
         protected override void OnStart()
@@ -194,7 +201,7 @@ namespace FaceVisual
                 tvName.Text = name;
                 tvName.SetTextColor(Color.Rgb(255, 106, 00));
                 tv.Text = Config.Profile.Welcome2;
-                ivFace.SetImageBitmap(faceImage);
+                face.SetImageBitmap(faceImage);
                 faceImage.Dispose();
                 //Picasso.With(this).Load(avatar).Into(ivFace);
                 GC.Collect();

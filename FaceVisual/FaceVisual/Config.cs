@@ -63,8 +63,8 @@ namespace FaceVisual
     {
         public Profile()
         {
-            ServerIp = "192.168.1.100";
-            CameraMain = "192.168.1.101";
+            ServerIp = "192.168.0.53";
+            CameraMain = "192.168.0.10";
             CameraSub = "192.168.1.10";
             Delay = 2000;
             Welcome1 = "ª∂”≠π‚¡Ÿ";

@@ -26,6 +26,16 @@ namespace FaceVisual
 		
 		public static void UpdateIdValues()
 		{
+			global::DE.Hdodenhof.CircleImageView.Resource.Attribute.civ_border_color = global::FaceVisual.Resource.Attribute.civ_border_color;
+			global::DE.Hdodenhof.CircleImageView.Resource.Attribute.civ_border_overlay = global::FaceVisual.Resource.Attribute.civ_border_overlay;
+			global::DE.Hdodenhof.CircleImageView.Resource.Attribute.civ_border_width = global::FaceVisual.Resource.Attribute.civ_border_width;
+			global::DE.Hdodenhof.CircleImageView.Resource.Attribute.civ_fill_color = global::FaceVisual.Resource.Attribute.civ_fill_color;
+			global::DE.Hdodenhof.CircleImageView.Resource.String.library_name = global::FaceVisual.Resource.String.library_name;
+			global::DE.Hdodenhof.CircleImageView.Resource.Styleable.CircleImageView = global::FaceVisual.Resource.Styleable.CircleImageView;
+			global::DE.Hdodenhof.CircleImageView.Resource.Styleable.CircleImageView_civ_border_color = global::FaceVisual.Resource.Styleable.CircleImageView_civ_border_color;
+			global::DE.Hdodenhof.CircleImageView.Resource.Styleable.CircleImageView_civ_border_overlay = global::FaceVisual.Resource.Styleable.CircleImageView_civ_border_overlay;
+			global::DE.Hdodenhof.CircleImageView.Resource.Styleable.CircleImageView_civ_border_width = global::FaceVisual.Resource.Styleable.CircleImageView_civ_border_width;
+			global::DE.Hdodenhof.CircleImageView.Resource.Styleable.CircleImageView_civ_fill_color = global::FaceVisual.Resource.Styleable.CircleImageView_civ_fill_color;
 		}
 		
 		public partial class Animation
@@ -65,6 +75,18 @@ namespace FaceVisual
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010001
+			public const int civ_border_color = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int civ_border_overlay = 2130771970;
+			
+			// aapt resource value: 0x7f010000
+			public const int civ_border_width = 2130771968;
+			
+			// aapt resource value: 0x7f010003
+			public const int civ_fill_color = 2130771971;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -78,17 +100,20 @@ namespace FaceVisual
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050003
-			public const int black = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int black = 2131099651;
 			
-			// aapt resource value: 0x7f050002
-			public const int face = 2131034114;
+			// aapt resource value: 0x7f060004
+			public const int color_blue = 2131099652;
 			
-			// aapt resource value: 0x7f050000
-			public const int red = 2131034112;
+			// aapt resource value: 0x7f060002
+			public const int face = 2131099650;
 			
-			// aapt resource value: 0x7f050001
-			public const int white = 2131034113;
+			// aapt resource value: 0x7f060000
+			public const int red = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int white = 2131099649;
 			
 			static Color()
 			{
@@ -107,19 +132,22 @@ namespace FaceVisual
 			public const int bg = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ic_settings_black_48dp = 2130837505;
+			public const int bg_popup_linearlayout = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int Icon = 2130837506;
+			public const int ic_settings_black_48dp = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int no = 2130837507;
+			public const int Icon = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int popupbg = 2130837508;
+			public const int no = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int shape = 2130837509;
+			public const int popupbg = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int shape = 2130837510;
 			
 			static Drawable()
 			{
@@ -135,37 +163,37 @@ namespace FaceVisual
 		{
 			
 			// aapt resource value: 0x7f09000a
-			public const int alter = 2131296266;
+			public const int abc = 2131296266;
+			
+			// aapt resource value: 0x7f090009
+			public const int alter = 2131296265;
 			
 			// aapt resource value: 0x7f090000
 			public const int backTextView = 2131296256;
 			
-			// aapt resource value: 0x7f090018
-			public const int btnDefault = 2131296280;
-			
-			// aapt resource value: 0x7f090019
-			public const int btnSave = 2131296281;
-			
 			// aapt resource value: 0x7f090017
-			public const int btnSelect = 2131296279;
+			public const int btnDefault = 2131296279;
 			
-			// aapt resource value: 0x7f090010
-			public const int etCameraMain = 2131296272;
+			// aapt resource value: 0x7f090018
+			public const int btnSave = 2131296280;
 			
-			// aapt resource value: 0x7f090012
-			public const int etCamerasub = 2131296274;
-			
-			// aapt resource value: 0x7f09000b
-			public const int faceImage = 2131296267;
-			
-			// aapt resource value: 0x7f09000e
-			public const int include = 2131296270;
-			
-			// aapt resource value: 0x7f09001b
-			public const int item1 = 2131296283;
+			// aapt resource value: 0x7f090016
+			public const int btnSelect = 2131296278;
 			
 			// aapt resource value: 0x7f09000f
-			public const int koalaEditText = 2131296271;
+			public const int etCameraMain = 2131296271;
+			
+			// aapt resource value: 0x7f090011
+			public const int etCamerasub = 2131296273;
+			
+			// aapt resource value: 0x7f09000d
+			public const int include = 2131296269;
+			
+			// aapt resource value: 0x7f09001a
+			public const int item1 = 2131296282;
+			
+			// aapt resource value: 0x7f09000e
+			public const int koalaEditText = 2131296270;
 			
 			// aapt resource value: 0x7f090003
 			public const int linearLayout1 = 2131296259;
@@ -173,11 +201,8 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090002
 			public const int mainroot = 2131296258;
 			
-			// aapt resource value: 0x7f090009
-			public const int rl = 2131296265;
-			
-			// aapt resource value: 0x7f09001a
-			public const int root = 2131296282;
+			// aapt resource value: 0x7f090019
+			public const int root = 2131296281;
 			
 			// aapt resource value: 0x7f090004
 			public const int settingTextView = 2131296260;
@@ -185,26 +210,26 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090001
 			public const int textView1 = 2131296257;
 			
-			// aapt resource value: 0x7f090014
-			public const int textView2 = 2131296276;
+			// aapt resource value: 0x7f090013
+			public const int textView2 = 2131296275;
 			
 			// aapt resource value: 0x7f090008
 			public const int textView3 = 2131296264;
 			
-			// aapt resource value: 0x7f090011
-			public const int textViewx = 2131296273;
+			// aapt resource value: 0x7f090010
+			public const int textViewx = 2131296272;
 			
-			// aapt resource value: 0x7f090016
-			public const int tvDelay = 2131296278;
+			// aapt resource value: 0x7f090015
+			public const int tvDelay = 2131296277;
 			
-			// aapt resource value: 0x7f09000d
-			public const int tvName = 2131296269;
+			// aapt resource value: 0x7f09000c
+			public const int tvName = 2131296268;
 			
 			// aapt resource value: 0x7f090007
 			public const int tvTime = 2131296263;
 			
-			// aapt resource value: 0x7f09000c
-			public const int tvWecomeEmp = 2131296268;
+			// aapt resource value: 0x7f09000b
+			public const int tvWecomeEmp = 2131296267;
 			
 			// aapt resource value: 0x7f090006
 			public const int tvWeek = 2131296262;
@@ -212,11 +237,11 @@ namespace FaceVisual
 			// aapt resource value: 0x7f090005
 			public const int tvWelcome = 2131296261;
 			
-			// aapt resource value: 0x7f090013
-			public const int welcomeEditText1 = 2131296275;
+			// aapt resource value: 0x7f090012
+			public const int welcomeEditText1 = 2131296274;
 			
-			// aapt resource value: 0x7f090015
-			public const int welcomeEditText2 = 2131296277;
+			// aapt resource value: 0x7f090014
+			public const int welcomeEditText2 = 2131296276;
 			
 			static Id()
 			{
@@ -272,8 +297,11 @@ namespace FaceVisual
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int ApplicationName = 2131099648;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int library_name = 2131034112;
 			
 			static String()
 			{
@@ -312,6 +340,37 @@ namespace FaceVisual
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] CircleImageView = new int[] {
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971};
+			
+			// aapt resource value: 1
+			public const int CircleImageView_civ_border_color = 1;
+			
+			// aapt resource value: 2
+			public const int CircleImageView_civ_border_overlay = 2;
+			
+			// aapt resource value: 0
+			public const int CircleImageView_civ_border_width = 0;
+			
+			// aapt resource value: 3
+			public const int CircleImageView_civ_fill_color = 3;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

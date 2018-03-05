@@ -44,7 +44,7 @@ namespace FaceVisual
 
                 var url = string.Format("ws://{0}:9000/video", _koalaIp.Trim());
                 //C2
-                var rtsp = string.Format("rtsp://{0}/user=admin&password=&channel=1&stream=0.sdp", _cameraIp.Trim());
+                var rtsp = string.Format("rtsp://{0}/user=admin&password=&channel=1&stream=0.sdp?", _cameraIp.Trim());
                 //¾ÞÁú
                 //var rtsp = string.Format("rtsp://{0}:554/media/live/1/1", _cameraIp.Trim());
                 rtsp = HttpUtility.UrlEncode(rtsp);
