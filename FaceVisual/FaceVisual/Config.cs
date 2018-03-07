@@ -67,8 +67,8 @@ namespace FaceVisual
             CameraMain = "192.168.0.10";
             CameraSub = "192.168.1.10";
             Delay = 2000;
-            Welcome1 = "ª∂”≠π‚¡Ÿ";
-            Welcome2 = "ª∂”≠π‚¡Ÿ";
+            Welcome1 = "ª∂”≠π‚¡ŸXXX¥Ûœ√";
+            Welcome2 = "«ÎÕ®––";
         }
 
         public string ServerIp { get; set; }

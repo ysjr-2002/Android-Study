@@ -52,7 +52,7 @@
                 android:id="@+id/tvWeek"
                 android:textColor="@color/face"
                 android:gravity="center_horizontal|center_vertical"
-                android:paddingTop="24dp"
+                android:paddingTop="48dp"
                 android:textSize="32sp" />
             <TextView
                 android:text="17:00:00"
@@ -69,7 +69,7 @@
                 android:layout_height="0dp" />
             <TextView
                 android:textColor="@color/face"
-                android:text="人脸识别可视化-V1.0.0.0"
+                android:text="人脸识别可视化-V1.0"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,9 +79,10 @@
         <LinearLayout
             android:id="@+id/alter"
             android:background="@drawable/popupbg"
-            android:layout_height="0dp"
-            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_width="800dp"
             android:layout_gravity="center"
+            android:visibility="gone"
             android:orientation="vertical">
             <DE.Hdodenhof.CircleImageView.CircleImageView
                 android:layout_marginTop="86dp"

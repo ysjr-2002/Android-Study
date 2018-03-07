@@ -33,12 +33,9 @@ namespace FaceVisual
         private const int stayInerval = 2000;
 
         private View vistor = null;
-        private TextView tv;
+        private TextView tvWelcomeEmp;
         private TextView tvName;
         private DE.Hdodenhof.CircleImageView.CircleImageView face;
-
-        private const int p_width = 500;
-        private const int p_height = 800;
 
         private Handler handler = null;
         public static int connect_error = 1000;
@@ -60,7 +57,7 @@ namespace FaceVisual
             vistor = this.FindViewById<LinearLayout>(Resource.Id.alter);
 
             face = this.FindViewById<DE.Hdodenhof.CircleImageView.CircleImageView>(Resource.Id.abc);
-            tv = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
+            tvWelcomeEmp = this.FindViewById<TextView>(Resource.Id.tvWecomeEmp);
             tvName = this.FindViewById<TextView>(Resource.Id.tvName);
 
             var settingTextView = FindViewById<TextView>(Resource.Id.settingTextView);
@@ -74,13 +71,20 @@ namespace FaceVisual
             {
                 if (msg.What == connect_error)
                 {
-                    Toast.MakeText(this, "websocket连接失败", ToastLength.Short).Show();
+                    showToast("websocket连接失败");
                 }
                 if (msg.What == connect_ok)
                 {
-                    Toast.MakeText(this, "websocket连接成功", ToastLength.Short).Show();
+                    showToast("websocket连接成功");
                 }
             });
+        }
+
+        private void showToast(string msg)
+        {
+            var toast = Toast.MakeText(this, msg, ToastLength.Short);
+            toast.SetGravity(GravityFlags.Center, 0, 0);
+            toast.Show();
         }
 
         private void SetTimer()
@@ -109,7 +113,6 @@ namespace FaceVisual
         private void Sa_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
         {
             Thread.Sleep(Config.Profile.Delay * 10);
-            //forbidden = false;
 
             this.RunOnUiThread(new Action(() =>
             {
@@ -122,17 +125,29 @@ namespace FaceVisual
         {
             base.OnStart();
 
+            var a = this.Resources.DisplayMetrics.Density;
+            var b = this.Resources.DisplayMetrics.DensityDpi;
+            var c = this.Resources.DisplayMetrics.HeightPixels;
+            var d = this.Resources.DisplayMetrics.WidthPixels;
+            var e = this.Resources.DisplayMetrics.Xdpi;
+            var f = this.Resources.DisplayMetrics.Ydpi;
+
             DisplayMetrics metric = new DisplayMetrics();
             this.WindowManager.DefaultDisplay.GetMetrics(metric);
 
             int width = metric.WidthPixels;  // 宽度（PX）
             int height = metric.HeightPixels;  // 高度（PX）
 
-            float density = metric.Density;  // 密度（0.75 / 1.0 / 1.5）
+            float density = metric.Density;  // 密度（0.75 / 1.0 / 1.5 / 2.0）
             int densityDpi = (int)metric.DensityDpi;  // 密度DPI（120 / 160 / 240）
 
-            //Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
+            Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
             Start();
+        }
+
+        private int dip2px(Context ctx, float dpValue)
+        {
+            return (int)(dpValue * ctx.Resources.DisplayMetrics.Density + 0.5f);
         }
 
         private async void Start()
@@ -140,6 +155,7 @@ namespace FaceVisual
             var cfg = Config.Profile;
 
             tvWelcome.Text = cfg.Welcome1;
+            tvWelcomeEmp.Text = cfg.Welcome2;
             Showtime();
             StartTimer();
 
@@ -156,9 +172,6 @@ namespace FaceVisual
 
         private void OnRecognizePersonMain(FaceRecognized entity)
         {
-            //if (forbidden)
-            //    return;
-
             var avatar = "";
             if (entity.person.avatar.StartsWith("http"))
                 avatar = entity.person.avatar;
@@ -166,48 +179,36 @@ namespace FaceVisual
                 avatar = "http://" + Config.Profile.ServerIp + entity.person.avatar;
             var name = entity.person.name;
 
+            if(entity.person.subject_type == 0)
+            {
+                //员工
+            }
+            else if( entity.person.subject_type ==1)
+            {
+                //访客
+            }
+            else if( entity.person.subject_type == 2)
+            {
+                //VIP
+            }
+
             var faceImage = getFaceBitmap(avatar);
             ShowFace(name, faceImage);
         }
-
-        //private bool forbidden = false;
-        //private void OnRecognizePersonSub(FaceRecognized entity)
-        //{
-        //    forbidden = true;
-        //    RunOnUiThread(() =>
-        //    {
-        //        var lp = vistor.LayoutParameters;
-        //        lp.Width = p_width;
-        //        lp.Height = p_height;
-        //        vistor.LayoutParameters = lp;
-        //        tv.Text = "";
-        //        tvName.Text = "请稍等...";
-        //        tvName.SetTextColor(Color.Red);
-        //        ivFace.SetImageResource(Resource.Drawable.no);
-        //        var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
-        //        sa.AnimationEnd += Sa_AnimationEnd;
-        //        vistor.StartAnimation(sa);
-        //    });
-        //}
 
         private void ShowFace(string name, Bitmap faceImage)
         {
             RunOnUiThread(() =>
             {
-                var lp = vistor.LayoutParameters;
-                lp.Width = p_width;
-                lp.Height = p_height;
-                vistor.LayoutParameters = lp;
                 tvName.Text = name;
-                tvName.SetTextColor(Color.Rgb(255, 106, 00));
-                tv.Text = Config.Profile.Welcome2;
+
                 face.SetImageBitmap(faceImage);
-                faceImage.Dispose();
-                //Picasso.With(this).Load(avatar).Into(ivFace);
+                faceImage.Recycle();
+                faceImage = null;
                 GC.Collect();
-                var sa = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
-                sa.AnimationEnd += Sa_AnimationEnd;
-                vistor.StartAnimation(sa);
+                var animation = AnimationUtils.LoadAnimation(this, Resource.Animation.scale);
+                animation.AnimationEnd += Sa_AnimationEnd;
+                vistor.StartAnimation(animation);
             });
         }
 
