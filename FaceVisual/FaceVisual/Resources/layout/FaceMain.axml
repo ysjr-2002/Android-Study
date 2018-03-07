@@ -5,107 +5,106 @@
     android:background="@drawable/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <!--自定义标题-->
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="46dp"
-      android:orientation="horizontal"
-      android:id="@+id/linearLayout1">
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textView1"
-        android:layout_weight="1"
-        android:gravity="center" />
-    <TextView
-        android:text="..."
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/settingTextView"
-        android:gravity="center_horizontal|center_vertical"
-        android:clickable="true"
-        android:paddingRight="12dp" />
-  </LinearLayout>
-  <FrameLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+<!--自定义标题-->
     <LinearLayout
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout1">
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView1"
+            android:layout_weight="1"
+            android:gravity="center" />
+        <TextView
+            android:text="..."
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/settingTextView"
+            android:gravity="center_horizontal|center_vertical"
+            android:clickable="true"
+            android:paddingRight="12dp" />
+    </LinearLayout>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-      <View android:layout_width="match_parent"
-android:layout_weight="1"
-            android:layout_height="0dp"/>
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/tvWelcome"
-          android:textSize="60sp"
-          android:textColor="@color/face"
-          android:gravity="center_horizontal|center_vertical" />
-      <TextView
-          android:text="星期日"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/tvWeek"
-          android:textColor="@color/face"
-          android:gravity="center_horizontal|center_vertical"
-          android:paddingTop="24dp"
-          android:textSize="32sp" />
-      <TextView
-          android:text="17:00:00"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/tvTime"
-          android:textColor="@color/face"
-          android:gravity="center_horizontal|center_vertical"
-          android:paddingTop="6dp"
-          android:textSize="32sp" />
-
-      <View android:layout_width="match_parent"
-android:layout_weight="1"
-      android:layout_height="0dp"/>
-
-      <TextView
-          android:textColor="@color/face"
-          android:text="人脸识别可视化-V1.0.0.0"
-          android:textAppearance="?android:attr/textAppearanceSmall"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/textView3"
-          android:gravity="right" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/alter"
-        android:background="@drawable/popupbg"
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-      <DE.Hdodenhof.CircleImageView.CircleImageView android:layout_marginTop="86dp"
-                                                android:layout_width="180dp"
-                                                     android:id="@+id/abc"
-                                                    android:layout_gravity="center_horizontal"
-                                                     android:layout_height="180dp"
-                                                            />
-      <TextView
-          android:gravity="center_horizontal"
-          android:id="@+id/tvWecomeEmp"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="12dp"
-          android:layout_width="match_parent"
-          android:textColor="@color/face"
-          android:textSize="32sp" />
-      <TextView
-          android:gravity="center_horizontal"
-          android:id="@+id/tvName"
-          android:textColor="@color/face"
-          android:layout_height="wrap_content"
-          android:layout_width="match_parent"
-          android:layout_marginTop="12dp"
-          android:textSize="48sp" />
-    </LinearLayout>
-  </FrameLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvWelcome"
+                android:textSize="60sp"
+                android:textColor="@color/face"
+                android:gravity="center_horizontal|center_vertical" />
+            <TextView
+                android:text="星期日"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvWeek"
+                android:textColor="@color/face"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingTop="24dp"
+                android:textSize="32sp" />
+            <TextView
+                android:text="17:00:00"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTime"
+                android:textColor="@color/face"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingTop="6dp"
+                android:textSize="32sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+                android:textColor="@color/face"
+                android:text="人脸识别可视化-V1.0.0.0"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:gravity="right" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/alter"
+            android:background="@drawable/popupbg"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <DE.Hdodenhof.CircleImageView.CircleImageView
+                android:layout_marginTop="86dp"
+                android:layout_width="180dp"
+                android:id="@+id/abc"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="180dp" />
+            <TextView
+                android:gravity="center_horizontal"
+                android:id="@+id/tvWecomeEmp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/face"
+                android:textSize="32sp" />
+            <TextView
+                android:gravity="center_horizontal"
+                android:id="@+id/tvName"
+                android:textColor="@color/face"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="12dp"
+                android:textSize="48sp" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>
