@@ -65,6 +65,7 @@ namespace FaceVisual
             {
                 Intent intent = new Intent(this, typeof(SettingActivity));
                 StartActivity(intent);
+                this.Finish();
             };
 
             handler = new Handler((msg) =>
@@ -141,7 +142,7 @@ namespace FaceVisual
             float density = metric.Density;  // √‹∂»£®0.75 / 1.0 / 1.5 / 2.0£©
             int densityDpi = (int)metric.DensityDpi;  // √‹∂»DPI£®120 / 160 / 240£©
 
-            Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
+            //Toast.MakeText(this, string.Format("Display:{0}*{1}", width, height), ToastLength.Long).Show();
             Start();
         }
 

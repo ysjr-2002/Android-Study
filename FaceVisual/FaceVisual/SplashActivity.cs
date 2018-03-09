@@ -27,8 +27,8 @@ namespace FaceVisual
             handler.PostDelayed(() =>
             {
                 Intent intent = new Intent(this, typeof(FaceMainActivity));
-                StartActivity(intent);
-                Finish();
+                this.StartActivity(intent);
+                this.Finish();
             }, 2000);
         }
     }

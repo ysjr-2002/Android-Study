@@ -157,7 +157,7 @@ namespace FaceVisual
         private void toast(string msg)
         {
             var t = Toast.MakeText(this, msg, ToastLength.Short);
-            t.SetGravity(GravityFlags.CenterVertical, 0, 0);
+            t.SetGravity(GravityFlags.Center, 0, 0);
             t.Show();
         }
     }
